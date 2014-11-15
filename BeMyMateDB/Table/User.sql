@@ -1,0 +1,25 @@
+﻿CREATE TABLE [User].[User]
+(
+	[id] INT NOT NULL PRIMARY KEY, 
+    [name] VARCHAR(MAX) NOT NULL, 
+    [surname] VARCHAR(MAX) NOT NULL, 
+    [email] VARCHAR(MAX) NOT NULL, 
+    [username] VARCHAR(MAX) NOT NULL, 
+    [password] VARCHAR(MAX) NOT NULL, 
+    [genderId] INT NOT NULL, 
+    [dob] DATE NULL, 
+    [isActivated] BIT NULL, 
+    [isRecovering] BIT NULL, 
+    [isLogged] BIT NULL, 
+    [avatarId] INT NOT NULL, 
+    [typeId] INT NOT NULL, 
+	[statusId] INT NOT NULL,
+	[registrationStatusId] INt NOT NULL,
+    [dtCreated] DATETIME NOT NULL, 
+    [dtUpdated] DATETIME NULL, 
+    [dtDeleted] DATETIME NULL, 
+    CONSTRAINT [FK_User_Type] FOREIGN KEY ([typeId]) REFERENCES [User].[Type]([id]), 
+    CONSTRAINT [FK_User_Avatar] FOREIGN KEY ([avatarId]) REFERENCES [User].[Avatar]([id]),
+	CONSTRAINT [FK_User_Status] FOREIGN KEY ([statusId]) REFERENCES [User].[UserStatus]([id]),
+	CONSTRAINT [FK_User_RegistrationStatus] FOREIGN KEY ([statusId]) REFERENCES [User].[UserRegistrationStatus]([id])
+)

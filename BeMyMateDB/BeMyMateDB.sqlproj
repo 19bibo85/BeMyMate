@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>BeMyMateDB</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{7e5870fa-8600-4d47-b9db-ee8c137de361}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>BeMyMateDB</RootNamespace>
+    <AssemblyName>BeMyMateDB</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- Default to the v10.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Table" />
+    <Folder Include="Schema" />
+    <Folder Include="profile\" />
+    <Folder Include="InitialData" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Table\User.sql" />
+    <Build Include="Schema\User.sql" />
+    <Build Include="Table\UserType.sql" />
+    <Build Include="Table\Avatar.sql" />
+    <Build Include="Table\Address.sql" />
+    <Build Include="Table\UserToAddress.sql" />
+    <Build Include="Table\Phone.sql" />
+    <Build Include="Table\PhoneType.sql" />
+    <Build Include="Table\UserToPhone.sql" />
+    <Build Include="Table\Business.sql" />
+    <Build Include="Table\Job.sql" />
+    <Build Include="Table\UserToBusiness.sql" />
+    <Build Include="Table\Gender.sql" />
+    <Build Include="Table\Review.sql" />
+    <Build Include="Table\UserToFriend.sql" />
+    <Build Include="Table\FriendshipStatus.sql" />
+    <Build Include="Table\Message.sql" />
+    <Build Include="Table\UserToMessage.sql" />
+    <Build Include="Table\File.sql" />
+    <Build Include="Table\FileInfo.sql" />
+    <Build Include="Table\FileApp.sql" />
+    <Build Include="Table\MessageToFile.sql" />
+    <Build Include="Schema\Security.sql" />
+    <Build Include="Table\Object.sql" />
+    <Build Include="Table\GroupObject.sql" />
+    <Build Include="Table\ObjectGroupObject.sql" />
+    <Build Include="Table\Role.sql" />
+    <Build Include="Table\RoleToUser.sql" />
+    <Build Include="Table\ObjectRight.sql" />
+    <Build Include="Table\RoleGroupObjectRight.sql" />
+    <Build Include="Table\Menu.sql" />
+    <Build Include="Schema\Application.sql" />
+    <Build Include="Table\MenuItem.sql" />
+    <Build Include="Table\MenuToMenuItem.sql" />
+    <Build Include="Table\Section.sql" />
+    <Build Include="Table\SectionToMenu.sql" />
+    <Build Include="Table\LifeStyleQuestionnaire.sql" />
+    <Build Include="Table\LifeStyleAnswer.sql" />
+    <Build Include="Table\LifeStyleQuestionnaireToAnswer.sql" />
+    <Build Include="Table\UserLifeStyleInfo.sql" />
+    <Build Include="Table\LifeStyleArea.sql" />
+    <Build Include="Table\UserStatus.sql" />
+    <Build Include="Table\UserRegistrationStatus.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="BeMyMateDB.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="profile\BeMyMateDB.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="InitialData\InitialData.sql" />
+  </ItemGroup>
+</Project>
