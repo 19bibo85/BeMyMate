@@ -106,6 +106,11 @@
     <Build Include="Table\LifeStyleArea.sql" />
     <Build Include="Table\UserStatus.sql" />
     <Build Include="Table\UserRegistrationStatus.sql" />
+    <Build Include="Table\Notification.sql" />
+    <Build Include="Table\NotificationType.sql" />
+    <Build Include="Table\UserToNotificationType.sql" />
+    <Build Include="Table\Localization.sql" />
+    <Build Include="Table\Language.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />

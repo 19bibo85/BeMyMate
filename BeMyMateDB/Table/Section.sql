@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [Application].[Section]
 (
 	[id] INT NOT NULL PRIMARY KEY, 
+	[refCode] VARCHAR(MAX) NOT NULL, 
     [name] VARCHAR(MAX) NOT NULL, 
     [level] INT NOT NULL, 
     [parentId] INT NULL, 

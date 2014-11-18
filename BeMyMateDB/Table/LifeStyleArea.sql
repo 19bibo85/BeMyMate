@@ -1,7 +1,8 @@
 ﻿CREATE TABLE [User].[LifeStyleArea]
 (
 	[id] INT NOT NULL PRIMARY KEY, 
-    [name] VARCHAR(MAX) NOT NULL, 
+    [refCode] VARCHAR(MAX) NOT NULL, 
+	[name] VARCHAR(MAX) NOT NULL, 	
     [objectId] INT NOT NULL, 
     [dtCreated] DATETIME NOT NULL, 
     [dtUpdated] DATETIME NULL, 
