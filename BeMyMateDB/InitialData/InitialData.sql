@@ -66,7 +66,7 @@ INSERT INTO [Application].[MenuItem] (id, refCode, name, objectId, dtCreated) VA
 (1, 'men_001', 'About', 8, GETDATE()),
 (2, 'men_002', 'Jobs', 9, GETDATE()),
 (3, 'men_003', 'Press', 10, GETDATE()),
-(4, 'men_004',' Blog', 11, GETDATE()),
+(4, 'men_004', 'Blog', 11, GETDATE()),
 (5, 'men_005', 'Help', 12, GETDATE()),
 (6, 'men_006', 'Policies', 13, GETDATE()),
 (7, 'men_007', 'Terms & Privacy', 14, GETDATE())

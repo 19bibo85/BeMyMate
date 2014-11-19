@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[UserToNotificationType]
+﻿CREATE TABLE [User].[UserToNotificationType]
 (
 	[userId] INT NOT NULL , 
     [notificationTypeId] INT NOT NULL, 
