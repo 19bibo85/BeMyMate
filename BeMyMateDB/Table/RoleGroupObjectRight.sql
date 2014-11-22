@@ -7,7 +7,7 @@
     [dtCreated] DATETIME NOT NULL, 
     [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 
-    PRIMARY KEY ([roleId], [groupObjectId]), 
+    PRIMARY KEY ([roleId], [groupObjectId], [rightId]), 
     CONSTRAINT [FK_RoleGroupObjectRight_Role] FOREIGN KEY ([roleId]) REFERENCES [Security].[Role]([id]), 
     CONSTRAINT [FK_RoleGroupObjectRight_GroupObject] FOREIGN KEY ([groupObjectId]) REFERENCES [Security].[GroupObject]([id]), 
     CONSTRAINT [FK_RoleGroupObjectRight_ObjectRight] FOREIGN KEY ([rightId]) REFERENCES [Security].[ObjectRight]([id])

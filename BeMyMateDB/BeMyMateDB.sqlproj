@@ -61,6 +61,7 @@
     <Folder Include="Schema" />
     <Folder Include="profile\" />
     <Folder Include="InitialData" />
+    <Folder Include="StoredProcedure" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Table\User.sql" />
@@ -111,6 +112,7 @@
     <Build Include="Table\UserToNotificationType.sql" />
     <Build Include="Table\Localization.sql" />
     <Build Include="Table\Language.sql" />
+    <Build Include="StoredProcedure\GetSecurityByUser.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />
