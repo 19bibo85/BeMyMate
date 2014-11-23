@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [Application].[Menu]
 (
 	[id] INT NOT NULL PRIMARY KEY, 
-	[refCode] VARCHAR(MAX) NOT NULL,
+	[refCode] AS Application.GetReferenceCode('menu_', id, 6, 0),
     [name] VARCHAR(MAX) NOT NULL, 
 	[level] INT NOT NULL, 
     [parentId] INT NULL, 

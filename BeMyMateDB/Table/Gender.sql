@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [User].[Gender]
 (
 	[id] INT NOT NULL PRIMARY KEY, 
-	[refCode] VARCHAR(MAX) NOT NULL,
+	[refCode] AS Application.GetReferenceCode('gender_', id, 6, 0),
     [name] VARCHAR(MAX) NOT NULL, 
     [dtCreated] DATETIME NOT NULL, 
     [dtUpdated] DATETIME NULL,

@@ -406,4 +406,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="refCode" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="9ecc72e1-390d-4c1a-95de-e52769f4e00d" ChangeDateTime="11/23/2014 14:12:00">
+    <Property Name="ElementName" Value="[Security].[ObjectTable].[id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Security].[ObjectTable]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="name" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="56f1795e-9523-478e-adfc-4e1ad7059e7b" ChangeDateTime="11/23/2014 14:12:31">
+    <Property Name="ElementName" Value="[Security].[ObjectTable].[id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Security].[ObjectTable]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dtCreated" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a3f75ab2-6e4a-4080-a8e2-460ce9d0c567" ChangeDateTime="11/23/2014 14:14:57">
+    <Property Name="ElementName" Value="[Security].[Object].[name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Security].[Object]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="objectTableId" />
+  </Operation>
 </Operations>
