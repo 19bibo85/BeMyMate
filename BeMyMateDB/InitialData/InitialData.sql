@@ -10,6 +10,11 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
+-- Language
+INSERT INTO [Application].[Language] (id, code, name, dtCreated) VALUES
+(1, 'en-us', 'English', GETDATE()),
+(2, 'it', 'Italiano', GETDATE())
+
 -- Object Table
 INSERT INTO [Security].[ObjectTable] (id, name, dtCreated) VALUES
 (1, 'Section', GETDATE()),

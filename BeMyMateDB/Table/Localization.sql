@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Application].[Localization]
 (
-	[id] INT NOT NULL,
+	[id] INT NOT NULL IDENTITY,
 	[languageId] INT NOT NULL,  
     [refCode] VARCHAR(MAX) NOT NULL, 
     [name] VARCHAR(MAX) NOT NULL,     
