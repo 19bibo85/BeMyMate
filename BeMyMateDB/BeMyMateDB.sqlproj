@@ -119,12 +119,18 @@
     <Build Include="Function\GetReferenceCode.sql" />
     <Build Include="Table\ObjectTable.sql" />
     <Build Include="Trigger\SectionLoc.sql" />
-    <Build Include="StoredProcedure\SetObjectId.sql" />
     <Build Include="Trigger\GenderLoc.sql" />
     <Build Include="Trigger\JobLoc.sql" />
     <Build Include="Trigger\MenuLoc.sql" />
     <Build Include="Trigger\MenuItemLoc.sql" />
     <Build Include="Trigger\PhoneTypeLoc.sql" />
+    <Build Include="Trigger\UserRegistrationStatusLoc.sql" />
+    <Build Include="Trigger\UserStatusLoc.sql" />
+    <Build Include="Trigger\TypeLoc.sql" />
+    <Build Include="Trigger\FriendshipStatusLoc.sql" />
+    <Build Include="Trigger\SectionObj.sql" />
+    <Build Include="Trigger\MenuObj.sql" />
+    <Build Include="Trigger\MenuItemObj.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />

@@ -35,23 +35,6 @@ INSERT INTO [User].[Job] (id, name, dtCreated) VALUES
 (4, 'Banking', GETDATE()),
 (5, 'Biotech', GETDATE())
 
--- Object
-INSERT INTO [Security].[Object] (id, objectTableId, dtCreated) VALUES
-(1, 1, GETDATE()),
-(2, 1, GETDATE()),
-(3, 1, GETDATE()),
-(4, 1, GETDATE()),
-(5, 1, GETDATE()),
-(6, 1, GETDATE()),
-(7, 1, GETDATE()),
-(8, 1, GETDATE()),
-(9, 1, GETDATE()),
-(10, 1, GETDATE()),
-(11, 1, GETDATE()),
-(12, 1, GETDATE()),
-(13, 1, GETDATE()),
-(14, 1, GETDATE())
-
 -- Object Right
 INSERT INTO [Security].[ObjectRight] (id, name, dtCreated) VALUES
 (1, 'None', GETDATE()),
@@ -60,45 +43,45 @@ INSERT INTO [Security].[ObjectRight] (id, name, dtCreated) VALUES
 (4, 'Delete', GETDATE())
 
 -- Section
-INSERT INTO [Application].[Section] (id, name, level, objectId, dtCreated) VALUES
-(1, 'Home', 0, 1, GETDATE()),
-(2, 'Profile', 0, 2, GETDATE())
+INSERT INTO [Application].[Section] (id, name, level, dtCreated) VALUES
+(1, 'Home', 0, GETDATE()),
+(2, 'Profile', 0, GETDATE())
 
 -- Menu
-INSERT INTO [Application].[Menu] (id, name, level, parentId, objectId, dtCreated) VALUES
-(1, 'Main', 0, null, 3, GETDATE()),
-(2, 'Company', 0, null, 4, GETDATE()),
-(3, 'User List', 0, null, 5, GETDATE()),
-(4, 'Message', 0, null, 6, GETDATE()),
-(5, 'Account', 0, null, 7, GETDATE())
+INSERT INTO [Application].[Menu] (id, name, level, parentId, dtCreated) VALUES
+(1, 'Main', 0, null, GETDATE()),
+(2, 'Company', 0, null, GETDATE()),
+(3, 'User List', 0, null, GETDATE()),
+(4, 'Message', 0, null, GETDATE()),
+(5, 'Account', 0, null, GETDATE())
 
 -- Menu Item
-INSERT INTO [Application].[MenuItem] (id, name, objectId, link, dtCreated) VALUES
-(1, 'About', 8, '/page/about.aspx', GETDATE()),
-(2, 'Jobs', 9, '/page/job.aspx', GETDATE()),
-(3, 'Press', 10, '/page/press.aspx', GETDATE()),
-(4, 'Blog', 11, '/page/blog.aspx', GETDATE()),
-(5, 'Help', 12, '/page/help.aspx', GETDATE()),
-(6, 'Policies', 13, '/page/policies.aspx', GETDATE()),
-(7, 'Terms & Privacy', 14, '/page/terms_privacy.aspx', GETDATE())
+INSERT INTO [Application].[MenuItem] (id, name, link, dtCreated) VALUES
+(1, 'About', '/page/about.aspx', GETDATE()),
+(2, 'Jobs', '/page/job.aspx', GETDATE()),
+(3, 'Press', '/page/press.aspx', GETDATE()),
+(4, 'Blog', '/page/blog.aspx', GETDATE()),
+(5, 'Help', '/page/help.aspx', GETDATE()),
+(6, 'Policies', '/page/policies.aspx', GETDATE()),
+(7, 'Terms & Privacy', '/page/terms_privacy.aspx', GETDATE())
 
 -- Menu Item
-INSERT INTO [Application].[MenuToMenuItem] (menuId, menuItemId, dtCreated) VALUES
-(2, 1, GETDATE()),
-(2, 2, GETDATE()),
-(2, 3, GETDATE()),
-(2, 4, GETDATE()),
-(2, 5, GETDATE()),
-(2, 6, GETDATE()),
-(2, 7, GETDATE())
+--INSERT INTO [Application].[MenuToMenuItem] (menuId, menuItemId, dtCreated) VALUES
+--(2, 1, GETDATE()),
+--(2, 2, GETDATE()),
+--(2, 3, GETDATE()),
+--(2, 4, GETDATE()),
+--(2, 5, GETDATE()),
+--(2, 6, GETDATE()),
+--(2, 7, GETDATE())
 
--- Section Menu
-INSERT INTO [Application].[SectionToMenu] (sectionId, menuId, dtCreated) VALUES
-(1, 1, GETDATE()),
-(1, 2, GETDATE()),
-(2, 3, GETDATE()),
-(2, 4, GETDATE()),
-(2, 5, GETDATE())
+---- Section Menu
+--INSERT INTO [Application].[SectionToMenu] (sectionId, menuId, dtCreated) VALUES
+--(1, 1, GETDATE()),
+--(1, 2, GETDATE()),
+--(2, 3, GETDATE()),
+--(2, 4, GETDATE()),
+--(2, 5, GETDATE())
 
 -- Phone Type
 INSERT INTO [User].[PhoneType] (id, name, dtCreated) VALUES

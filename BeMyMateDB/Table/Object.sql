@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Security].[Object]
 (
-	[id] INT NOT NULL PRIMARY KEY,
+	[id] INT NOT NULL PRIMARY KEY IDENTITY,
 	[objectTableId] INT NOT NULL,
     [dtCreated] DATETIME NOT NULL, 
     [dtUpdated] DATETIME NULL, 
