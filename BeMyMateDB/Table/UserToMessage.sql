@@ -2,7 +2,7 @@
 (
 	[receiverId] INT NOT NULL , 
     [messageId] INT NOT NULL, 
-    [dtCreated] DATETIME NOT NULL, 
+    [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 
     PRIMARY KEY ([receiverId], [messageId]), 

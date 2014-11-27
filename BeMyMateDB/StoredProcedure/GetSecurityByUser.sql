@@ -7,7 +7,7 @@ AS
 	FROM [Security].[Object] as o
 	INNER JOIN [Security].[ObjectGroupObject] as ogo on o.id = ogo.objectId 
 	INNER JOIN [Security].[GroupObject] as [go] on ogo.groupId = [go].id
-	INNER JOIN [Security].[RoleGroupObjectRight] as rgo on [go].id = rgo.groupObjectId
+	INNER JOIN [Security].[RoleGroupObjectRight] as rgo on [go].objectId = rgo.groupObjectId
 	INNER JOIN [Security].[Role] as r on rgo.roleId = r.id
 	INNER JOIN [Security].[RoleToUser] as rtu on rgo.roleId = rtu.roleId
 	INNER JOIN [User].[User] as u on rtu.userId = u.id
@@ -18,7 +18,7 @@ AS
 	FROM [Security].[Object] as o
 	INNER JOIN [Security].[ObjectGroupObject] as ogo on o.id = ogo.objectId 
 	INNER JOIN [Security].[GroupObject] as [go] on ogo.groupId = [go].id
-	INNER JOIN [Security].[RoleGroupObjectRight] as rgo on [go].id = rgo.groupObjectId
+	INNER JOIN [Security].[RoleGroupObjectRight] as rgo on [go].objectId = rgo.groupObjectId
 	INNER JOIN [Security].[Role] as r on rgo.roleId = r.id
 	INNER JOIN [Security].[RoleToUser] as rtu on rgo.roleId = rtu.roleId
 	INNER JOIN [User].[User] as u on rtu.userId = u.id
@@ -28,7 +28,7 @@ AS
 	FROM [Security].[Object] as o
 	INNER JOIN [Security].[ObjectGroupObject] as ogo on o.id = ogo.objectId 
 	INNER JOIN [Security].[GroupObject] as [go] on ogo.groupId = [go].id
-	INNER JOIN [Security].[RoleGroupObjectRight] as rgo on [go].id = rgo.groupObjectId
+	INNER JOIN [Security].[RoleGroupObjectRight] as rgo on [go].objectId = rgo.groupObjectId
 	INNER JOIN [Security].[Role] as r on rgo.roleId = r.id
 	INNER JOIN [Security].[RoleToUser] as rtu on rgo.roleId = rtu.roleId
 	INNER JOIN [User].[User] as u on rtu.userId = u.id

@@ -5,7 +5,7 @@
 	[Name] VARCHAR(MAX) NULL, 	
     [objectId] INT NOT NULL,
 	[areaId] INT NOT NULL,
-	[dtCreated] DATETIME NOT NULL, 
+	[dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 
     CONSTRAINT [FK_LifeStyleQuestionnaire_Object] FOREIGN KEY ([objectId]) REFERENCES [Security].[Object]([id]), 

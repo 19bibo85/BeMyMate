@@ -7,6 +7,6 @@
     [country] VARCHAR(MAX) NULL, 
     [isPrimary] BIT NULL, 
     [objectId] INT NOT NULL, 
-    [dtCreated] DATETIME NOT NULL, 
+    [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL,
 )

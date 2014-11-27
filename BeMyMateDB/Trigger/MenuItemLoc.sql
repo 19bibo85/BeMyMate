@@ -15,13 +15,13 @@
 		WHILE(@InsNum > 0)
 		BEGIN
 			DECLARE @refCode VARCHAR(MAX) = (SELECT refCode FROM @TMP as ins WHERE ins.i = @InsNum);
-			DECLARE @idLoc INT = (SELECT TOP(1) id FROM [Application].[Localization] as loc WHERE loc.refCode = @refCode);
+			DECLARE @idLoc INT = (SELECT TOP(1) id FROM [Application].[Localization] as loc WHERE LTRIM(RTRIM(loc.refCode)) = LTRIM(RTRIM(@refCode)));
 
 			IF(@idLoc IS NULL)
 			BEGIN
 				DECLARE @name VARCHAR(MAX) = (SELECT name FROM @TMP as ins WHERE ins.i = @InsNum);
-				INSERT INTO [Application].[Localization] (languageId, refCode, name, dtCreated)
-				SELECT lan.id, @refCode, @name, GETDATE()
+				INSERT INTO [Application].[Localization] (languageId, refCode, name, tableId, dtCreated)
+				SELECT lan.id, @refCode, @name, 3, GETDATE()
 				FROM [Application].[Language] as lan
 			END
 

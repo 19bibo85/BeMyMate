@@ -131,6 +131,9 @@
     <Build Include="Trigger\SectionObj.sql" />
     <Build Include="Trigger\MenuObj.sql" />
     <Build Include="Trigger\MenuItemObj.sql" />
+    <Build Include="Trigger\LanguageLoc.sql" />
+    <Build Include="Table\Context.sql" />
+    <Build Include="Trigger\GroupObjectObj.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />

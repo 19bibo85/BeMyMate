@@ -16,7 +16,7 @@
     [typeId] INT NOT NULL, 
 	[statusId] INT NOT NULL,
 	[registrationStatusId] INt NOT NULL,
-    [dtCreated] DATETIME NOT NULL, 
+    [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 
     CONSTRAINT [FK_User_Type] FOREIGN KEY ([typeId]) REFERENCES [User].[Type]([id]), 

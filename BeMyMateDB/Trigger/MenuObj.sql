@@ -13,11 +13,11 @@
 
 		WHILE(@InsNum > 0)
 		BEGIN
-			INSERT INTO [Security].[Object] (objectTableId, dtCreated) VALUES (2, GETDATE())
+			INSERT INTO [Security].[Object] (tableId) VALUES (2)
 			DECLARE @objID INT = (SCOPE_IDENTITY());
 			
-			INSERT INTO [Application].[Menu] (id, name, level, parentId, objectId, dtCreated)
-			SELECT id, name, level, parentId, @objId, GETDATE()
+			INSERT INTO [Application].[Menu] (id, name, level, parentId, objectId, contextId)
+			SELECT id, name, level, parentId, @objId, 1
 			FROM @TMP as tmp
 			WHERE tmp.i = @InsNum
 

@@ -2,7 +2,7 @@
 (
     [userId] INT NOT NULL, 
     [phoneId] INT NOT NULL, 
-    [dtCreated] DATETIME NOT NULL, 
+    [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 
     CONSTRAINT [PK_UserToPhone] PRIMARY KEY ([userId], [phoneId]), 

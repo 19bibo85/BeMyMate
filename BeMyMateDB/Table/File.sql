@@ -6,7 +6,7 @@
     [infoId] INT NOT NULL, 
     [appId] INT NOT NULL, 
     [userId] INT NOT NULL, 
-    [dtCreated] DATETIME NOT NULL, 
+    [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 
     CONSTRAINT [FK_File_FileInfo] FOREIGN KEY ([infoId]) REFERENCES [User].[FileInfo]([id]), 

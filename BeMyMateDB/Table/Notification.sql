@@ -3,7 +3,7 @@
 	[id] INT NOT NULL PRIMARY KEY, 
     [userId] INT NOT NULL, 
     [typeId] INT NOT NULL, 
-    [dtCreated] DATETIME NOT NULL, 
+    [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtChecked] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 
     CONSTRAINT [FK_Notification_User] FOREIGN KEY ([userId]) REFERENCES [User].[User]([id]), 
