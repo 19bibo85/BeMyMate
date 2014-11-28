@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [User].[User]
 (
-	[id] INT NOT NULL PRIMARY KEY, 
+	[id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [name] VARCHAR(MAX) NOT NULL, 
     [surname] VARCHAR(MAX) NOT NULL, 
     [email] VARCHAR(MAX) NOT NULL, 

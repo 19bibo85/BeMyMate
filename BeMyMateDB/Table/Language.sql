@@ -5,5 +5,5 @@
     [name] VARCHAR(MAX) NOT NULL, 
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 
-    [dtDeleted] DATETIME NULL 
+    [dtDeleted] DATETIME NULL
 )

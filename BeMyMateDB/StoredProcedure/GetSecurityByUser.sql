@@ -11,7 +11,7 @@ AS
 	INNER JOIN [Security].[Role] as r on rgo.roleId = r.id
 	INNER JOIN [Security].[RoleToUser] as rtu on rgo.roleId = rtu.roleId
 	INNER JOIN [User].[User] as u on rtu.userId = u.id
-	WHERE rgo.rightId = 1 AND rgo.[deny] = 0 AND u.id = @UserID) 
+	WHERE rgo.rightId = 2 AND rgo.[deny] = 0 AND u.id = @UserID) 
 	as [View]
 	LEFT OUTER JOIN
 	(SELECT DISTINCT o.id as EditObjectId
@@ -22,7 +22,7 @@ AS
 	INNER JOIN [Security].[Role] as r on rgo.roleId = r.id
 	INNER JOIN [Security].[RoleToUser] as rtu on rgo.roleId = rtu.roleId
 	INNER JOIN [User].[User] as u on rtu.userId = u.id
-	WHERE rgo.rightId = 2 AND rgo.[deny] = 0 AND u.id = @UserID) as Edit on [View].ViewObjectId = Edit.EditObjectId
+	WHERE rgo.rightId = 3 AND rgo.[deny] = 0 AND u.id = @UserID) as Edit on [View].ViewObjectId = Edit.EditObjectId
 	LEFT OUTER JOIN
 	(SELECT DISTINCT o.id as DeleteObjectId
 	FROM [Security].[Object] as o
@@ -32,5 +32,5 @@ AS
 	INNER JOIN [Security].[Role] as r on rgo.roleId = r.id
 	INNER JOIN [Security].[RoleToUser] as rtu on rgo.roleId = rtu.roleId
 	INNER JOIN [User].[User] as u on rtu.userId = u.id
-	WHERE rgo.rightId = 3 AND rgo.[deny] = 0 AND u.id = @UserID) as [Delete] on Edit.EditObjectId = [Delete].DeleteObjectId
+	WHERE rgo.rightId = 4 AND rgo.[deny] = 0 AND u.id = @UserID) as [Delete] on Edit.EditObjectId = [Delete].DeleteObjectId
 RETURN 0

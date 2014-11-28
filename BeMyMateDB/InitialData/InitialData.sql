@@ -168,7 +168,19 @@ FROM [Application].[MenuItem]
 WHERE contextId = 1 OR contextId = 2 AND dtDeleted IS NULL
 
 -- Role Group Object Right
-INSERT INTO [BeMyMateDB].[Security].[RoleGroupObjectRight] (roleId, groupObjectId, rightId, [deny])
+INSERT INTO [Security].[RoleGroupObjectRight] (roleId, groupObjectId, rightId, [deny])
 SELECT 2, objectId, 2, 0
 FROM [Security].[GroupObject]
 WHERE name like '%.Tennant'
+
+-- Avatar
+INSERT INTO [User].[Avatar] (id, name, path) VALUES
+(1, 'Placeholder', '/Avatar/placeholder.png');
+
+-- User
+INSERT INTO [User].[User] (name, surname, email, username, password, genderId, avatarId, typeId, statusId, registrationStatusId) VALUES
+('Alberto', 'Tosi Brandi', 'alberto.tosibrandi@gmail.com', 'alberto.tosibrandi', 'password123', 1, 1, 1, 1, 1);
+
+-- Role To User
+INSERT INTO [Security].[RoleToUser] (roleId, userId) VALUES
+(2, 1);

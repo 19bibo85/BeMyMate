@@ -117,7 +117,7 @@
     <Build Include="StoredProcedure\GetSecurityByUser.sql" />
     <Build Include="StoredProcedure\GetMenuByUser.sql" />
     <Build Include="Function\GetReferenceCode.sql" />
-    <Build Include="Table\ObjectTable.sql" />
+    <Build Include="Table\Table.sql" />
     <Build Include="Trigger\SectionLoc.sql" />
     <Build Include="Trigger\GenderLoc.sql" />
     <Build Include="Trigger\JobLoc.sql" />
@@ -134,6 +134,16 @@
     <Build Include="Trigger\LanguageLoc.sql" />
     <Build Include="Table\Context.sql" />
     <Build Include="Trigger\GroupObjectObj.sql" />
+    <Build Include="Trigger\ContextUp.sql" />
+    <Build Include="Trigger\LanguageDel.sql" />
+    <Build Include="Trigger\LanguageUp.sql" />
+    <Build Include="Trigger\LocalizationUp.sql" />
+    <Build Include="Trigger\MenuUp.sql" />
+    <Build Include="Trigger\MenuItemUp.sql" />
+    <Build Include="Trigger\MenuToMenuItemUp.sql" />
+    <Build Include="Trigger\SectionUp.sql" />
+    <Build Include="Trigger\SectionToMenu.sql" />
+    <Build Include="Trigger\TableUp.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />
