@@ -15,11 +15,16 @@ INSERT INTO [Application].[Language] (id, code, name) VALUES
 (1, 'en-US', 'English'),
 (2, 'it-IT', 'Italiano')
 
-INSERT INTO [Application].[Context] (id, name) VALUES
-(1, 'Common'),
-(2, 'Tennant'),
-(3, 'Landlord'),
-(4, 'Agency')
+-- Context
+INSERT INTO [Application].[RowContext] (id, [anonymous], tennant, landlord, agency) VALUES
+(1, 0, 0, 0, 0), -- None
+(2, 1, 1, 1, 1), -- All
+(4, 1, 0, 0, 0), -- Anonymous
+(5, 0, 1, 0, 0), -- Tennant
+(6, 0, 0, 1, 0), -- Landlord
+(7, 0, 0, 0, 1), -- Agency
+(8, 0, 1, 1, 1), -- Tennant, Landlord, Agency
+(9, 0, 0, 1, 1) -- Landlord, Agency
 
 -- Table
 INSERT INTO [Application].[Table] (id, name) VALUES
@@ -58,26 +63,27 @@ INSERT INTO [Security].[ObjectRight] (id, name) VALUES
 
 -- Section
 INSERT INTO [Application].[Section] (id, name, level, contextId) VALUES
-(1, 'Home', 0, 1),
-(2, 'Profile', 0, 1)
+(1, 'Home', 0, 2),
+(2, 'Profile', 0, 2)
 
 -- Menu
 INSERT INTO [Application].[Menu] (id, name, level, parentId, contextId) VALUES
-(1, 'Main', 0, null, 1),
-(2, 'Company', 0, null, 1),
-(3, 'User List', 0, null, 1),
-(4, 'Message', 0, null, 1),
-(5, 'Account', 0, null, 1)
+(1, 'Main', 0, null, 2),
+(2, 'Company', 0, null, 2),	
+(3, 'User List', 0, null, 2),
+(4, 'Message', 0, null, 8),
+(5, 'Account', 0, null, 8),
+(6, 'Report', 0, null, 9)
 
 -- Menu Item
 INSERT INTO [Application].[MenuItem] (id, name, contextId, link) VALUES
-(1, 'About', 1, '/page/about.aspx'),
-(2, 'Jobs', 1, '/page/job.aspx'),
-(3, 'Press', 1, '/page/press.aspx'),
-(4, 'Blog', 1, '/page/blog.aspx'),
-(5, 'Help', 1, '/page/help.aspx'),
-(6, 'Policies', 1, '/page/policies.aspx'),
-(7, 'Terms & Privacy', 1, '/page/terms_privacy.aspx')
+(1, 'About', 2, '/page/about.aspx'),
+(2, 'Jobs', 2, '/page/job.aspx'),
+(3, 'Press', 2, '/page/press.aspx'),
+(4, 'Blog', 2, '/page/blog.aspx'),
+(5, 'Help', 2, '/page/help.aspx'),
+(6, 'Policies', 2, '/page/policies.aspx'),
+(7, 'Terms & Privacy', 2, '/page/terms_privacy.aspx')
 
 -- Menu Item
 INSERT INTO [Application].[MenuToMenuItem] (menuId, menuItemId) VALUES
@@ -95,7 +101,8 @@ INSERT INTO [Application].[SectionToMenu] (sectionId, menuId) VALUES
 (1, 2),
 (2, 3),
 (2, 4),
-(2, 5)
+(2, 5),
+(2, 6)
 
 -- Phone Type
 INSERT INTO [User].[PhoneType] (id, name) VALUES
@@ -116,12 +123,6 @@ INSERT INTO [User].[UserStatus] (id, name) VALUES
 (3, 'Looking for tennat'),
 (4, 'Looking for landlord'),
 (5, 'Looking for landlord and tennat')
-
--- Type
-INSERT INTO [User].[Type] (id, name) VALUES
-(1, 'Tennant'),
-(2, 'Landlord'),
-(3, 'Agency')
 
 -- File Info
 INSERT INTO [User].[FileInfo] (id, name, extension) VALUES
@@ -149,37 +150,98 @@ INSERT INTO [Security].[Role] (id, name) VALUES
 INSERT INTO [Security].[GroupObject] (id, name) VALUES
 (1, 'Section.Tennant'),
 (2, 'Menu.Tennant'),
-(3, 'MenuItem.Tennant')
+(3, 'MenuItem.Tennant'),
+(4, 'Section.Landlord'),
+(5, 'Menu.Landlord'),
+(6, 'MenuItem.Landlord'),
+(7, 'Section.Agency'),
+(8, 'Menu.Agency'),
+(9, 'MenuItem.Agency')
 
 -- Object Group Object
+-- Tennant
 INSERT INTO [Security].[ObjectGroupObject] (groupId, objectId)
 SELECT 1, objectId
-FROM [Application].[Section]
-WHERE contextId = 1 OR contextId = 2 AND dtDeleted IS NULL
+FROM [Application].[Section] as s
+INNER JOIN [Application].[RowContext] as rc on s.contextId = rc.id 
+WHERE rc.tennant = 1 AND dtDeleted IS NULL
 
 INSERT INTO [Security].[ObjectGroupObject] (groupId, objectId)
 SELECT 2, objectId
-FROM [Application].[Menu]
-WHERE contextId = 1 OR contextId = 2 AND dtDeleted IS NULL
+FROM [Application].[Menu] as m 
+INNER JOIN [Application].[RowContext] as rc on m.contextId = rc.id 
+WHERE rc.tennant = 1 AND dtDeleted IS NULL
 
 INSERT INTO [Security].[ObjectGroupObject] (groupId, objectId)
 SELECT 3, objectId
-FROM [Application].[MenuItem]
-WHERE contextId = 1 OR contextId = 2 AND dtDeleted IS NULL
+FROM [Application].[MenuItem] as mi
+INNER JOIN [Application].[RowContext] as rc on mi.contextId = rc.id 
+WHERE rc.tennant = 1 AND dtDeleted IS NULL
+
+-- Landlord
+INSERT INTO [Security].[ObjectGroupObject] (groupId, objectId)
+SELECT 4, objectId
+FROM [Application].[Section] as s
+INNER JOIN [Application].[RowContext] as rc on s.contextId = rc.id 
+WHERE rc.landlord = 1 AND dtDeleted IS NULL
+
+INSERT INTO [Security].[ObjectGroupObject] (groupId, objectId)
+SELECT 5, objectId
+FROM [Application].[Menu] as m 
+INNER JOIN [Application].[RowContext] as rc on m.contextId = rc.id 
+WHERE rc.landlord = 1 AND dtDeleted IS NULL
+
+INSERT INTO [Security].[ObjectGroupObject] (groupId, objectId)
+SELECT 6, objectId
+FROM [Application].[MenuItem] as mi
+INNER JOIN [Application].[RowContext] as rc on mi.contextId = rc.id 
+WHERE rc.landlord = 1 AND dtDeleted IS NULL
+
+-- Agency
+INSERT INTO [Security].[ObjectGroupObject] (groupId, objectId)
+SELECT 7, objectId
+FROM [Application].[Section] as s
+INNER JOIN [Application].[RowContext] as rc on s.contextId = rc.id 
+WHERE rc.agency = 1 AND dtDeleted IS NULL
+
+INSERT INTO [Security].[ObjectGroupObject] (groupId, objectId)
+SELECT 8, objectId
+FROM [Application].[Menu] as m 
+INNER JOIN [Application].[RowContext] as rc on m.contextId = rc.id 
+WHERE rc.agency = 1 AND dtDeleted IS NULL
+
+INSERT INTO [Security].[ObjectGroupObject] (groupId, objectId)
+SELECT 9, objectId
+FROM [Application].[MenuItem] as mi
+INNER JOIN [Application].[RowContext] as rc on mi.contextId = rc.id 
+WHERE rc.agency = 1 AND dtDeleted IS NULL
 
 -- Role Group Object Right
+-- Tennant
 INSERT INTO [Security].[RoleGroupObjectRight] (roleId, groupObjectId, rightId, [deny])
 SELECT 2, objectId, 2, 0
 FROM [Security].[GroupObject]
 WHERE name like '%.Tennant'
+
+-- Landlord
+INSERT INTO [Security].[RoleGroupObjectRight] (roleId, groupObjectId, rightId, [deny])
+SELECT 3, objectId, 2, 0
+FROM [Security].[GroupObject]
+WHERE name like '%.Landlord'
+
+-- Agency
+INSERT INTO [Security].[RoleGroupObjectRight] (roleId, groupObjectId, rightId, [deny])
+SELECT 4, objectId, 2, 0
+FROM [Security].[GroupObject]
+WHERE name like '%.Agency'
 
 -- Avatar
 INSERT INTO [User].[Avatar] (id, name, path) VALUES
 (1, 'Placeholder', '/Avatar/placeholder.png');
 
 -- User
-INSERT INTO [User].[User] (name, surname, email, username, password, genderId, avatarId, typeId, statusId, registrationStatusId) VALUES
-('Alberto', 'Tosi Brandi', 'alberto.tosibrandi@gmail.com', 'alberto.tosibrandi', 'password123', 1, 1, 1, 1, 1);
+INSERT INTO [User].[User] (name, surname, email, username, password, genderId, avatarId, statusId, registrationStatusId) VALUES
+('Alberto', 'Tosi Brandi', 'alberto.tosibrandi@gmail.com', 'alberto.tosibrandi', 'password123', 1, 1, 1, 1);
 
 -- Role To User
 INSERT INTO [Security].[RoleToUser] (roleId, userId) VALUES

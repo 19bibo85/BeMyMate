@@ -434,4 +434,46 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="tableId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="09fbee8b-4070-4e2c-9641-7ccb7abd2c85" ChangeDateTime="11/29/2014 13:17:28">
+    <Property Name="ElementName" Value="[dbo].[UserLog].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserLog]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9bf7c78a-f07a-4aa0-9eb8-d793f8feb07a" ChangeDateTime="11/29/2014 13:18:08">
+    <Property Name="ElementName" Value="[dbo].[UserLog].[acti]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserLog]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="activationDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a56de7e7-1361-43eb-8a15-4cec49502380" ChangeDateTime="11/29/2014 14:15:49">
+    <Property Name="ElementName" Value="[Application].[RowContext].[name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Application].[RowContext]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="tennant" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ee18af32-801a-47cb-aec5-ea4f7dc40e5e" ChangeDateTime="11/29/2014 14:16:01">
+    <Property Name="ElementName" Value="[Application].[RowContext].[dtCreated]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Application].[RowContext]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="landlord" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="21699c49-beef-4e8c-b8d3-e8f8ca1abfa8" ChangeDateTime="11/29/2014 14:16:11">
+    <Property Name="ElementName" Value="[Application].[RowContext].[dtUpdated]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Application].[RowContext]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="agency" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c9a6d738-20f5-4a6c-841b-25f51ee1ea67" ChangeDateTime="11/29/2014 14:27:07">
+    <Property Name="ElementName" Value="[Application].[RowContext].[dtUpdate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Application].[RowContext]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dtUpdated" />
+  </Operation>
 </Operations>

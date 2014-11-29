@@ -1,11 +1,11 @@
 ﻿CREATE TRIGGER [ContextUp]
-	ON [Application].[Context]
+	ON [Application].[RowContext]
 	FOR UPDATE
 	AS
 	BEGIN
 		SET NOCOUNT ON		
 		DECLARE @id INT = (SELECT id FROM INSERTED);		
-        UPDATE [Application].[Context]
+        UPDATE [Application].[RowContext]
 		SET dtUpdated = GETDATE() 
 		WHERE id = @id;
 	END

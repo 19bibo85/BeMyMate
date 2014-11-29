@@ -36,4 +36,5 @@ AS
 					 WHERE lan.code = @LanguageCode) 
 					 as mir
 					 on mm.menuItemId = mir.Id
+	ORDER BY sr.name, mr.name, mir.name, mir.link
 RETURN 0
