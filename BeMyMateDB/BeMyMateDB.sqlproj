@@ -130,9 +130,9 @@
     <Build Include="Trigger\MenuObj.sql" />
     <Build Include="Trigger\MenuItemObj.sql" />
     <Build Include="Trigger\LanguageLoc.sql" />
-    <Build Include="Table\RowContext.sql" />
+    <Build Include="Table\ObjectContext.sql" />
     <Build Include="Trigger\GroupObjectObj.sql" />
-    <Build Include="Trigger\ContextUp.sql" />
+    <Build Include="Trigger\ObjectContextUp.sql" />
     <Build Include="Trigger\LanguageDel.sql" />
     <Build Include="Trigger\LanguageUp.sql" />
     <Build Include="Trigger\LocalizationUp.sql" />
@@ -142,7 +142,6 @@
     <Build Include="Trigger\SectionUp.sql" />
     <Build Include="Trigger\SectionToMenu.sql" />
     <Build Include="Trigger\TableUp.sql" />
-    <Build Include="StoredProcedure\GetMenuByAnonymous.sql" />
     <Build Include="Table\UserLog.sql" />
   </ItemGroup>
   <ItemGroup>

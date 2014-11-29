@@ -12,5 +12,5 @@
     [dtDeleted] DATETIME NULL, 
 	CONSTRAINT [FK_Menu_Object] FOREIGN KEY ([objectId]) REFERENCES [Security].[Object]([id]),
     CONSTRAINT [FK_Menu_Menu] FOREIGN KEY ([parentId]) REFERENCES [Application].[Menu]([id]),
-	CONSTRAINT [FK_Menu_Context] FOREIGN KEY ([contextId]) REFERENCES [Application].[RowContext]([id])
+	CONSTRAINT [FK_Menu_Context] FOREIGN KEY ([contextId]) REFERENCES [Application].[ObjectContext]([id])
 )

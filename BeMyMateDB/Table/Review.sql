@@ -5,7 +5,6 @@
     [userReviewingId] INT NOT NULL, 
     [userReviewedId] INT NOT NULL, 
     [rating] INT NOT NULL, 
-    [objectId] INT NOT NULL, 
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 

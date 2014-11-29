@@ -1,11 +1,12 @@
 ﻿CREATE TABLE [User].[User]
 (
-	[id] INT NOT NULL PRIMARY KEY IDENTITY, 
+	[id] INT NOT NULL PRIMARY KEY IDENTITY(0, 1), 
     [name] VARCHAR(MAX) NOT NULL, 
     [surname] VARCHAR(MAX) NOT NULL, 
     [email] VARCHAR(MAX) NOT NULL, 
     [username] VARCHAR(MAX) NOT NULL, 
     [password] VARCHAR(MAX) NOT NULL, 
+	[guid] UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID(), 
     [genderId] INT NOT NULL, 
     [dob] DATE NULL, 
     [avatarId] INT NOT NULL,
