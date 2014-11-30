@@ -1,4 +1,4 @@
-﻿CREATE TABLE [User].[UserLifeStyleInfo]
+﻿CREATE TABLE [User].[UserProfileInfo]
 (
 	[Id] INT NOT NULL PRIMARY KEY, 
     [userId] INT NOT NULL, 
@@ -8,6 +8,6 @@
     [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 
     CONSTRAINT [FK_UserLifeStyleInfo_User] FOREIGN KEY ([userId]) REFERENCES [User].[User]([id]), 
-    CONSTRAINT [FK_UserLifeStyleInfo_Questionnaire] FOREIGN KEY ([questionnaireId]) REFERENCES [User].[LifeStyleQuestionnaire]([id]), 
-    CONSTRAINT [FK_UserLifeStyleInfo_Answer] FOREIGN KEY ([answerId]) REFERENCES [User].[LifeStyleAnswer]([id])
+    CONSTRAINT [FK_UserLifeStyleInfo_Questionnaire] FOREIGN KEY ([questionnaireId]) REFERENCES [User].[ProfileQuestionnaire]([id]), 
+    CONSTRAINT [FK_UserLifeStyleInfo_Answer] FOREIGN KEY ([answerId]) REFERENCES [User].[ProfileAnswer]([id])
 )

@@ -101,11 +101,11 @@
     <Build Include="Table\MenuToMenuItem.sql" />
     <Build Include="Table\Section.sql" />
     <Build Include="Table\SectionToMenu.sql" />
-    <Build Include="Table\LifeStyleQuestionnaire.sql" />
-    <Build Include="Table\LifeStyleAnswer.sql" />
-    <Build Include="Table\LifeStyleQuestionnaireToAnswer.sql" />
-    <Build Include="Table\UserLifeStyleInfo.sql" />
-    <Build Include="Table\LifeStyleArea.sql" />
+    <Build Include="Table\ProfileQuestionnaire.sql" />
+    <Build Include="Table\ProfileAnswer.sql" />
+    <Build Include="Table\ProfileQuestionnaireToAnswer.sql" />
+    <Build Include="Table\UserProfileInfo.sql" />
+    <Build Include="Table\ProfileArea.sql" />
     <Build Include="Table\UserStatus.sql" />
     <Build Include="Table\UserRegistrationStatus.sql" />
     <Build Include="Table\Notification.sql" />
@@ -143,12 +143,19 @@
     <Build Include="Trigger\SectionToMenu.sql" />
     <Build Include="Trigger\TableUp.sql" />
     <Build Include="Table\UserLog.sql" />
+    <None Include="InitialData\InitialSecurity.sql" />
+    <Build Include="Trigger\ProfileAreaObj.sql" />
+    <Build Include="Trigger\ProfileQuestionnaireObj.sql" />
+    <Build Include="Trigger\ProfileAnswerObj.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />
   </ItemGroup>
   <ItemGroup>
     <None Include="profile\BeMyMateDB.publish.xml" />
+    <None Include="InitialData\InitialApplication.sql" />
+    <None Include="InitialData\InitialUser.sql" />
+    <None Include="InitialData\InitialProfile.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="InitialData\InitialData.sql" />

@@ -1,9 +1,10 @@
-﻿CREATE TABLE [User].[LifeStyleAnswer]
+﻿CREATE TABLE [User].[ProfileAnswer]
 (
 	[id] INT NOT NULL PRIMARY KEY, 
-    [refCode] VARCHAR(MAX) NOT NULL, 
+    [refCode] AS Application.GetReferenceCode('profile_answer_', id, 6, 0),
 	[name] VARCHAR(MAX) NOT NULL, 	
     [objectId] INT NOT NULL, 
+	[contextId] INT NOT NULL,
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 
