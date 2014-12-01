@@ -148,6 +148,7 @@
     <Build Include="Trigger\ProfileAreaObj.sql" />
     <Build Include="Trigger\ProfileQuestionnaireObj.sql" />
     <Build Include="Trigger\ProfileAnswerObj.sql" />
+    <Build Include="StoredProcedure\GetProfileDetailInfoByUser.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />
