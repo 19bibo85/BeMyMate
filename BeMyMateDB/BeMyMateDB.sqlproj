@@ -64,6 +64,7 @@
     <Folder Include="StoredProcedure" />
     <Folder Include="Function" />
     <Folder Include="Trigger" />
+    <Folder Include="Query" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Table\User.sql" />
@@ -156,6 +157,7 @@
     <None Include="InitialData\InitialApplication.sql" />
     <None Include="InitialData\InitialUser.sql" />
     <None Include="InitialData\InitialProfile.sql" />
+    <None Include="Query\Menu.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="InitialData\InitialData.sql" />
