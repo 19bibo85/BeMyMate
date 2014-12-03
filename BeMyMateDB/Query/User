@@ -1,0 +1,6 @@
+SELECT s.name as Section, m.name as Menu, mi.name as Item
+FROM [User].[User] as u
+LEFT OUTER JOIN [User].[Gender] as g on u.genderId = g.id
+LEFT OUTER JOIN [User].[Avatar] as a on u.avatarId = a.id
+LEFT OUTER JOIN [User].[UserStatus] as us on u.statusId = us.Id
+LEFT OUTER JOIN [User].[UserRegistrationStatus] as urg on u.registrationStatusId = urg.Id
