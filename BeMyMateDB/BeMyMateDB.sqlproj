@@ -152,6 +152,7 @@
     <Build Include="Trigger\ProfileQuestionnaireLoc.sql" />
     <Build Include="Trigger\ProfileAnswerLoc.sql" />
     <Build Include="StoredProcedure\GetProfileBasicInfoByUser.sql" />
+    <Build Include="StoredProcedure\GetProfileDetailInfoByUser.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />

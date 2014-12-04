@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [User].[UserProfileInfo]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [userId] INT NOT NULL, 
     [questionnaireId] INT NOT NULL, 
     [answerId] INT NOT NULL, 
