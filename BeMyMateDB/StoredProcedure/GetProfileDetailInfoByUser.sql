@@ -9,7 +9,7 @@ AS
 	EXEC [Security].[GetSecurityByUser] 
 		 @UserID = @UserID
 
-	SELECT pqr.name as Questionnaire, upir.name as Answer
+	SELECT DISTINCT pqr.name as Questionnaire, upir.name as Answer
 	FROM (SELECT pq.id, loc.name
 		  FROM @TMP as pqt 
 		  INNER JOIN [User].[ProfileQuestionnaire] as pq on pqt.ViewObjectId = pq.objectId
@@ -17,12 +17,12 @@ AS
 		  INNER JOIN [Application].[Language] as lan on loc.languageId = lan.id
 		  WHERE lan.code = @LanguageCode)
 		  as pqr
-	LEFT OUTER JOIN (SELECT upi.questionnaireId, loc.name
-					 FROM [User].[UserProfileInfo] as upi
-					 INNER JOIN [User].[ProfileAnswer] as pa on upi.answerId = pa.id
-					 INNER JOIN [Application].[Localization] as loc on pa.refCode = loc.refCode
-					 INNER JOIN [Application].[Language] as lan on loc.languageId = lan.id
-					 WHERE lan.code = @LanguageCode)
-					 as upir
-					 on pqr.id = upir.questionnaireId
+	INNER JOIN (SELECT upi.questionnaireId, loc.name
+				FROM [User].[UserProfileInfo] as upi
+				INNER JOIN [User].[ProfileAnswer] as pa on upi.answerId = pa.id
+				INNER JOIN [Application].[Localization] as loc on pa.refCode = loc.refCode
+				INNER JOIN [Application].[Language] as lan on loc.languageId = lan.id
+				WHERE lan.code = @LanguageCode)
+				as upir
+				on pqr.id = upir.questionnaireId
 RETURN 0

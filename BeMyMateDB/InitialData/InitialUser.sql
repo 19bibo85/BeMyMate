@@ -55,3 +55,6 @@ INSERT INTO [User].[Avatar] (id, name, [path]) VALUES
 INSERT INTO [User].[User] (name, surname, email, username, [password], genderId, avatarId, statusId, registrationStatusId) VALUES
 ('Anonymous', 'Anonymous', 'anonymous@gmail.com', 'Anonymous', 'Anonymous123', 1, 1, 1, 1),
 ('Alberto', 'Tosi Brandi', 'alberto.tosibrandi@gmail.com', 'alberto.tosibrandi', 'password123', 1, 1, 1, 1);
+
+-- User to profile info
+EXEC [User].[InsertUserProfileInfo]
