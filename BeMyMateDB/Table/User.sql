@@ -7,6 +7,7 @@
     [username] VARCHAR(MAX) NOT NULL, 
     [password] VARCHAR(MAX) NOT NULL, 
 	[guid] UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID(), 
+	[typeId] INT NOT NULL,
     [genderId] INT NOT NULL, 
     [dob] DATE NULL, 
     [avatarId] INT NOT NULL,
@@ -17,5 +18,6 @@
     [dtDeleted] DATETIME NULL, 
     CONSTRAINT [FK_User_Avatar] FOREIGN KEY ([avatarId]) REFERENCES [User].[Avatar]([id]),
 	CONSTRAINT [FK_User_Status] FOREIGN KEY ([statusId]) REFERENCES [User].[UserStatus]([id]),
-	CONSTRAINT [FK_User_RegistrationStatus] FOREIGN KEY ([statusId]) REFERENCES [User].[UserRegistrationStatus]([id])
+	CONSTRAINT [FK_User_RegistrationStatus] FOREIGN KEY ([statusId]) REFERENCES [User].[UserRegistrationStatus]([id]), 
+    CONSTRAINT [FK_User_Type] FOREIGN KEY ([typeId]) REFERENCES [User].[UserType]([id])
 )

@@ -112,4 +112,13 @@ INSERT INTO [User].[ProfileQuestionnaireToAnswer] (questionnaireId, answerId) VA
 (3, 0),
 (3, 8),
 (3, 9),
-(3, 10)
+(3, 10),
+(4, 0),
+(4, 11),
+(4, 12),
+(4, 13),
+(5, 0),
+(5, 14),
+(5, 15),
+(5, 16),
+(5, 17)

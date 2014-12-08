@@ -51,10 +51,10 @@ INSERT INTO [User].[FriendshipStatus] (id, name) VALUES
 INSERT INTO [User].[Avatar] (id, name, [path]) VALUES
 (1, 'Placeholder', '/Avatar/placeholder.png');
 
--- User
-INSERT INTO [User].[User] (name, surname, email, username, [password], genderId, avatarId, statusId, registrationStatusId) VALUES
-('Anonymous', 'Anonymous', 'anonymous@gmail.com', 'Anonymous', 'Anonymous123', 1, 1, 1, 1),
-('Alberto', 'Tosi Brandi', 'alberto.tosibrandi@gmail.com', 'alberto.tosibrandi', 'password123', 1, 1, 1, 1);
-
--- User to profile info
-EXEC [User].[InsertUserProfileInfo]
+-- User Type
+INSERT INTO [User].[UserType] (id, name) VALUES
+(1, 'Anonymous'),
+(2, 'Administrator'),
+(3, 'Tennant'),
+(4, 'Landlord'),
+(5, 'Agency')

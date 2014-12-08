@@ -31,7 +31,8 @@ INSERT INTO [Application].[Table] (id, name) VALUES
 (11, 'GroupObject'),
 (12, 'ProfileArea'),
 (13, 'ProfileQuestionnaire'),
-(14, 'ProfileAnswer')
+(14, 'ProfileAnswer'),
+(15, 'UserType')
 
 -- Section
 INSERT INTO [Application].[Section] (id, name, level, contextId) VALUES
