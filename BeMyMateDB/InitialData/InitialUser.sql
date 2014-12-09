@@ -6,6 +6,7 @@ INSERT INTO [User].[Gender] (id, name) VALUES
 
 -- Jobs
 INSERT INTO [User].[Job] (id, name) VALUES
+(0, 'None'),
 (1, 'Accounting'),
 (2, 'Admin & Clerical'),
 (3, 'Automotive'),
@@ -14,6 +15,7 @@ INSERT INTO [User].[Job] (id, name) VALUES
 
 -- Phone Type
 INSERT INTO [User].[PhoneType] (id, name) VALUES
+(0, 'None'),
 (1, 'Home'),
 (2, 'Cell'),
 (3, 'Fax')
@@ -51,10 +53,19 @@ INSERT INTO [User].[FriendshipStatus] (id, name) VALUES
 INSERT INTO [User].[Avatar] (id, name, [path]) VALUES
 (1, 'Placeholder', '/Avatar/placeholder.png');
 
--- User Type
-INSERT INTO [User].[UserType] (id, name) VALUES
-(1, 'Anonymous'),
-(2, 'Administrator'),
-(3, 'Tennant'),
-(4, 'Landlord'),
-(5, 'Agency')
+---- Address
+--INSERT INTO [User].[Address] (street, zipCode, city, country) VALUES
+--('none', 'none', 'none', 'none');
+
+---- Business
+--INSERT INTO [User].[Business] (jobId, [address]) VALUES
+--(0, 'none');
+
+---- Phone
+--INSERT INTO [User].[Phone] (prefix, number, typeId) VALUES
+--('+00', '000 000 000', 0);
+
+-- User
+INSERT INTO [User].[User] (name, surname, email, username, [password], genderId, avatarId, statusId, registrationStatusId) VALUES
+('Anonymous', 'Anonymous', 'anonymous@gmail.com', 'Anonymous', 'Anonymous123', 1, 1, 1, 1),
+('Alberto', 'Tosi Brandi', 'alberto.tosibrandi@gmail.com', 'alberto.tosibrandi', 'password123', 1, 1, 1, 1);

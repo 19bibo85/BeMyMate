@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [User].[Phone]
 (
-	[id] INT NOT NULL PRIMARY KEY, 
-    [prefix] INT NULL, 
-    [number] INT NULL, 
+	[id] INT NOT NULL PRIMARY KEY IDENTITY(0, 1), 
+    [prefix] VARCHAR(MAX) NULL, 
+    [number] VARCHAR(MAX) NULL, 
     [typeId] INT NULL, 
     [isPrimary] BIT NULL, 
     [objectId] INT NOT NULL, 

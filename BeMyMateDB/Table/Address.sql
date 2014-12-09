@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [User].[Address]
 (
-	[id] INT NOT NULL PRIMARY KEY, 
+	[id] INT NOT NULL PRIMARY KEY IDENTITY(0, 1), 
     [street] VARCHAR(MAX) NULL, 
-    [zipCode] INT NULL, 
+    [zipCode] VARCHAR(MAX) NULL, 
     [city] VARCHAR(MAX) NULL, 
     [country] VARCHAR(MAX) NULL, 
     [isPrimary] BIT NULL, 

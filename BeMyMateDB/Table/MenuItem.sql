@@ -5,6 +5,7 @@
     [name] VARCHAR(MAX) NOT NULL,
     [objectId] INT NOT NULL, 
 	[contextId] INT NOT NULL,
+	[icon] VARCHAR(MAX) NULL,
 	[link] VARCHAR(MAX) NOT NULL,
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 

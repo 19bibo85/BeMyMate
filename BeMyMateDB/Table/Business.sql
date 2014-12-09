@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [User].[Business]
 (
-	[id] INT NOT NULL PRIMARY KEY, 
+	[id] INT NOT NULL PRIMARY KEY IDENTITY(0, 1), 
     [jobId] INT NOT NULL, 
     [address] VARCHAR(MAX) NULL, 
     [objectId] INT NOT NULL, 

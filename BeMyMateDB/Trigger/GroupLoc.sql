@@ -1,5 +1,5 @@
-﻿CREATE TRIGGER [UserTypeLoc]
-	ON [User].[UserType]
+﻿CREATE TRIGGER [GroupLoc]
+	ON [Security].[Group]
 	AFTER INSERT
 	AS
 	BEGIN

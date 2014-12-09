@@ -2,6 +2,8 @@
 (
 	[id] INT NOT NULL PRIMARY KEY, 
     [name] VARCHAR(MAX) NOT NULL, 
+	[isPrimary] BIT NOT NULL,
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
-    [dtUpdated] NCHAR(10) NULL
+    [dtUpdated] NCHAR(10) NULL, 
+    
 )

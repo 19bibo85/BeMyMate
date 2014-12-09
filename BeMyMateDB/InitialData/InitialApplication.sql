@@ -1,7 +1,7 @@
 ﻿-- Language
-INSERT INTO [Application].[Language] (id, code, name) VALUES
-(1, 'en-US', 'English'),
-(2, 'it-IT', 'Italiano')
+INSERT INTO [Application].[Language] (id, code, name, link) VALUES
+(1, 'en-US', 'English', '/en-US/home.aspx'),
+(2, 'it-IT', 'Italiano', '/it-IT/home.aspx')
 
 -- Context
 INSERT INTO [Application].[ObjectContext] (id, [anonymous], tennant, landlord, agency) VALUES
@@ -32,7 +32,7 @@ INSERT INTO [Application].[Table] (id, name) VALUES
 (12, 'ProfileArea'),
 (13, 'ProfileQuestionnaire'),
 (14, 'ProfileAnswer'),
-(15, 'UserType')
+(15, 'Group')
 
 -- Section
 INSERT INTO [Application].[Section] (id, name, level, contextId) VALUES

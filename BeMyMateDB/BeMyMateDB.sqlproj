@@ -153,9 +153,10 @@
     <Build Include="Trigger\ProfileAnswerLoc.sql" />
     <Build Include="StoredProcedure\GetProfileBasicInfoByUser.sql" />
     <Build Include="StoredProcedure\GetProfileDetailInfoByUser.sql" />
-    <Build Include="Trigger\ProfileUserInfoIns.sql" />
-    <Build Include="Table\UserType.sql" />
-    <Build Include="Trigger\UserTypeLoc.sql" />
+    <Build Include="Table\Group.sql" />
+    <Build Include="Trigger\GroupLoc.sql" />
+    <Build Include="Table\GroupToRole.sql" />
+    <Build Include="StoredProcedure\SetUserSecurityByGroup.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />
