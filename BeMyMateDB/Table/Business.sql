@@ -3,7 +3,6 @@
 	[id] INT NOT NULL PRIMARY KEY IDENTITY(0, 1), 
     [jobId] INT NOT NULL, 
     [address] VARCHAR(MAX) NULL, 
-    [objectId] INT NOT NULL, 
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 

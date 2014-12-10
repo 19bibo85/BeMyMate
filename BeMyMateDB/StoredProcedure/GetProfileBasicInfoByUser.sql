@@ -35,7 +35,7 @@ LEFT OUTER JOIN [User].[UserToBusiness] as utb on u.id = utb.userId
 LEFT OUTER JOIN (SELECT bus.id, bus.[address], loc.name
 				 FROM [User].[Business] as bus 
 				 INNER JOIN [User].[Job] as job on bus.jobId = job.id
-				 INNER JOIN [Application].[Localization] as loc on job.refCode = job.refCode
+				 INNER JOIN [Application].[Localization] as loc on job.refCode = loc.refCode
 				 INNER JOIN [Application].[Language] as l on loc.languageId = l.id
 				 WHERE LTRIM(RTRIM(l.code)) = LTRIM(RTRIM(@LanguageCode))) as busr on utb.businessId = busr.id
 LEFT OUTER JOIN [User].[UserToPhone] as utp on u.id = utp.userId

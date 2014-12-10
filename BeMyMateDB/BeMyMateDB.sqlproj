@@ -134,7 +134,6 @@
     <Build Include="Table\ObjectContext.sql" />
     <Build Include="Trigger\GroupObjectObj.sql" />
     <Build Include="Trigger\ObjectContextUp.sql" />
-    <Build Include="Trigger\LanguageDel.sql" />
     <Build Include="Trigger\LanguageUp.sql" />
     <Build Include="Trigger\LocalizationUp.sql" />
     <Build Include="Trigger\MenuUp.sql" />
@@ -157,6 +156,18 @@
     <Build Include="Trigger\GroupLoc.sql" />
     <Build Include="Table\GroupToRole.sql" />
     <Build Include="StoredProcedure\SetUserSecurityByGroup.sql" />
+    <Build Include="Trigger\AvatarUp.sql" />
+    <Build Include="Trigger\BusinessUp.sql" />
+    <Build Include="Trigger\GroupUp.sql" />
+    <Build Include="Trigger\GroupObjectUp.sql" />
+    <Build Include="Trigger\GroupToRoleUp.sql" />
+    <Build Include="Trigger\ObjectUp.sql" />
+    <Build Include="Trigger\ObjectGroupObjectUp.sql" />
+    <Build Include="Trigger\ObjectRightUp.sql" />
+    <Build Include="Trigger\PhoneUp.sql" />
+    <Build Include="Trigger\PhoneTypeUp.sql" />
+    <Build Include="Trigger\JobUp.sql" />
+    <Build Include="Trigger\GenderUp.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />

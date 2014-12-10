@@ -5,7 +5,6 @@
     [number] VARCHAR(MAX) NULL, 
     [typeId] INT NULL, 
     [isPrimary] BIT NULL, 
-    [objectId] INT NOT NULL, 
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 

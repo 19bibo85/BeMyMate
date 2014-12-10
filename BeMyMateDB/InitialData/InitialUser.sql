@@ -53,17 +53,17 @@ INSERT INTO [User].[FriendshipStatus] (id, name) VALUES
 INSERT INTO [User].[Avatar] (id, name, [path]) VALUES
 (1, 'Placeholder', '/Avatar/placeholder.png');
 
----- Address
---INSERT INTO [User].[Address] (street, zipCode, city, country) VALUES
---('none', 'none', 'none', 'none');
+-- Address
+INSERT INTO [User].[Address] (street, zipCode, city, country) VALUES
+('none', 'none', 'none', 'none');
 
----- Business
---INSERT INTO [User].[Business] (jobId, [address]) VALUES
---(0, 'none');
+-- Business
+INSERT INTO [User].[Business] (jobId, [address]) VALUES
+(0, 'none');
 
----- Phone
---INSERT INTO [User].[Phone] (prefix, number, typeId) VALUES
---('+00', '000 000 000', 0);
+-- Phone
+INSERT INTO [User].[Phone] (prefix, number, typeId) VALUES
+('+00', '000 000 000', 0);
 
 -- User
 INSERT INTO [User].[User] (name, surname, email, username, [password], genderId, avatarId, statusId, registrationStatusId) VALUES

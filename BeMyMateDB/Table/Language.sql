@@ -6,6 +6,5 @@
 	[icon] VARCHAR(MAX),
 	[link] VARCHAR(MAX) NOT NULL,
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
-    [dtUpdated] DATETIME NULL, 
-    [dtDeleted] DATETIME NULL
+    [dtUpdated] DATETIME NULL 
 )
