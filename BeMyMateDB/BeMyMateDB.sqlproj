@@ -185,6 +185,7 @@
     <Build Include="Trigger\UserToMessageUp.sql" />
     <Build Include="Trigger\UserToNotificationTypeUp.sql" />
     <Build Include="Trigger\UserToPhoneUp.sql" />
+    <Build Include="Trigger\UserBasicInfoDef.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />
