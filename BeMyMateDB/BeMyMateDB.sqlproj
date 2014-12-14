@@ -65,6 +65,7 @@
     <Folder Include="Function" />
     <Folder Include="Trigger" />
     <Folder Include="Query" />
+    <Folder Include="Diagram" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Table\User.sql" />
@@ -140,7 +141,7 @@
     <Build Include="Trigger\MenuItemUp.sql" />
     <Build Include="Trigger\MenuToMenuItemUp.sql" />
     <Build Include="Trigger\SectionUp.sql" />
-    <Build Include="Trigger\SectionToMenu.sql" />
+    <Build Include="Trigger\UserUp.sql" />
     <Build Include="Trigger\TableUp.sql" />
     <Build Include="Table\UserLog.sql" />
     <None Include="InitialData\InitialSecurity.sql" />
@@ -168,6 +169,22 @@
     <Build Include="Trigger\PhoneTypeUp.sql" />
     <Build Include="Trigger\JobUp.sql" />
     <Build Include="Trigger\GenderUp.sql" />
+    <Build Include="Trigger\ProfileAnswerUp.sql" />
+    <Build Include="Trigger\ProfileAreaUp.sql" />
+    <Build Include="Trigger\ProfileQuestionnaireUp.sql" />
+    <Build Include="Trigger\ProfileQuestionnaireToAnswerUp.sql" />
+    <Build Include="Trigger\ReviewUp.sql" />
+    <Build Include="Trigger\RoleUp.sql" />
+    <Build Include="Trigger\RoleToUserUp.sql" />
+    <Build Include="Trigger\SectionToMenuUp.sql" />
+    <Build Include="Trigger\UserRegistrationStatusUp.sql" />
+    <Build Include="Trigger\UserStatusUp.sql" />
+    <Build Include="Trigger\UserToAddressUp.sql" />
+    <Build Include="Trigger\UserToBusinessUp.sql" />
+    <Build Include="Trigger\UserToFriendUp.sql" />
+    <Build Include="Trigger\UserToMessageUp.sql" />
+    <Build Include="Trigger\UserToNotificationTypeUp.sql" />
+    <Build Include="Trigger\UserToPhoneUp.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />

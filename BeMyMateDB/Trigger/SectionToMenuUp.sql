@@ -3,7 +3,7 @@
 	FOR UPDATE
 	AS
 	BEGIN
-		SET NOCOUNT ON
+		SET NOCOUNT ON		
 		DECLARE @sectionId INT = (SELECT sectionId FROM INSERTED);
 		DECLARE @menuId INT = (SELECT menuId FROM INSERTED);		
         UPDATE [Application].[SectionToMenu]

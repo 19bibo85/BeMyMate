@@ -5,7 +5,6 @@
     [rightId] INT NOT NULL, 
     [deny] BIT NOT NULL, 
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
-    [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 
     PRIMARY KEY ([roleId], [groupObjectId], [rightId]), 
     CONSTRAINT [FK_RoleGroupObjectRight_Role] FOREIGN KEY ([roleId]) REFERENCES [Security].[Role]([id]), 
