@@ -2,7 +2,8 @@
 (
 	[id] INT NOT NULL, 
 	[refCode] AS Application.GetReferenceCode('section_', id, 6, 0),
-    [name] VARCHAR(MAX) NOT NULL, 
+    [name] VARCHAR(MAX) NOT NULL,
+	[description] VARCHAR(MAX) NULL, 
     [level] INT NOT NULL,
     [parentId] INT NULL, 
 	[objectId] INT NOT NULL,

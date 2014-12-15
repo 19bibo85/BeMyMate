@@ -186,6 +186,19 @@
     <Build Include="Trigger\UserToNotificationTypeUp.sql" />
     <Build Include="Trigger\UserToPhoneUp.sql" />
     <Build Include="Trigger\UserBasicInfoDef.sql" />
+    <Build Include="Trigger\LocalizationDel.sql" />
+    <Build Include="Trigger\GroupObjectDel.sql" />
+    <Build Include="Trigger\MenuDel.sql" />
+    <Build Include="Trigger\MenuItemDel.sql" />
+    <Build Include="Trigger\AvatarDel.sql" />
+    <Build Include="Trigger\BusinessDel.sql" />
+    <Build Include="Trigger\FileDel.sql" />
+    <Build Include="Trigger\FileAppDel.sql" />
+    <Build Include="Trigger\MenuToMenuItemDel.sql" />
+    <Build Include="Trigger\MessageDel.sql" />
+    <Build Include="Trigger\NotificationDel.sql" />
+    <Build Include="Trigger\ObjectDel.sql" />
+    <Build Include="Trigger\MessageToFileDel.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />

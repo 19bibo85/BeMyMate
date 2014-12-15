@@ -2,7 +2,8 @@
 (
 	[id] INT NOT NULL PRIMARY KEY, 
     [refCode] AS Application.GetReferenceCode('profile_questionnaire_', id, 6, 0),
-	[name] VARCHAR(MAX) NULL, 	
+	[name] VARCHAR(MAX) NULL, 
+	[description] VARCHAR(MAX) NULL, 
     [objectId] INT NOT NULL,
 	[contextId] INT NOT NULL,
 	[areaId] INT NOT NULL,

@@ -2,7 +2,8 @@
 (
 	[id] INT NOT NULL PRIMARY KEY, 
     [refCode] AS Application.GetReferenceCode('profile_area_', id, 6, 0),
-	[name] VARCHAR(MAX) NOT NULL, 	
+	[name] VARCHAR(MAX) NOT NULL,
+	[description] VARCHAR(MAX) NULL, 
     [objectId] INT NOT NULL, 
 	[contextId] INT NOT NULL,
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 

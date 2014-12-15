@@ -3,6 +3,7 @@
 	[id] INT NOT NULL PRIMARY KEY, 
 	[refCode] AS Application.GetReferenceCode('menu_', id, 6, 0),
     [name] VARCHAR(MAX) NOT NULL, 
+	[description] VARCHAR(MAX) NULL, 
 	[level] INT NOT NULL, 
     [parentId] INT NULL, 
     [objectId] INT NOT NULL, 
