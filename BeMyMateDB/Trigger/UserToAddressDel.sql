@@ -1,14 +1,14 @@
-﻿CREATE TRIGGER [UserToAddressUp]
+﻿CREATE TRIGGER [UserToAddressDel]
 	ON [User].[UserToAddress]
-	FOR UPDATE
+	INSTEAD OF DELETE
 	AS
 	BEGIN
-		SET NOCOUNT ON        
+		SET NOCOUNT ON
 
 		DECLARE @TMP TABLE(i INT, userId INT, addressId INT);
 		INSERT INTO @TMP(i, userId, addressId)
 		SELECT ROW_NUMBER() OVER( ORDER BY userId, addressId) as 'i', userId, addressId
-		FROM INSERTED
+		FROM DELETED
 
 		DECLARE @InsNum INT = (SELECT COUNT(userId) FROM @TMP);
 
@@ -18,7 +18,7 @@
 			DECLARE @addressId INT = (SELECT addressId FROM @TMP WHERE i = @InsNum);
 
 			UPDATE [User].[UserToAddress]
-			SET dtUpdated = GETDATE() 
+			SET dtDeleted = GETDATE() 
 			WHERE userId = @userId and addressId = @addressId
 
 			SET @InsNum = @InsNum - 1;

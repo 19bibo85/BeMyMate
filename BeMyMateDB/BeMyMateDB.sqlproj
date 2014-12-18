@@ -199,6 +199,21 @@
     <Build Include="Trigger\NotificationDel.sql" />
     <Build Include="Trigger\ObjectDel.sql" />
     <Build Include="Trigger\MessageToFileDel.sql" />
+    <Build Include="Trigger\FileAppUp.sql" />
+    <Build Include="Trigger\FileUp.sql" />
+    <Build Include="Trigger\MessageUp.sql" />
+    <Build Include="Trigger\MessageToFileUp.sql" />
+    <Build Include="Trigger\NotificationUp.sql" />
+    <Build Include="Trigger\ObjectContextDel.sql" />
+    <Build Include="Trigger\PhoneDel.sql" />
+    <Build Include="Trigger\ProfileAnswerDel.sql" />
+    <Build Include="Trigger\ProfileAreaDel.sql" />
+    <Build Include="Trigger\ProfileQuestionnaireDel.sql" />
+    <Build Include="Trigger\ReviewDel.sql" />
+    <Build Include="Trigger\SectionDel.sql" />
+    <Build Include="Trigger\UserToAddressDel.sql" />
+    <Build Include="Trigger\UserToBusinessDel.sql" />
+    <Build Include="Trigger\UserDel.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />

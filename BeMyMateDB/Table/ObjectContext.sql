@@ -6,5 +6,6 @@
     [landlord] BIT NOT NULL , 
     [agency] BIT NOT NULL, 
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
-    [dtUpdated] DATETIME NULL
+    [dtUpdated] DATETIME NULL,
+	[dtDeleted] DATETIME NULL
 )

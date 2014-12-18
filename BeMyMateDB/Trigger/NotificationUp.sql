@@ -1,5 +1,5 @@
-﻿CREATE TRIGGER [UserRegistrationStatusUp]
-	ON [User].[UserRegistrationStatus]
+﻿CREATE TRIGGER [NotificationUp]
+	ON [User].[Notification]
 	FOR UPDATE
 	AS
 	BEGIN
@@ -15,7 +15,7 @@
 		WHILE(@InsNum > 0)
 		BEGIN
 
-			 UPDATE [User].[UserRegistrationStatus]
+			UPDATE [User].[Notification]
 			SET dtUpdated = GETDATE()
 			WHERE id = (SELECT id FROM @TMP WHERE i = @InsNum)
 
