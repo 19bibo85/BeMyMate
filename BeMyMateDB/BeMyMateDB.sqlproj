@@ -214,6 +214,14 @@
     <Build Include="Trigger\UserToAddressDel.sql" />
     <Build Include="Trigger\UserToBusinessDel.sql" />
     <Build Include="Trigger\UserDel.sql" />
+    <Build Include="Trigger\GroupToRoleDel.sql" />
+    <Build Include="Trigger\ProfileQuestionnaireToAnswerDel.sql" />
+    <Build Include="Trigger\RoleToUserDel.sql" />
+    <Build Include="Trigger\SectionToMenuDel.sql" />
+    <Build Include="Trigger\UserToFriendDel.sql" />
+    <Build Include="Trigger\UserToMessageDel.sql" />
+    <Build Include="Trigger\UserToNotificationTypeDel.sql" />
+    <Build Include="Trigger\UserToPhoneDel.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />

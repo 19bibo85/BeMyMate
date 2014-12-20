@@ -1,6 +1,6 @@
-﻿CREATE TRIGGER [ProfileQuestionnaireToAnswerUp]
+﻿CREATE TRIGGER [ProfileQuestionnaireToAnswerDel]
 	ON [User].[ProfileQuestionnaireToAnswer]
-	FOR UPDATE
+	INSTEAD OF DELETE
 	AS
 	BEGIN
 		SET NOCOUNT ON
@@ -8,7 +8,7 @@
 		DECLARE @TMP TABLE(i INT, questionnaireId INT, answerId INT);
 		INSERT INTO @TMP(i, questionnaireId, answerId)
 		SELECT ROW_NUMBER() OVER( ORDER BY questionnaireId, answerId) as 'i', questionnaireId, answerId
-		FROM INSERTED
+		FROM DELETED
 
 		DECLARE @InsNum INT = (SELECT COUNT(questionnaireId) FROM @TMP);
 
@@ -18,7 +18,7 @@
 			DECLARE @answerId INT = (SELECT answerId FROM @TMP WHERE i = @InsNum);
 
 			UPDATE [User].[ProfileQuestionnaireToAnswer]
-			SET dtUpdated = GETDATE() 
+			SET dtDeleted = GETDATE() 
 			WHERE questionnaireId = @questionnaireId and answerId = @answerId;
 
 			SET @InsNum = @InsNum - 1;

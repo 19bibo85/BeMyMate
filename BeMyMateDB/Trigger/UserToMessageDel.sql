@@ -1,6 +1,6 @@
-﻿CREATE TRIGGER [UserToMessageUp]
+﻿CREATE TRIGGER [UserToMessageDel]
 	ON [User].[UserToMessage]
-	FOR UPDATE
+	INSTEAD OF DELETE
 	AS
 	BEGIN
 		SET NOCOUNT ON
@@ -8,7 +8,7 @@
 		DECLARE @TMP TABLE(i INT, receiverId INT, messageId INT);
 		INSERT INTO @TMP(i, receiverId, messageId)
 		SELECT ROW_NUMBER() OVER( ORDER BY receiverId, messageId) as 'i', receiverId, messageId
-		FROM INSERTED
+		FROM DELETED
 
 		DECLARE @InsNum INT = (SELECT COUNT(receiverId) FROM @TMP);
 
@@ -18,7 +18,7 @@
 			DECLARE @messageId INT = (SELECT messageId FROM @TMP WHERE i = @InsNum);
 
 			UPDATE [User].[UserToMessage]
-			SET dtUpdated = GETDATE() 
+			SET dtDeleted = GETDATE() 
 			WHERE receiverId = @receiverId and messageId = @messageId
 
 			SET @InsNum = @InsNum - 1;

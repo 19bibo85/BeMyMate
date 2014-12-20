@@ -1,6 +1,6 @@
-﻿CREATE TRIGGER [RoleToUserUp]
+﻿CREATE TRIGGER [RoleToUserDel]
 	ON [Security].[RoleToUser]
-	FOR UPDATE
+	INSTEAD OF DELETE
 	AS
 	BEGIN
 		SET NOCOUNT ON
@@ -8,7 +8,7 @@
 		DECLARE @TMP TABLE(i INT, roleId INT, userId INT);
 		INSERT INTO @TMP(i, roleId, userId)
 		SELECT ROW_NUMBER() OVER( ORDER BY roleId, userId) as 'i', roleId, userId
-		FROM INSERTED
+		FROM DELETED
 
 		DECLARE @InsNum INT = (SELECT COUNT(roleId) FROM @TMP);
 
@@ -18,7 +18,7 @@
 			DECLARE @userId INT = (SELECT userId FROM @TMP WHERE i = @InsNum);
 
 			UPDATE [Security].[RoleToUser]
-			SET dtUpdated = GETDATE() 
+			SET dtDeleted = GETDATE() 
 			WHERE roleId = @roleId and userId = @userId;
 
 			SET @InsNum = @InsNum - 1;

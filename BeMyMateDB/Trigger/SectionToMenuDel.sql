@@ -1,6 +1,6 @@
-﻿CREATE TRIGGER [SectionToMenuUp]
+﻿CREATE TRIGGER [SectionToMenuDel]
 	ON [Application].[SectionToMenu]
-	FOR UPDATE
+	INSTEAD OF DELETE
 	AS
 	BEGIN
 		SET NOCOUNT ON
@@ -8,7 +8,7 @@
 		DECLARE @TMP TABLE(i INT, sectionId INT, menuId INT);
 		INSERT INTO @TMP(i, sectionId, menuId)
 		SELECT ROW_NUMBER() OVER( ORDER BY sectionId, menuId) as 'i', sectionId, menuId
-		FROM INSERTED
+		FROM DELETED
 
 		DECLARE @InsNum INT = (SELECT COUNT(sectionId) FROM @TMP);
 
@@ -18,7 +18,7 @@
 			DECLARE @menuId INT = (SELECT menuId FROM @TMP WHERE i = @InsNum);
 
 			 UPDATE [Application].[SectionToMenu]
-			 SET dtUpdated = GETDATE() 
+			 SET dtDeleted = GETDATE() 
 			 WHERE sectionId = @sectionId and menuId = @menuId;
 
 			SET @InsNum = @InsNum - 1;
