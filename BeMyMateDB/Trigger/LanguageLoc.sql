@@ -17,8 +17,8 @@
 		BEGIN
 			DECLARE @id INT = (SELECT id FROM @TMP as ins WHERE ins.i = @InsNum);
 						
-			INSERT INTO [Application].[Localization] (languageId, refCode, name, tableId, dtCreated)
-			SELECT @id, loc.refCode, loc.name, loc.tableId, GETDATE()
+			INSERT INTO [Application].[Localization] (languageId, refCode, name, [description], tableId, dtCreated)
+			SELECT @id, loc.refCode, loc.name, loc.[description], loc.tableId, GETDATE()
 			FROM [Application].[Localization] as loc
 			WHERE loc.languageId = @lanId
 
