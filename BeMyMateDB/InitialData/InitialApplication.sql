@@ -18,6 +18,7 @@ INSERT INTO [Application].[ObjectContext] (id, [anonymous], tennant, landlord, a
 
 -- Table
 INSERT INTO [Application].[Table] (id, name) VALUES
+(0, 'Table'),
 (1, 'Section'),
 (2, 'Menu'),
 (3, 'MenuItem'),
