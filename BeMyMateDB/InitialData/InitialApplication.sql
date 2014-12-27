@@ -33,7 +33,14 @@ INSERT INTO [Application].[Table] (id, name) VALUES
 (12, 'ProfileArea'),
 (13, 'ProfileQuestionnaire'),
 (14, 'ProfileAnswer'),
-(15, 'Group')
+(15, 'Group'),
+(16, 'Nationality'),
+(17, 'City'),
+(18, 'Country'),
+(19, 'AddressType'),
+(20, 'PrivacyArea'),
+(21, 'PrivacyQuestionnaire'),
+(22, 'PrivacyAnswer');
 
 -- Section
 INSERT INTO [Application].[Section] (id, name, level, contextId) VALUES

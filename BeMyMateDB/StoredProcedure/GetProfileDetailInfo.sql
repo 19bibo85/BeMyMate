@@ -1,13 +1,15 @@
-﻿CREATE PROCEDURE [User].[GetProfileDetailInfoByUser]
+﻿CREATE PROCEDURE [User].[GetProfileDetailInfo]
 	@UserID INT = 0,
+	@UserGuid uniqueidentifier = null,
 	@LanguageCode VARCHAR(MAX) = 'en-us'
 AS
 
 	DECLARE @TMP TABLE(ViewObjectId INT, EditObjectId INT, DeleteObjectId INT)
 	
 	INSERT @TMP	
-	EXEC [Security].[GetSecurityByUser] 
-		 @UserID = @UserID
+	EXEC [Security].[GetSecurity]
+		 @UserID = @UserID,
+		 @UserGuid = @UserGuid
 
 	SELECT DISTINCT pqr.name as Questionnaire, upir.name as Answer
 	FROM (SELECT pq.id, loc.name

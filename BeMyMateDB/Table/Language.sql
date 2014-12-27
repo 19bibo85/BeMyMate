@@ -5,6 +5,7 @@
     [name] VARCHAR(MAX) NOT NULL, 
 	[icon] VARCHAR(MAX),
 	[link] VARCHAR(MAX) NOT NULL,
+	[isLocalizeMenu] BIT NULL,
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL 
 )

@@ -1,7 +1,9 @@
 ﻿CREATE TABLE [User].[User]
 (
 	[id] INT NOT NULL PRIMARY KEY IDENTITY(0, 1), 
+	[title] VARCHAR(MAX) NULL, 
     [name] VARCHAR(MAX) NOT NULL, 
+	[middleName] VARCHAR(MAX) NULL, 
     [surname] VARCHAR(MAX) NOT NULL, 
     [email] VARCHAR(MAX) NOT NULL, 
     [username] VARCHAR(MAX) NOT NULL, 

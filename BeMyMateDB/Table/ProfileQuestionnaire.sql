@@ -10,7 +10,7 @@
 	[dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 
-    CONSTRAINT [FK_LifeStyleQuestionnaire_Object] FOREIGN KEY ([objectId]) REFERENCES [Security].[Object]([id]), 
-    CONSTRAINT [FK_LifeStyleQuestionnaire_Area] FOREIGN KEY ([areaId]) REFERENCES [User].[ProfileArea]([id])
+    CONSTRAINT [FK_ProfileQuestionnaire_Object] FOREIGN KEY ([objectId]) REFERENCES [Security].[Object]([id]), 
+    CONSTRAINT [FK_ProfileQuestionnaire_Area] FOREIGN KEY ([areaId]) REFERENCES [User].[ProfileArea]([id])
     
 )

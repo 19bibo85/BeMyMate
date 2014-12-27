@@ -10,5 +10,5 @@
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 
-    CONSTRAINT [FK_LifeStyleAnswer_Object] FOREIGN KEY ([objectId]) REFERENCES [Security].[Object]([id])
+    CONSTRAINT [FK_ProfileAnswer_Object] FOREIGN KEY ([objectId]) REFERENCES [Security].[Object]([id])
 )

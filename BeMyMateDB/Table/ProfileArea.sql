@@ -9,5 +9,5 @@
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 
-    CONSTRAINT [FK_LifeStyleArea_Object] FOREIGN KEY ([objectId]) REFERENCES [Security].[Object]([id])
+    CONSTRAINT [FK_ProfileArea_Object] FOREIGN KEY ([objectId]) REFERENCES [Security].[Object]([id])
 )

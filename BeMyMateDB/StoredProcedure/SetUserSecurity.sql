@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [Security].[SetUserSecurityByGroup]
+﻿CREATE PROCEDURE [Security].[SetUserSecurity]
 	@userId INT = NULL,
 	@groupId INT = NULL
 AS
@@ -16,9 +16,9 @@ AS
 				
 		-- Get permissions of the user
 		DECLARE @TMP TABLE(ViewObjectId INT, EditObjectId INT, DeleteObjectId INT);
-		INSERT @TMP	EXEC [Security].[GetSecurityByUser] @UserID = @UserID
+		INSERT @TMP	EXEC [Security].[GetSecurity] @UserID = @UserID
 
-		-- Insert profile default profile info base on the permissions
+		-- Insert default profile info base on the permissions
 		INSERT INTO [User].[UserProfileInfo] (userId, questionnaireId, answerId)
 		SELECT @UserID, pq.id, pa.id
 		FROM @TMP as pqt 

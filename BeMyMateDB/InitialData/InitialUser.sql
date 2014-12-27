@@ -53,17 +53,37 @@ INSERT INTO [User].[FriendshipStatus] (id, name) VALUES
 INSERT INTO [User].[Avatar] (id, name, [path]) VALUES
 (1, 'Placeholder', '/Avatar/placeholder.png');
 
--- Address
-INSERT INTO [User].[Address] (street, zipCode, city, country) VALUES
-('none', 'none', 'none', 'none');
+-- Province
+INSERT INTO [User].[Province] (id, name) VALUES
+(0, 'None');
 
--- Business
-INSERT INTO [User].[Business] (jobId, [address]) VALUES
-(0, 'none');
+-- Country
+INSERT INTO [User].[Country] (id, name) VALUES
+(0, 'None');
+
+-- CountryToProvince
+INSERT INTO [User].[CountryToProvince] (countryId, provinceId) VALUES
+(0, 0);
+
+-- AddressType
+INSERT INTO [User].[AddressType] (id, name) VALUES
+(0, 'None'),
+(1, 'Home'),
+(2, 'Work');
+
+-- Address
+INSERT INTO [User].[Address] (addressLine, city, provinceId, postalCode, typeId) VALUES
+('none', 'none', 0, 'none', 0);
 
 -- Phone
 INSERT INTO [User].[Phone] (prefix, number, typeId) VALUES
 ('+00', '000 000 000', 0);
+
+-- Nationality
+INSERT INTO [User].[Nationality] (id, name) VALUES
+(0, 'Unknow'),
+(1, 'English'),
+(2, 'Italian');
 
 -- User
 INSERT INTO [User].[User] (name, surname, email, username, [password], genderId, avatarId, statusId, registrationStatusId) VALUES

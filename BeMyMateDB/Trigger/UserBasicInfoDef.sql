@@ -23,9 +23,9 @@
 			END
 			
 			-- Insert default business
-			IF((SELECT userID FROM [User].[UserToBusiness] WHERE userId = @UserID) IS NULL)
+			IF((SELECT userID FROM [User].[UserToJob] WHERE userId = @UserID) IS NULL)
 			BEGIN
-			INSERT INTO [User].[UserToBusiness] (userId, businessId) VALUES (@UserID, 0);
+			INSERT INTO [User].[UserToJob] (userId, jobId) VALUES (@UserID, 0);
 			END
 
 			-- Insert default phone

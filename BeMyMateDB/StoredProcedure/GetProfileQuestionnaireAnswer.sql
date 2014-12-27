@@ -1,11 +1,11 @@
-﻿CREATE PROCEDURE [User].[GetQuestionnaireAnswerByUser]
+﻿CREATE PROCEDURE [User].[GetProfileQuestionnaireAnswer]
 	@UserID INT = 0,
 	@LanguageCode VARCHAR(MAX) = 'en-us'
 AS
 	DECLARE @TMP TABLE(ViewObjectId INT, EditObjectId INT, DeleteObjectId INT)
 
 	INSERT @TMP	
-	EXEC [Security].[GetSecurityByUser] 
+	EXEC [Security].[GetSecurity] 
 		 @UserID = @UserID
 
 	SELECT pqr.name as Questionnaire, par.name as Answer

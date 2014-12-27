@@ -10,6 +10,7 @@
 		INSERT INTO @TMP(i, id)
 		SELECT ROW_NUMBER() OVER( ORDER BY id ) AS 'i', id
 		FROM INSERTED AS ins
+		WHERE isLocalizeMenu = 1
 
 		DECLARE @InsNum INT = (SELECT COUNT(id) FROM @TMP);
 

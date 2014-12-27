@@ -504,4 +504,67 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="dtUpdated" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="8295d9d1-8db5-4ccc-9bf4-b3880a9144aa" ChangeDateTime="12/22/2014 21:50:41">
+    <Property Name="ElementName" Value="[dbo].[UserToNationality].[nationality]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserToNationality]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="nationalityId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6ece2f02-c187-4ef9-8465-840c86b7f9ac" ChangeDateTime="12/22/2014 21:54:42">
+    <Property Name="ElementName" Value="[User].[UserToNationality].[dtUpdate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[User].[UserToNationality]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dtUpdated" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fccbce66-a072-4ccc-8006-9ad6c8fcb902" ChangeDateTime="12/22/2014 21:54:56">
+    <Property Name="ElementName" Value="[User].[Nationality].[dtUpdate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[User].[Nationality]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dtUpdated" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="41ea2765-7554-43ae-ab56-6f2eacca8269" ChangeDateTime="12/22/2014 22:02:12">
+    <Property Name="ElementName" Value="[dbo].[Province].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Province]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="05bba2c0-56e2-469b-b587-e55083e8731d" ChangeDateTime="12/22/2014 22:34:24">
+    <Property Name="ElementName" Value="[User].[Address].[city]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[User].[Address]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="suburb" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="040c071e-ebce-4d13-8d69-c52ce499a615" ChangeDateTime="12/22/2014 22:48:57">
+    <Property Name="ElementName" Value="[User].[Address].[street]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[User].[Address]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="addressLine" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8104b123-4d4d-4f23-ac35-4c5973c12b62" ChangeDateTime="12/22/2014 22:49:13">
+    <Property Name="ElementName" Value="[User].[Address].[suburb]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[User].[Address]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="city" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="99db6f03-183d-4cdb-ae88-0a225da8770d" ChangeDateTime="12/24/2014 10:29:05">
+    <Property Name="ElementName" Value="[User].[AddressType].[dtUpdate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[User].[AddressType]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dtUpdated" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ae999172-56e5-4039-9adb-173ecc33e549" ChangeDateTime="12/25/2014 23:00:54">
+    <Property Name="ElementName" Value="[Application].[Language].[is]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Application].[Language]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="isMenu" />
+  </Operation>
 </Operations>

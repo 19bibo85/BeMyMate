@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [Application].[GetMenuByUser]
+﻿CREATE PROCEDURE [Application].[GetMenu]
 	@UserID INT = 0,
 	@LanguageCode VARCHAR(MAX) = 'en-us'
 AS

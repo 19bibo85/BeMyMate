@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [User].[GetProfileBasicInfoByUser]
+﻿CREATE PROCEDURE [User].[GetProfileBasicInfo]
 	@UserID INT = 0,
 	@UserGuid uniqueidentifier = null,
 	@LanguageCode VARCHAR(MAX) = 'en-us'
@@ -8,12 +8,12 @@ AS
 	ava.[path] as AvatarPath,
 	gr.name as Gender,
 	usr.name as UserStatus,
-	[add].street as Street,
+	[add].addressLine as AddressLine,
 	[add].city as City,
-	[add].zipCode as ZipCode,
-	[add].country as Country,
-	busr.address as BusinessAddress,
-	busr.name as JobType,
+	[add].postalCode as PostalCode,
+	[pro].name as Province,
+	[con].name as Country,
+	jobr.name as Job,
 	phor.prefix as Prefix, 
 	phor.number as Number, 
 	phor.name as PhoneType
@@ -31,13 +31,15 @@ INNER JOIN (SELECT us.id, usl.name
 			WHERE LTRIM(RTRIM(l.code)) = LTRIM(RTRIM(@LanguageCode))) as usr on u.statusId = usr.id
 LEFT OUTER JOIN [User].[UserToAddress] as uta on u.id = uta.userId
 LEFT OUTER JOIN [User].[Address] as [add] on uta.addressId = [add].id
-LEFT OUTER JOIN [User].[UserToBusiness] as utb on u.id = utb.userId
-LEFT OUTER JOIN (SELECT bus.id, bus.[address], loc.name
-				 FROM [User].[Business] as bus 
-				 INNER JOIN [User].[Job] as job on bus.jobId = job.id
+LEFT OUTER JOIN [User].[Province] as pro on [add].provinceId = pro.id
+LEFT OUTER JOIN [User].[CountryToProvince] as conPro on pro.id = conPro.provinceId
+LEFT OUTER JOIN [User].[Country] as con on conPro.countryId = con.id 
+LEFT OUTER JOIN [User].[UserToJob] as utj on u.id = utj.userId
+LEFT OUTER JOIN (SELECT job.id, loc.name
+				 FROM [User].[Job] as job
 				 INNER JOIN [Application].[Localization] as loc on job.refCode = loc.refCode
 				 INNER JOIN [Application].[Language] as l on loc.languageId = l.id
-				 WHERE LTRIM(RTRIM(l.code)) = LTRIM(RTRIM(@LanguageCode))) as busr on utb.businessId = busr.id
+				 WHERE LTRIM(RTRIM(l.code)) = LTRIM(RTRIM(@LanguageCode))) as jobr on utj.jobId = jobr.id
 LEFT OUTER JOIN [User].[UserToPhone] as utp on u.id = utp.userId
 LEFT OUTER JOIN (SELECT p.id, p.prefix, p.number, loc.name
 				 FROM [User].[Phone] as p
