@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [Security].[GetSecurity]
+﻿CREATE PROCEDURE [Security].[GetUserSecurity]
 	@UserGuid uniqueidentifier = null,
 	@UserID int = 0
 AS

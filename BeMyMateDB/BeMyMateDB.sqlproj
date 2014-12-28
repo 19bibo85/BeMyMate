@@ -114,7 +114,7 @@
     <Build Include="Table\UserToNotificationType.sql" />
     <Build Include="Table\Localization.sql" />
     <Build Include="Table\Language.sql" />
-    <Build Include="StoredProcedure\GetSecurity.sql" />
+    <Build Include="StoredProcedure\GetUserSecurity.sql" />
     <Build Include="StoredProcedure\GetMenu.sql" />
     <Build Include="Function\GetReferenceCode.sql" />
     <Build Include="Table\Table.sql" />
@@ -261,6 +261,8 @@
     <Build Include="StoredProcedure\GetPrivacyInfo.sql" />
     <Build Include="Trigger\PrivacyAreaUp.sql" />
     <Build Include="Trigger\PrivacyAreaDel.sql" />
+    <Build Include="Trigger\ProfileAreaLoc.sql" />
+    <Build Include="Trigger\PrivacyAreaLoc.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />
