@@ -1,0 +1,11 @@
+﻿CREATE TRIGGER [PrivacyAreaDel]
+	ON [User].[PrivacyArea]
+	INSTEAD OF DELETE
+	AS
+	BEGIN
+		SET NOCOUNT ON
+		
+		UPDATE [User].[PrivacyArea]
+		SET dtDeleted = GETDATE()
+		WHERE id IN (SELECT DISTINCT id FROM DELETED)
+	END

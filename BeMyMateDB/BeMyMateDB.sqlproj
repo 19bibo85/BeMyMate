@@ -259,6 +259,8 @@
     <Build Include="Trigger\PrivacyAreaObj.sql" />
     <Build Include="StoredProcedure\SetUserPrivacy.sql" />
     <Build Include="StoredProcedure\GetPrivacyInfo.sql" />
+    <Build Include="Trigger\PrivacyAreaUp.sql" />
+    <Build Include="Trigger\PrivacyAreaDel.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />
