@@ -5,7 +5,7 @@ AS
 	DECLARE @TMP TABLE(ViewObjectId INT, EditObjectId INT, DeleteObjectId INT)
 
 	INSERT @TMP	
-	EXEC [Security].[GetSecurity] 
+	EXEC [Security].[GetUserSecurity] 
 		 @UserID = @UserID
 
 	SELECT pqr.Area, pqr.Questionnaire, par.Answer

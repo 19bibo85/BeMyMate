@@ -111,7 +111,6 @@
     <Build Include="Table\UserRegistrationStatus.sql" />
     <Build Include="Table\Notification.sql" />
     <Build Include="Table\NotificationType.sql" />
-    <Build Include="Table\UserToNotificationType.sql" />
     <Build Include="Table\Localization.sql" />
     <Build Include="Table\Language.sql" />
     <Build Include="StoredProcedure\GetUserSecurity.sql" />
@@ -181,7 +180,6 @@
     <Build Include="Trigger\UserToJobUp.sql" />
     <Build Include="Trigger\UserToFriendUp.sql" />
     <Build Include="Trigger\UserToMessageUp.sql" />
-    <Build Include="Trigger\UserToNotificationTypeUp.sql" />
     <Build Include="Trigger\UserToPhoneUp.sql" />
     <Build Include="Trigger\UserBasicInfoDef.sql" />
     <Build Include="Trigger\LocalizationDel.sql" />
@@ -217,7 +215,6 @@
     <Build Include="Trigger\SectionToMenuDel.sql" />
     <Build Include="Trigger\UserToFriendDel.sql" />
     <Build Include="Trigger\UserToMessageDel.sql" />
-    <Build Include="Trigger\UserToNotificationTypeDel.sql" />
     <Build Include="Trigger\UserToPhoneDel.sql" />
     <Build Include="Trigger\TableObj.sql" />
     <Build Include="Table\Nationality.sql" />
@@ -228,13 +225,10 @@
     <Build Include="Trigger\UserToNationalityDel.sql" />
     <Build Include="Table\Province.sql" />
     <Build Include="Table\Country.sql" />
-    <Build Include="Table\CountryToProvince.sql" />
     <Build Include="Trigger\CountryUp.sql" />
     <Build Include="Trigger\CountryLoc.sql" />
     <Build Include="Trigger\ProvinceUp.sql" />
     <Build Include="Trigger\ProvinceLoc.sql" />
-    <Build Include="Trigger\CountryToProjectUp.sql" />
-    <Build Include="Trigger\CountryToProvinceDel.sql" />
     <Build Include="Table\AddressType.sql" />
     <Build Include="Trigger\AddressTypeLoc.sql" />
     <Build Include="Trigger\AddressTypeUp.sql" />
@@ -263,6 +257,14 @@
     <Build Include="Trigger\PrivacyAreaDel.sql" />
     <Build Include="Trigger\ProfileAreaLoc.sql" />
     <Build Include="Trigger\PrivacyAreaLoc.sql" />
+    <Build Include="StoredProcedure\GetMessagesInbox.sql" />
+    <Build Include="StoredProcedure\GetMessagesOutbox.sql" />
+    <Build Include="StoredProcedure\GetMessageInbox.sql" />
+    <Build Include="StoredProcedure\GetMessageOutbox.sql" />
+    <Build Include="Table\UserToNotification.sql" />
+    <Build Include="StoredProcedure\GetNotifications.sql" />
+    <Build Include="Trigger\NotificationTypeLoc.sql" />
+    <Build Include="StoredProcedure\GetFriends.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />

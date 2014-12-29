@@ -567,4 +567,39 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="isMenu" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="f4fd154f-8818-4e1e-be57-e2e93a3c40c5" ChangeDateTime="12/29/2014 09:14:45">
+    <Property Name="ElementName" Value="[User].[Notification].[senderId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[User].[Notification]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="userId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="aa6b6f28-578e-4fc2-b4ce-a1450d7eb02d" ChangeDateTime="12/29/2014 09:17:53">
+    <Property Name="ElementName" Value="[User].[Notification].[userId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[User].[Notification]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="senderId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e678f9d7-c90a-4bd2-90ab-70020453e7d1" ChangeDateTime="12/29/2014 12:47:52">
+    <Property Name="ElementName" Value="[User].[UserToNotification].[messageId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[User].[UserToNotification]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="notificationId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="891f9893-b36a-436d-9205-b72bb389436f" ChangeDateTime="12/29/2014 12:48:04">
+    <Property Name="ElementName" Value="[User].[UserToNotification].[isRead]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[User].[UserToNotification]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="isReaded" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a81a7b46-7c33-4ef4-bf50-d683dd499b29" ChangeDateTime="12/29/2014 13:01:01">
+    <Property Name="ElementName" Value="[User].[UserToMessage].[isRead]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[User].[UserToMessage]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="isReaded" />
+  </Operation>
 </Operations>

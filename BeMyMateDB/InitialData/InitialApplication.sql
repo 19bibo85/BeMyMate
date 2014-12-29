@@ -40,7 +40,8 @@ INSERT INTO [Application].[Table] (id, name) VALUES
 (19, 'AddressType'),
 (20, 'PrivacyArea'),
 (21, 'PrivacyQuestionnaire'),
-(22, 'PrivacyAnswer');
+(22, 'PrivacyAnswer'),
+(23, 'NotificationType');
 
 -- Section
 INSERT INTO [Application].[Section] (id, name, level, contextId) VALUES

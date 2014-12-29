@@ -32,8 +32,7 @@ INNER JOIN (SELECT us.id, usl.name
 LEFT OUTER JOIN [User].[UserToAddress] as uta on u.id = uta.userId
 LEFT OUTER JOIN [User].[Address] as [add] on uta.addressId = [add].id
 LEFT OUTER JOIN [User].[Province] as pro on [add].provinceId = pro.id
-LEFT OUTER JOIN [User].[CountryToProvince] as conPro on pro.id = conPro.provinceId
-LEFT OUTER JOIN [User].[Country] as con on conPro.countryId = con.id 
+LEFT OUTER JOIN [User].[Country] as con on pro.countryId = con.id 
 LEFT OUTER JOIN [User].[UserToJob] as utj on u.id = utj.userId
 LEFT OUTER JOIN (SELECT job.id, loc.name
 				 FROM [User].[Job] as job

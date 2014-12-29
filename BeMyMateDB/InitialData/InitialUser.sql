@@ -53,17 +53,13 @@ INSERT INTO [User].[FriendshipStatus] (id, name) VALUES
 INSERT INTO [User].[Avatar] (id, name, [path]) VALUES
 (1, 'Placeholder', '/Avatar/placeholder.png');
 
--- Province
-INSERT INTO [User].[Province] (id, name) VALUES
-(0, 'None');
-
 -- Country
 INSERT INTO [User].[Country] (id, name) VALUES
 (0, 'None');
 
--- CountryToProvince
-INSERT INTO [User].[CountryToProvince] (countryId, provinceId) VALUES
-(0, 0);
+-- Province
+INSERT INTO [User].[Province] (id, name, countryId) VALUES
+(0, 'None', 0);
 
 -- AddressType
 INSERT INTO [User].[AddressType] (id, name) VALUES
@@ -84,6 +80,12 @@ INSERT INTO [User].[Nationality] (id, name) VALUES
 (0, 'Unknow'),
 (1, 'English'),
 (2, 'Italian');
+
+-- Notification Type
+INSERT INTO [User].[NotificationType] (id, name) VALUES
+(0, 'None'),
+(1, 'Friendship Request'),
+(2, 'New Message');
 
 -- User
 INSERT INTO [User].[User] (name, surname, email, username, [password], genderId, avatarId, statusId, registrationStatusId) VALUES

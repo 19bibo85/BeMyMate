@@ -5,7 +5,7 @@ AS
 	DECLARE @TMP TABLE(ViewObjectId INT, EditObjectId INT, DeleteObjectId INT)
 
 	INSERT @TMP
-	EXEC [Security].[GetSecurityByUser]
+	EXEC [Security].[GetUserSecurity]
 		 @UserID = @UserID
 
 	SELECT sr.name as Section, sr.[level] as SectionLevel,

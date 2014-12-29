@@ -16,7 +16,7 @@ AS
 				
 		-- Get permissions of the user
 		DECLARE @TMP TABLE(ViewObjectId INT, EditObjectId INT, DeleteObjectId INT);
-		INSERT @TMP	EXEC [Security].[GetSecurity] @UserID = @UserID
+		INSERT @TMP	EXEC [Security].[GetUserSecurity] @UserID = @UserID
 
 		-- Insert default profile info base on the permissions
 		INSERT INTO [User].[UserProfileInfo] (userId, questionnaireId, answerId)

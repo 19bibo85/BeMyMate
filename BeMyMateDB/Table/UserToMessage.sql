@@ -2,6 +2,8 @@
 (
 	[receiverId] INT NOT NULL , 
     [messageId] INT NOT NULL, 
+	[isReaded] BIT, 
+	[isStarred] BIT, 
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 
     [dtDeleted] DATETIME NULL, 
