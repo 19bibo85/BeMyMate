@@ -16,6 +16,6 @@ Post-Deployment Script Template
 
  :r .\InitialProfile.sql
 
-  :r .\InitialPrivacy.sql
+  :r .\InitialSetting.sql
 
  :r .\InitialSecurity.sql

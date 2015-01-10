@@ -1,5 +1,5 @@
-﻿CREATE TRIGGER [User].[PrivacyQuestionnaireLoc]
-	ON [User].[PrivacyQuestionnaire]
+﻿CREATE TRIGGER [User].[SettingQuestionnaireLoc]
+	ON [User].[SettingQuestionnaire]
 	AFTER INSERT
 	AS
 	BEGIN

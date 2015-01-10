@@ -1,11 +1,11 @@
-﻿CREATE TRIGGER [GenderUp]
-	ON [User].[Gender]
+﻿CREATE TRIGGER [SettingAreaUp]
+	ON [User].[SettingArea]
 	FOR UPDATE
 	AS
 	BEGIN
-		SET NOCOUNT ON	
+		SET NOCOUNT ON
 
-		UPDATE [User].[Gender]
+		UPDATE [User].[SettingArea]
 		SET dtUpdated = GETDATE()
 		WHERE id IN (SELECT DISTINCT id FROM INSERTED)
 	END

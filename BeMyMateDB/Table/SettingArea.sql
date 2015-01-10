@@ -1,4 +1,4 @@
-﻿CREATE TABLE [User].[PrivacyArea]
+﻿CREATE TABLE [User].[SettingArea]
 (
 	[id] INT NOT NULL PRIMARY KEY, 
     [refCode] AS Application.GetReferenceCode('privacy_area_', id, 6, 0),

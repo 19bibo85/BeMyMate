@@ -1,11 +1,11 @@
-﻿CREATE TRIGGER [GroupObjectDel]
-	ON [Security].[GroupObject]
+﻿CREATE TRIGGER [SettingAreaDel]
+	ON [User].[SettingArea]
 	INSTEAD OF DELETE
 	AS
 	BEGIN
 		SET NOCOUNT ON
-
-		UPDATE [Security].[GroupObject]
+		
+		UPDATE [User].[SettingArea]
 		SET dtDeleted = GETDATE()
 		WHERE id IN (SELECT DISTINCT id FROM DELETED)
 	END

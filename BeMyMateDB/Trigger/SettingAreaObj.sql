@@ -1,5 +1,5 @@
-﻿CREATE TRIGGER [PrivacyAreaObj]
-	ON [User].[PrivacyArea]
+﻿CREATE TRIGGER [SettingAreaObj]
+	ON [User].[SettingArea]
 	INSTEAD OF INSERT
 	AS
 	BEGIN
@@ -16,7 +16,7 @@
 			INSERT INTO [Security].[Object] (tableId) VALUES (20)
 			DECLARE @objID INT = (SCOPE_IDENTITY());
 			
-			INSERT INTO [User].[PrivacyArea] (id, name, objectId, contextId)
+			INSERT INTO [User].[SettingArea] (id, name, objectId, contextId)
 			SELECT id, name, @objId, contextId
 			FROM @TMP as tmp
 			WHERE tmp.i = @InsNum

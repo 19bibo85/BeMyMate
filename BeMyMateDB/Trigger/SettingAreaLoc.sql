@@ -1,5 +1,5 @@
-﻿CREATE TRIGGER [User].[PrivacyAreaLoc]
-	ON [User].[PrivacyArea]
+﻿CREATE TRIGGER [User].[SettingAreaLoc]
+	ON [User].[SettingArea]
 	AFTER INSERT
 	AS
 	BEGIN

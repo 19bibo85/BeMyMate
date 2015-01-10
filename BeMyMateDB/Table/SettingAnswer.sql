@@ -1,4 +1,4 @@
-﻿CREATE TABLE [User].[PrivacyAnswer]
+﻿CREATE TABLE [User].[SettingAnswer]
 (
 	[id] INT NOT NULL PRIMARY KEY, 
     [refCode] AS Application.GetReferenceCode('privacy_answer_', id, 6, 0),

@@ -1,5 +1,5 @@
-﻿CREATE TRIGGER [PrivacyAnswerObj]
-	ON [User].[PrivacyAnswer]
+﻿CREATE TRIGGER [SettingAnswerObj]
+	ON [User].[SettingAnswer]
 	INSTEAD OF INSERT
 	AS
 	BEGIN
@@ -16,7 +16,7 @@
 			INSERT INTO [Security].[Object] (tableId) VALUES (21)
 			DECLARE @objID INT = (SCOPE_IDENTITY());
 			
-			INSERT INTO [User].[PrivacyAnswer] (id, name, objectId, contextId, isDefault)
+			INSERT INTO [User].[SettingAnswer] (id, name, objectId, contextId, isDefault)
 			SELECT id, name, @objId, contextId, isDefault
 			FROM @TMP as tmp
 			WHERE tmp.i = @InsNum
