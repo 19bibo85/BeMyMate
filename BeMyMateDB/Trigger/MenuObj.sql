@@ -3,9 +3,9 @@
 	INSTEAD OF INSERT
 	AS
 	BEGIN
-		DECLARE @TMP TABLE(i INT, id INT,  name VARCHAR(MAX), [level] INT, parentId INT, contextId INT)
-		INSERT INTO @TMP(i, id, name, [level], parentId, contextId)
-		SELECT ROW_NUMBER() OVER( ORDER BY id DESC) AS 'i', id, name, [level], parentId, contextId
+		DECLARE @TMP TABLE(i INT, id INT,  name VARCHAR(MAX), [level] INT, parentId INT, [order] INT, contextId INT)
+		INSERT INTO @TMP(i, id, name, [order], contextId)
+		SELECT ROW_NUMBER() OVER( ORDER BY id DESC) AS 'i', id, name, [order], contextId
 		FROM INSERTED AS ins
 		WHERE ins.objectId IS NULL
 
@@ -16,8 +16,8 @@
 			INSERT INTO [Security].[Object] (tableId) VALUES (2)
 			DECLARE @objID INT = (SCOPE_IDENTITY());
 			
-			INSERT INTO [Application].[Menu] (id, name, level, parentId, objectId, contextId)
-			SELECT id, name, level, parentId, @objId, contextId
+			INSERT INTO [Application].[Menu] (id, name, objectId, [order], contextId)
+			SELECT id, name, @objId, [order], contextId
 			FROM @TMP as tmp
 			WHERE tmp.i = @InsNum
 

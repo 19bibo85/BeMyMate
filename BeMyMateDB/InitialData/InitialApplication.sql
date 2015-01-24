@@ -1,7 +1,7 @@
 ﻿-- Language
 INSERT INTO [Application].[Language] (id, code, name, link) VALUES
-(1, 'en-US', 'English', '/en-US/home.aspx'),
-(2, 'it-IT', 'Italiano', '/it-IT/home.aspx')
+(1, 'en-US', 'English', '/en-US/Home.aspx'),
+(2, 'it-IT', 'Italiano', '/it-IT/Home.aspx')
 
 -- Context
 INSERT INTO [Application].[ObjectContext] (id, [anonymous], tennant, landlord, agency) VALUES
@@ -43,29 +43,37 @@ INSERT INTO [Application].[Table] (id, name) VALUES
 (22, 'PrivacyAnswer'),
 (23, 'NotificationType');
 
+
 -- Section
 INSERT INTO [Application].[Section] (id, name, level, contextId) VALUES
 (1, 'Home', 0, 2),
 (2, 'Profile', 0, 2)
 
 -- Menu
-INSERT INTO [Application].[Menu] (id, name, level, parentId, contextId) VALUES
-(1, 'Main', 0, null, 2),
-(2, 'Company', 0, null, 2),	
-(3, 'User List', 0, null, 2),
-(4, 'Message', 0, null, 11),
-(5, 'Account', 0, null, 11),
-(6, 'Report', 0, null, 9)
+INSERT INTO [Application].[Menu] (id, name, [order], contextId) VALUES
+(1, 'Main', 0, 2),
+(2, 'Company', 1, 2),	
+(3, 'Search', 0, 2),
+(4, 'Message', 1, 11),
+(5, 'Account', 2, 11),
+(6, 'Report', 3, 9);
 
 -- Menu Item
-INSERT INTO [Application].[MenuItem] (id, name, contextId, link) VALUES
-(1, 'About', 2, '/page/about.aspx'),
-(2, 'Jobs', 2, '/page/job.aspx'),
-(3, 'Press', 2, '/page/press.aspx'),
-(4, 'Blog', 2, '/page/blog.aspx'),
-(5, 'Help', 2, '/page/help.aspx'),
-(6, 'Policies', 2, '/page/policies.aspx'),
-(7, 'Terms & Privacy', 2, '/page/terms_privacy.aspx')
+INSERT INTO [Application].[MenuItem] (id, name, parentId, contextId, [order], link, isActive) VALUES
+(1, 'About', null, 2, 0, 'About.aspx', 0),
+(2, 'Jobs', null, 2, 1, 'Job.aspx', 0),
+(3, 'Press', null, 2, 2, 'Press.aspx', 0),
+(4, 'Blog', null, 2, 3, 'Blog.aspx', 0),
+(5, 'Help', null, 2, 4, 'Help.aspx', 0),
+(6, 'Policies', null, 2, 5, 'Policies.aspx', 0),
+(7, 'Terms & Privacy', null, 2, 6, 'Terms_privacy.aspx', 0),
+(8, 'User', null, 11, 0, 'User.aspx', 0),
+(9, 'Inbox', null, 11, 0, 'Inbox.aspx', 0),
+(10, 'Outbox', null, 11, 1, 'Outbox.aspx', 0),
+(11, 'Profile', null, 11, 0, 'Profile.aspx', 1),
+(12, 'Setting', null, 11, 1, 'Setting.aspx', 0),
+(13, 'General', null, 11, 2, 'General.aspx', 0);
+
 
 -- Menu Item
 INSERT INTO [Application].[MenuToMenuItem] (menuId, menuItemId) VALUES
@@ -75,7 +83,14 @@ INSERT INTO [Application].[MenuToMenuItem] (menuId, menuItemId) VALUES
 (2, 4),
 (2, 5),
 (2, 6),
-(2, 7)
+(2, 7),
+(3, 8),
+(4, 9),
+(4, 10),
+(5, 11),
+(5, 12),
+(5, 13);
+
 
 -- Section Menu
 INSERT INTO [Application].[SectionToMenu] (sectionId, menuId) VALUES
@@ -84,4 +99,4 @@ INSERT INTO [Application].[SectionToMenu] (sectionId, menuId) VALUES
 (2, 3),
 (2, 4),
 (2, 5),
-(2, 6)
+(2, 6);

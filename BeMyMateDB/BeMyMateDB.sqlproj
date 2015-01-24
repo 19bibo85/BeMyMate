@@ -114,7 +114,6 @@
     <Build Include="Table\Localization.sql" />
     <Build Include="Table\Language.sql" />
     <Build Include="StoredProcedure\GetUserSecurity.sql" />
-    <Build Include="StoredProcedure\GetMenu.sql" />
     <Build Include="Function\GetReferenceCode.sql" />
     <Build Include="Table\Table.sql" />
     <Build Include="Trigger\SectionLoc.sql" />
@@ -265,6 +264,7 @@
     <Build Include="StoredProcedure\GetNotifications.sql" />
     <Build Include="Trigger\NotificationTypeLoc.sql" />
     <Build Include="StoredProcedure\GetFriends.sql" />
+    <Build Include="StoredProcedure\GetSectionMenuItem.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BeMyMateDB.refactorlog" />
