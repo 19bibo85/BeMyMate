@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f406be66ed014354a7068257e71e007c" Name="Diagram1">
+        <EntityTypeShape EntityType="BeMyMateDBModel.Language" Width="1.5" PointX="6" PointY="50.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Localization" Width="1.5" PointX="11.25" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Menu" Width="1.5" PointX="16" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.MenuItem" Width="1.5" PointX="19" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.MenuToMenuItem" Width="1.5" PointX="21.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.ObjectContext" Width="1.5" PointX="13.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Section" Width="1.5" PointX="16" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.SectionToMenu" Width="1.5" PointX="18.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Table" Width="1.5" PointX="1.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.C__RefactorLog" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Group" Width="1.5" PointX="8" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.GroupObject" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.GroupToRole" Width="1.5" PointX="10.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Object" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.ObjectGroupObject" Width="1.5" PointX="10.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.ObjectRight" Width="1.5" PointX="11" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Role" Width="1.5" PointX="6" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.RoleGroupObjectRight" Width="1.5" PointX="13.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.RoleToUser" Width="1.5" PointX="8.25" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Address" Width="1.5" PointX="8" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.AddressType" Width="1.5" PointX="5.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Avatar" Width="1.5" PointX="0.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Country" Width="1.5" PointX="3.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.File" Width="1.5" PointX="5.25" PointY="42.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.FileApp" Width="1.5" PointX="3" PointY="41.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.FileInfo" Width="1.5" PointX="3" PointY="44.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.FriendshipStatu" Width="1.5" PointX="9" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Gender" Width="1.5" PointX="0.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Job" Width="1.5" PointX="6" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Message" Width="1.5" PointX="5.25" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.MessageToFile" Width="1.5" PointX="7.5" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Nationality" Width="1.5" PointX="11" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Notification" Width="1.5" PointX="8.25" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.NotificationType" Width="1.5" PointX="6" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Phone" Width="1.5" PointX="11" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.PhoneType" Width="1.5" PointX="8.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.ProfileAnswer" Width="1.5" PointX="3" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.ProfileArea" Width="1.5" PointX="0.75" PointY="47.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.ProfileQuestionnaire" Width="1.5" PointX="3" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.ProfileQuestionnaireToAnswer" Width="1.5" PointX="8.25" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Province" Width="1.5" PointX="5.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.Review" Width="1.5" PointX="5.25" PointY="32.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.SettingAnswer" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.SettingArea" Width="1.5" PointX="0.75" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.SettingQuestionnaire" Width="1.5" PointX="3" PointY="35.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.SettingQuestionnaireToAnswer" Width="1.5" PointX="14.25" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.User" Width="1.5" PointX="3" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.UserLog" Width="1.5" PointX="5.25" PointY="36" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.UserProfileInfo" Width="1.5" PointX="5.25" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.UserRegistrationStatu" Width="1.5" PointX="0.75" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.UserSettingInfo" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.UserStatu" Width="1.5" PointX="0.75" PointY="32" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.UserToAddress" Width="1.5" PointX="10.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.UserToFriend" Width="1.5" PointX="11.25" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.UserToJob" Width="1.5" PointX="8.25" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.UserToLanguage" Width="1.5" PointX="8.25" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.UserToMessage" Width="1.5" PointX="10.5" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.UserToNationality" Width="1.5" PointX="13.25" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.UserToNotification" Width="1.5" PointX="13.5" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeMyMateDBModel.UserToPhone" Width="1.5" PointX="13.25" PointY="20.875" IsExpanded="true" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Localization_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToLanguage_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Localization_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Menu_Context" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Menu_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_MenuToMenuItem_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_SectionToMenu_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_MenuItem_Context" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_MenuItem_MenuItem" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_MenuItem_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_MenuToMenuItem_MenuItem" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Section_Context" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Section_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Section_Section" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_SectionToMenu_Section" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Object_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_GroupToRole_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_GroupObject_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_ObjectGroupObject_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_GroupToRole_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_ObjectGroupObject_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_PrivacyAnswer_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_PrivacyArea_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_ProfileAnswer_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_ProfileArea_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_ProfileQuestionnaire_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_RoleGroupObjectRight_GroupObject" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_SettingQuestionnaire_Object" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_RoleGroupObjectRight_ObjectRight" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_RoleGroupObjectRight_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_RoleToUser_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_RoleToUser_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Address_AddressType" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Address_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToAddress_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_User_Avatar" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Province_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_File_FileApp" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_File_FileInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_MessageToFile_File" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToFriend_FriendshipStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_User_ToGender" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToBusiness_Job" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Message_Message" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Message_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_MessageToFile_Message" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToMessage_Message" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToNationality_Nationality" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Notification_Sender" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Notification_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToNotification_Message" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_Phone_PhoneType" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToPhone_Phone" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_ProfileQuestionnaireToAnswer_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserProfileInfo_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_ProfileQuestionnaire_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_ProfileQuestionnaireToAnswer_Questionnaire" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserProfileInfo_Questionnaire" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_ProfileReview_UserReviewed" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_ProfileReview_UserReviewing" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_SettingQuestionnaireToAnswer_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserSettingInfo_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_SettingQuestionnaire_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_SettingQuestionnaireToAnswer_Questionnaire" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserSettingInfo_Questionnaire" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_User_RegistrationStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_User_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserLog_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserProfileInfo_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserSettingInfo_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToAddress_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToBusiness_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToFriend_Friend" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToFriend_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToLanguage_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToMessage_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToNationality_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToNotification_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BeMyMateDBModel.FK_UserToPhone_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

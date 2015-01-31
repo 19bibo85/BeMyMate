@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Test App</title>
+</head>
+<body>
+
+    <div>
+        <h2>Menu</h2>
+        <ul id="menus" />
+    </div>
+
+    <script src="/Scripts/jquery-2.1.3.js"></script>
+    <script type="text/javascript">
+        var sectionId = 2;
+        var languageCode = 'en-us';
+        var Menus = {
+            ServiceAPI: 'api/',
+            GetMenus: function () {
+                try {
+                    $.ajax({
+                        url: this.ServiceAPI + 'menus/menus?sectionId=' + sectionId + '&languageCode=' + languageCode,
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            alert(response);
+                            var data = $.parseJSON(response);
+                            $.each(data, function (key, item) {
+                                $('<li>', { text: item.Name }).appendTo($('#menus'));
+                                $.each(item.Items, function (key, item) {
+                                    if (item.Id != null) {
+                                        $("<ul>")
+                                        .append($('<a>',
+                                                {
+                                                    text: item.Name,
+                                                    title: item.Name,
+                                                    href: item.Link
+                                                })).appendTo($('#menus'));
+                                    }
+                                })
+                            })
+                        },
+                        error: function (error) { Menus.GetMenusError(error); },
+                    });
+                }
+                catch (ex) {
+                    alert("An error occurred. Please contact the administrator.");
+                }
+            },
+            GetMenusSuccess: function (response) {
+                //var data = $.parseJSON(response);
+
+                alert("Test");
+                //$.each(data, function (key, item) {
+                //    $('<li>', { text: item.Name }).appendTo($('#menus'));
+                //    $.each(item.Items, function (key, item) {
+                //        if (item.Id != null) {
+                //            $("<ul>")
+                //            .append($('<a>',
+                //                    {
+                //                        text: item.Name,
+                //                        title: item.Name,
+                //                        href: item.Link
+                //                    })).appendTo($('#menus'));
+                //        }
+                //    })
+                //})
+
+            },
+            GetMenusSuccess: function (error) {
+                var err = $.parseJSON(error.responseText);
+                alert(err.ExceptioMessage);
+            }
+        };
+    </script>
+
+
+    <!-- Note this script is to retrieved data for avatar menu -->
+    <script type="text/javascript">
+        alert('a');
+        // Sidebar
+        var sidebarSecId = 3;
+        alert('api/menus/menus?sectionId=' + sidebarSecId + '&languageCode=' + languageCode);
+        var Sidebar = {
+            // Get Menu
+            GetMenu: function () {
+                try {
+                    $.ajax({
+                        url: 'api/menus/menus?sectionId=' + sidebarSecId + '&languageCode=' + languageCode,
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        async: true,
+                        success: Sidebar.Success,
+                        error: Sidebar.Error
+                    });
+                }
+                catch (ex) {
+                    alert(ex.message);
+                    alert("An error occurred. Please contact the administrator.");
+                }
+            },
+            // Success
+            Success: function (response) {
+                alert(response + "2");
+                // Build data
+                var data = $.parseJSON(response);
+                var stringOutput = ("{\"Menus\": " + JSON.stringify(data) + "}");
+                var test = JSON.parse(stringOutput);
+
+                // Display data
+                var template = $('#menuTemplate').html();
+                Mustache.parse(template);   // optional, speeds up future uses	            
+                var rendered = Mustache.render(template, test);
+                $('#sidebar-default').html(rendered);
+            },
+            // Error
+            Error: function (response) {
+                var err = $.parseJSON(error.responseText);
+                alert(err.ExceptioMessage);
+            }
+        };
+
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Menus.GetMenus();
+            Sidebar.GetMenu();
+        });
+    </script>
+
+</body>
+</html>

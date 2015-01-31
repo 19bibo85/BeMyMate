@@ -1,0 +1,383 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="page_dashboard.master.cs" Inherits="BeMyMateWeb.page_dashboard" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />	
+	<title>Wolf - Bootstrap Admin Theme</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- stylesheets -->
+	<link rel="stylesheet" type="text/css" href="Content/template/css/compiled/theme.css" />
+	<link rel="stylesheet" type="text/css" href="Content/template/css/vendor/animate.css" />
+	<link rel="stylesheet" type="text/css" href="Content/template/css/vendor/brankic.css" />
+	<link rel="stylesheet" type="text/css" href="Content/template/css/vendor/ionicons.min.css" />
+	<link rel="stylesheet" type="text/css" href="Content/template/css/vendor/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="Content/template/css/vendor/datepicker.css" />
+	<link rel="stylesheet" type="text/css" href="Content/template/css/vendor/morris.css" />
+
+	<!-- javascript -->
+    <script src="Scripts/mustache.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	<script src="Content/template/js/bootstrap/bootstrap.min.js"></script>
+	<script src="Content/template/js/vendor/jquery.cookie.js"></script>
+	<script src="Content/template/js/vendor/moment.min.js"></script>
+	<script src="Content/template/js/theme.js"></script>
+	<script src="Content/template/js/vendor/raphael-min.js"></script>
+	<script src="Content/template/js/vendor/morris.min.js"></script>
+
+
+	<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body id="dashboard">
+	<div id="wrapper">
+		<div id="sidebar-default" class="main-sidebar">
+
+            <!-- Avatar Menu Template -->
+			<div id="avatarMenu" class="current-user">
+                <script id="avatarTpl" type="text/template">
+                    {{#Avatar}}
+				    <a href="#" class="name">
+					    <img class="avatar" src="{{AvatarName}}" />
+					    <span>
+						    {{UserName}}
+						    <i class="fa fa-chevron-down"></i>
+					    </span>
+				    </a>
+				    <ul id="avatarList" class="menu" title="a">
+                        {{#Items}}
+					    <li>
+						    <a href="{{Link}}">{{Name}}</a>
+					    </li>
+                        {{/Items}}
+				    </ul>
+                    {{/Avatar}}
+                </script>
+			</div>
+
+            <!-- Dashboard Menu Template -->
+            <div id="dashboardMenu" class="menu-section">            
+            <script id="dashboardTpl" type="x-tmpl-mustache">			    
+				<h3>Dashboard</h3>
+				<ul> 
+                    {{#Menus}}
+					<li>
+						<a href="#" data-toggle="sidebar">
+							<i class="ion-person-stalker"></i><span>{{Name}}</span>
+							<i class="fa fa-chevron-down"></i>
+						</a>
+                        {{#Items}}
+						<ul class="submenu">
+							<li><a href="{{Link}}">{{Name}}</a></li>
+						</ul>
+                        {{/Items}}
+					</li>
+                    {{/Menus}}
+				    </ul>
+			</script>
+            </div>
+
+            <!-- Notification Menu Template -->
+            <div class="bottom-menu hidden-sm">
+				<ul>
+					<li><a href="#"><i class="ion-help"></i></a></li>
+					<li>
+						<a href="#">
+							<i class="ion-archive"></i>
+							<span class="flag"></span>
+						</a>                        
+						<ul id="notificationMenu" class="menu">
+                            <script id="notificationTpl" type="x-tmpl-mustache">	
+                                {{#Notification}}
+							        <li><a href="#">{{Count}} {{TypeName}}</a></li>
+                                {{/Notification}}
+                            </script>
+						</ul>
+					</li>
+					<li><a href="signup.html"><i class="ion-log-out"></i></a></li>
+				</ul>
+			</div>
+
+		</div>
+
+		<div id="content">
+			<asp:ContentPlaceHolder ID="ContentSection" runat="server">
+        
+            </asp:ContentPlaceHolder>
+		</div>
+	</div>
+
+    <!-- Get Configuration data-->
+    <script type="text/javascript">
+        var api = "<%= ConfigurationManager.AppSettings["ApiPath"] %>";
+        var languageCode = "<%= ConfigurationManager.AppSettings["LanguageCode"] %>";
+        var avatarSectionId = "<%= ConfigurationManager.AppSettings["AvatarSectionId"] %>";
+        var dashboardSectionId = "<%= ConfigurationManager.AppSettings["DashboardSectionId"] %>";
+    </script>
+
+    <!-- POPULATE -->
+    <!-- Populate Avatar Menu Data -->
+	<script type="text/javascript">
+	    var AvatarMenu = {
+	        ServiceAPI: api,
+            GetMenus: function () {
+                try {
+                    $.ajax({
+                        url: this.ServiceAPI + 'menus/UserMenus?sectionId=' + avatarSectionId + '&languageCode=' + languageCode,
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        async: true,
+                        success: function (response) { AvatarMenu.Success(response) },
+                        error: function (error) { AvatarMenu.Error(error); },
+                    });
+                }
+                catch (ex) {
+                    alert("An error occurred. Please contact the administrator.");
+                }
+            },
+            Success: function (response) {
+                var avatarTpl = $('#avatarTpl').html();
+                Mustache.parse(avatarTpl);   // optional, speeds up future uses
+
+                //var data = $.parseJSON(response);
+                //var dataString = "{ Avatar: " + JSON.stringify($.parseJSON(response)) + "}";
+                //alert(dataString);
+                //var rendered2 = Mustache.render(avatarTpl, dataString);
+                //alert(rendered2);
+
+
+                var rendered = Mustache.render(avatarTpl,
+                    {
+                        "Avatar": [
+                          {
+                              "AvatarName": "Test1",
+                              "UserName": "Test1",
+                              "Items": [{
+                                  "Name": "Test1",
+                                  "Link": "Link1"
+                              }]
+                          }
+                        ]
+                    });
+                $('#avatarMenu').html(rendered);
+            },
+            Error: function (error) {
+                var err = $.parseJSON(error.responseText);
+                alert(err.ExceptioMessage);
+            }
+        }
+
+        AvatarMenu.GetMenus();
+
+	    //var avatarTpl = $('#avatarTpl').html();
+	    //Mustache.parse(avatarTpl);   // optional, speeds up future uses
+	    //var rendered = Mustache.render(avatarTpl,
+        //    {
+        //        "Avatar": [
+        //          {
+        //              "AvatarName": "Test1",
+        //              "UserName": "Test1",
+        //              "Items": [{
+        //                  "Name": "Test1",
+        //                  "Link": "Link1"
+        //              }]
+        //          }
+        //        ]
+        //    });
+	    //$('#avatarMenu').html(rendered);
+	</script>
+	
+    <!-- Populate Dashboard Menu Data -->
+	<script type="text/javascript">
+	    var DashboardMenu = {
+	        ServiceAPI: api,
+	        GetMenus: function () {
+	            try {
+	                $.ajax({
+	                    url: this.ServiceAPI + 'menus/menus?sectionId=' + dashboardSectionId + '&languageCode=' + languageCode,
+	                    type: "GET",
+	                    contentType: "application/json; charset=utf-8",
+	                    dataType: "json",
+                        async: true,
+	                    success: function (response) { DashboardMenu.Success(response) },
+	                    error: function (error) { DashboardMenu.Error(error); },
+	                });
+	            }
+	            catch (ex) {
+	                alert("An error occurred. Please contact the administrator.");
+	            }
+	        },
+	        Success: function (response) {
+
+	            var dashboardTpl = $('#dashboardTpl').html();
+	            Mustache.parse(dashboardTpl);   // optional, speeds up future uses
+
+	            var data = $.parseJSON(response);
+	            var dataString = "{ Menus: " + JSON.stringify($.parseJSON(response)) + "}";
+	            //alert(dataString);
+	            var rendered2 = Mustache.render(dashboardTpl, dataString);
+	            //alert(rendered2);
+
+	            
+	            var rendered = Mustache.render(dashboardTpl,
+	                {
+	                    "Menus": [
+	                      { 
+	                          "Name": "Test1",
+	                          "Items": [{
+	                              "Name": "Test1",
+	                              "Link": "Link1"
+	                          }]
+	                      },
+	                      { 
+	                          "Name": "Test2",
+	                          "Items": [{
+	                              "Name": "Test1",
+	                              "Link": "Link1"
+	                          }]
+	                      },
+	                      { 
+	                          "Name": "Test3",
+	                          "Items": [{
+	                              "Name": "Test1",
+	                              "Link": "Link1"
+	                          }]
+	                      }
+	                    ]
+	                });
+
+	            $('#dashboardMenu').html(rendered);
+	        },
+	        Error: function (error) {
+	            var err = $.parseJSON(error.responseText);
+	            alert(err.ExceptioMessage);
+	        }
+	    }
+
+	    DashboardMenu.GetMenus();
+
+	    //var rendered = Mustache.render(dashboardTpl,
+        //    {
+        //        "Menus": [
+        //          { 
+        //              "Name": "Test1",
+        //              "Items": [{
+        //                  "Name": "Test1",
+        //                  "Link": "Link1"
+        //              }]
+        //          },
+        //          { 
+        //              "Name": "Test2",
+        //              "Items": [{
+        //                  "Name": "Test1",
+        //                  "Link": "Link1"
+        //              }]
+        //          },
+        //          { 
+        //              "Name": "Test3",
+        //              "Items": [{
+        //                  "Name": "Test1",
+        //                  "Link": "Link1"
+        //              }]
+        //          }
+        //        ]
+        //    });
+
+	    //$('#dashboardMenu').html(rendered);
+	</script>
+
+    <!-- Populate Notification Menu Data -->
+	<script type="text/javascript">
+	    var NotificationMenu = {
+	        ServiceAPI: api,
+	        GetMenus: function () {
+	            try {
+	                $.ajax({
+	                    url: this.ServiceAPI + 'menus/NotificationMenu?sectionId=' + dashboardSectionId + '&languageCode=' + languageCode,
+	                    type: "GET",
+	                    contentType: "application/json; charset=utf-8",
+	                    dataType: "json",
+	                    async: true,
+	                    success: function (response) { NotificationMenu.Success(response) },
+	                    error: function (error) { NotificationMenu.Error(error); },
+	                });
+	            }
+	            catch (ex) {
+	                alert("An error occurred. Please contact the administrator.");
+	            }
+	        },
+	        Success: function (response) {
+
+	            var notificationTpl = $('#notificatioTpl').html();
+	            Mustache.parse(notificatioTpl);   // optional, speeds up future uses
+
+	            //var data = $.parseJSON(response);
+	            //var dataString = "{ Menus: " + JSON.stringify($.parseJSON(response)) + "}";
+	            //alert(dataString);
+	            //var rendered2 = Mustache.render(dashboardTpl, dataString);
+	            //alert(rendered2);
+
+
+	            var rendered = Mustache.render(notificationTpl,
+                    {
+                        "Notification": [
+                            {
+                                "Count": "1",
+                                "TypeName": "Test1"
+                            },
+                            {
+                                "Count": "2",
+                                "TypeName": "Test2"
+                            }
+
+                        ]
+                    });
+
+	                $('#notificationMenu').html(rendered);
+	            },
+	        Error: function (error) {
+	            var err = $.parseJSON(error.responseText);
+	            alert(err.ExceptioMessage);
+	        }
+	    }
+
+	    NotificationMenu.GetMenus();
+
+
+	    //var notificationTpl = $('#notificationTpl').html();
+	    //Mustache.parse(notificationTpl);   // optional, speeds up future uses
+	    //var rendered = Mustache.render(notificationTpl,
+        //    {
+        //        "Notification": [
+        //            {
+        //                "Count": "1",
+        //                "TypeName": "Test1"
+        //            },
+        //            {
+        //                "Count": "2",
+        //                "TypeName": "Test2"
+        //            }
+
+        //        ]
+        //    });
+	    //$('#notificationMenu').html(rendered);
+	</script>
+
+
+    <!-- Handlers -->
+    <!-- Handle Avatar Event -->
+    <script type="text/javascript">
+
+        $('#avatarMenu').click(function() {
+            var test = $(this).find('#avatarList');
+            test.addClass('Menu');
+            alert(test.attr('title'));
+        });
+
+    </script>
+</body>
+</html>
