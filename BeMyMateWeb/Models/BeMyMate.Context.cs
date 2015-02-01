@@ -184,19 +184,6 @@ namespace BeMyMateWeb.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMessagesOutbox_Result>("GetMessagesOutbox", userIDParameter);
         }
     
-        public virtual ObjectResult<GetNotifications_Result> GetNotifications(Nullable<int> userID, string languageCode)
-        {
-            var userIDParameter = userID.HasValue ?
-                new ObjectParameter("UserID", userID) :
-                new ObjectParameter("UserID", typeof(int));
-    
-            var languageCodeParameter = languageCode != null ?
-                new ObjectParameter("LanguageCode", languageCode) :
-                new ObjectParameter("LanguageCode", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetNotifications_Result>("GetNotifications", userIDParameter, languageCodeParameter);
-        }
-    
         public virtual ObjectResult<GetProfileBasicInfo_Result> GetProfileBasicInfo(Nullable<int> userID, Nullable<System.Guid> userGuid, string languageCode)
         {
             var userIDParameter = userID.HasValue ?
@@ -277,6 +264,19 @@ namespace BeMyMateWeb.Models
                 new ObjectParameter("userId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SetUserPrivacy", userIdParameter);
+        }
+    
+        public virtual ObjectResult<GetNotifications_Result> GetNotifications(Nullable<int> userID, string languageCode)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var languageCodeParameter = languageCode != null ?
+                new ObjectParameter("LanguageCode", languageCode) :
+                new ObjectParameter("LanguageCode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetNotifications_Result>("GetNotifications", userIDParameter, languageCodeParameter);
         }
     }
 }

@@ -32,27 +32,27 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body id="dashboard">
+<body id="user-profile">
 	<div id="wrapper">
 		<div id="sidebar-default" class="main-sidebar">
 
             <!-- Avatar Menu Template -->
 			<div id="avatarMenu" class="current-user">
-                <script id="avatarTpl" type="text/template">
+                <script id="avatarTpl" type="x-tmpl-mustache">
                     {{#Avatar}}
-				    <a href="#" class="name">
-					    <img class="avatar" src="{{AvatarName}}" />
+                    <a href="#" class="name">
+					    <img class="avatar" src="#" />
 					    <span>
 						    {{UserName}}
 						    <i class="fa fa-chevron-down"></i>
 					    </span>
 				    </a>
-				    <ul id="avatarList" class="menu" title="a">
-                        {{#Items}}
+				    <ul id="avatarList" class="menu">
+                        {{#MenuItems}}
 					    <li>
 						    <a href="{{Link}}">{{Name}}</a>
 					    </li>
-                        {{/Items}}
+                        {{/MenuItems}}
 				    </ul>
                     {{/Avatar}}
                 </script>
@@ -62,7 +62,7 @@
             <div id="dashboardMenu" class="menu-section">            
             <script id="dashboardTpl" type="x-tmpl-mustache">			    
 				<h3>Dashboard</h3>
-				<ul> 
+				<ul id="TestID"> 
                     {{#Menus}}
 					<li>
 						<a href="#" data-toggle="sidebar">
@@ -70,13 +70,13 @@
 							<i class="fa fa-chevron-down"></i>
 						</a>
                         {{#Items}}
-						<ul class="submenu">
+                        <ul id="ItemID" class="submenu">						
 							<li><a href="{{Link}}">{{Name}}</a></li>
-						</ul>
+                        </ul>						
                         {{/Items}}
 					</li>
                     {{/Menus}}
-				    </ul>
+				</ul>
 			</script>
             </div>
 
@@ -92,7 +92,7 @@
 						<ul id="notificationMenu" class="menu">
                             <script id="notificationTpl" type="x-tmpl-mustache">	
                                 {{#Notification}}
-							        <li><a href="#">{{Count}} {{TypeName}}</a></li>
+							        <li><a href="#">{{Count}} {{Type}}</a></li>
                                 {{/Notification}}
                             </script>
 						</ul>
@@ -142,27 +142,7 @@
             Success: function (response) {
                 var avatarTpl = $('#avatarTpl').html();
                 Mustache.parse(avatarTpl);   // optional, speeds up future uses
-
-                //var data = $.parseJSON(response);
-                //var dataString = "{ Avatar: " + JSON.stringify($.parseJSON(response)) + "}";
-                //alert(dataString);
-                //var rendered2 = Mustache.render(avatarTpl, dataString);
-                //alert(rendered2);
-
-
-                var rendered = Mustache.render(avatarTpl,
-                    {
-                        "Avatar": [
-                          {
-                              "AvatarName": "Test1",
-                              "UserName": "Test1",
-                              "Items": [{
-                                  "Name": "Test1",
-                                  "Link": "Link1"
-                              }]
-                          }
-                        ]
-                    });
+                var rendered = Mustache.render(avatarTpl, { Avatar : $.parseJSON(response) });
                 $('#avatarMenu').html(rendered);
             },
             Error: function (error) {
@@ -170,25 +150,6 @@
                 alert(err.ExceptioMessage);
             }
         }
-
-        AvatarMenu.GetMenus();
-
-	    //var avatarTpl = $('#avatarTpl').html();
-	    //Mustache.parse(avatarTpl);   // optional, speeds up future uses
-	    //var rendered = Mustache.render(avatarTpl,
-        //    {
-        //        "Avatar": [
-        //          {
-        //              "AvatarName": "Test1",
-        //              "UserName": "Test1",
-        //              "Items": [{
-        //                  "Name": "Test1",
-        //                  "Link": "Link1"
-        //              }]
-        //          }
-        //        ]
-        //    });
-	    //$('#avatarMenu').html(rendered);
 	</script>
 	
     <!-- Populate Dashboard Menu Data -->
@@ -215,41 +176,7 @@
 
 	            var dashboardTpl = $('#dashboardTpl').html();
 	            Mustache.parse(dashboardTpl);   // optional, speeds up future uses
-
-	            var data = $.parseJSON(response);
-	            var dataString = "{ Menus: " + JSON.stringify($.parseJSON(response)) + "}";
-	            //alert(dataString);
-	            var rendered2 = Mustache.render(dashboardTpl, dataString);
-	            //alert(rendered2);
-
-	            
-	            var rendered = Mustache.render(dashboardTpl,
-	                {
-	                    "Menus": [
-	                      { 
-	                          "Name": "Test1",
-	                          "Items": [{
-	                              "Name": "Test1",
-	                              "Link": "Link1"
-	                          }]
-	                      },
-	                      { 
-	                          "Name": "Test2",
-	                          "Items": [{
-	                              "Name": "Test1",
-	                              "Link": "Link1"
-	                          }]
-	                      },
-	                      { 
-	                          "Name": "Test3",
-	                          "Items": [{
-	                              "Name": "Test1",
-	                              "Link": "Link1"
-	                          }]
-	                      }
-	                    ]
-	                });
-
+	            var rendered = Mustache.render(dashboardTpl, { Menus: $.parseJSON(response)});
 	            $('#dashboardMenu').html(rendered);
 	        },
 	        Error: function (error) {
@@ -257,37 +184,6 @@
 	            alert(err.ExceptioMessage);
 	        }
 	    }
-
-	    DashboardMenu.GetMenus();
-
-	    //var rendered = Mustache.render(dashboardTpl,
-        //    {
-        //        "Menus": [
-        //          { 
-        //              "Name": "Test1",
-        //              "Items": [{
-        //                  "Name": "Test1",
-        //                  "Link": "Link1"
-        //              }]
-        //          },
-        //          { 
-        //              "Name": "Test2",
-        //              "Items": [{
-        //                  "Name": "Test1",
-        //                  "Link": "Link1"
-        //              }]
-        //          },
-        //          { 
-        //              "Name": "Test3",
-        //              "Items": [{
-        //                  "Name": "Test1",
-        //                  "Link": "Link1"
-        //              }]
-        //          }
-        //        ]
-        //    });
-
-	    //$('#dashboardMenu').html(rendered);
 	</script>
 
     <!-- Populate Notification Menu Data -->
@@ -297,7 +193,7 @@
 	        GetMenus: function () {
 	            try {
 	                $.ajax({
-	                    url: this.ServiceAPI + 'menus/NotificationMenu?sectionId=' + dashboardSectionId + '&languageCode=' + languageCode,
+	                    url: this.ServiceAPI + 'menus/NotificationMenus?languageCode=' + languageCode,
 	                    type: "GET",
 	                    contentType: "application/json; charset=utf-8",
 	                    dataType: "json",
@@ -311,73 +207,35 @@
 	            }
 	        },
 	        Success: function (response) {
-
-	            var notificationTpl = $('#notificatioTpl').html();
-	            Mustache.parse(notificatioTpl);   // optional, speeds up future uses
-
-	            //var data = $.parseJSON(response);
-	            //var dataString = "{ Menus: " + JSON.stringify($.parseJSON(response)) + "}";
-	            //alert(dataString);
-	            //var rendered2 = Mustache.render(dashboardTpl, dataString);
-	            //alert(rendered2);
-
-
-	            var rendered = Mustache.render(notificationTpl,
-                    {
-                        "Notification": [
-                            {
-                                "Count": "1",
-                                "TypeName": "Test1"
-                            },
-                            {
-                                "Count": "2",
-                                "TypeName": "Test2"
-                            }
-
-                        ]
-                    });
-
-	                $('#notificationMenu').html(rendered);
+	            var notificationTpl = $('#notificationTpl').html();
+	            Mustache.parse(notificationTpl);   // optional, speeds up future uses
+	            var rendered = Mustache.render(notificationTpl, { Notification: $.parseJSON(response) });
+	            $('#notificationMenu').html(rendered);
 	            },
 	        Error: function (error) {
 	            var err = $.parseJSON(error.responseText);
 	            alert(err.ExceptioMessage);
 	        }
 	    }
-
-	    NotificationMenu.GetMenus();
-
-
-	    //var notificationTpl = $('#notificationTpl').html();
-	    //Mustache.parse(notificationTpl);   // optional, speeds up future uses
-	    //var rendered = Mustache.render(notificationTpl,
-        //    {
-        //        "Notification": [
-        //            {
-        //                "Count": "1",
-        //                "TypeName": "Test1"
-        //            },
-        //            {
-        //                "Count": "2",
-        //                "TypeName": "Test2"
-        //            }
-
-        //        ]
-        //    });
-	    //$('#notificationMenu').html(rendered);
 	</script>
 
+    <!-- Populate after retrieve data -->
+    <script type="text/javascript">
+         $(document).ready(function () {
+             AvatarMenu.GetMenus();
+             DashboardMenu.GetMenus();
+             NotificationMenu.GetMenus();            
+         });
+    </script>
 
     <!-- Handlers -->
     <!-- Handle Avatar Event -->
     <script type="text/javascript">
-
-        $('#avatarMenu').click(function() {
-            var test = $(this).find('#avatarList');
-            test.addClass('Menu');
-            alert(test.attr('title'));
+        $('[data-toggle="sidebar"]').click(function () {
+            var a = $(this).find("ItemID");
+            alert(a.attr('');
+            $(a).css('display', 'block');
         });
-
     </script>
 </body>
 </html>

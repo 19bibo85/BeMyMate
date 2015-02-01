@@ -21,7 +21,5 @@ namespace BeMyMateWeb.Models
         public System.Guid guid { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public string name1 { get; set; }
-        public string description1 { get; set; }
     }
 }

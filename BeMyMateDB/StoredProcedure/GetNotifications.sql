@@ -4,7 +4,7 @@
 AS
 	SELECT DISTINCT	
 	u.id as userId, u.name as userName, u.surname, u.email, -- User
-	n.id as notificationId, n.[guid] as [guid], nt.name, nt.[description], -- Notification
+	n.id as notificationId, n.[guid] as [guid], -- Notification
 	loc.name, loc.[description]
 	FROM [User].[Notification] as n
 	INNER JOIN [User].[NotificationType] as nt on n.typeId = nt.id

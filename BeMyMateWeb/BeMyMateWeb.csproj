@@ -1083,6 +1083,7 @@
     <Compile Include="Models\Address.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddressDTO.cs" />
     <Compile Include="Models\AddressType.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
@@ -1176,6 +1177,7 @@
     <Compile Include="Models\Job.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\JobDTO.cs" />
     <Compile Include="Models\Language.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
@@ -1205,6 +1207,7 @@
     <Compile Include="Models\Notification.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NotificationDTO.cs" />
     <Compile Include="Models\NotificationType.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
@@ -1223,9 +1226,11 @@
     <Compile Include="Models\Phone.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PhoneDTO.cs" />
     <Compile Include="Models\PhoneType.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProfileBasicInfoDTO.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProfileAnswer.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>

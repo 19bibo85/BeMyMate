@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BeMyMateDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BeMyMateDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Language">
           <Key>
             <PropertyRef Name="id" />
@@ -2131,8 +2131,7 @@
             <End Role="UserToPhone" EntitySet="UserToPhone" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BeMyMateDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -4379,14 +4378,10 @@
             <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetMessagesInbox" ReturnType="Collection(BeMyMateDBModel.GetMessagesInbox_Result)">
-            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetMessagesOutbox" ReturnType="Collection(BeMyMateDBModel.GetMessagesOutbox_Result)">
-            <Parameter Name="UserID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="GetNotifications" ReturnType="Collection(BeMyMateDBModel.GetNotifications_Result)">
-            <Parameter Name="UserID" Mode="In" Type="Int32" />
-            <Parameter Name="LanguageCode" Mode="In" Type="String" />
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetProfileBasicInfo" ReturnType="Collection(BeMyMateDBModel.GetProfileBasicInfo_Result)">
             <Parameter Name="UserID" Mode="In" Type="Int32" />
@@ -4411,7 +4406,11 @@
             <Parameter Name="LanguageCode" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SetUserPrivacy">
-            <Parameter Name="userId" Mode="In" Type="Int32" />
+          <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetNotifications" ReturnType="Collection(BeMyMateDBModel.GetNotifications_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="LanguageCode" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetSectionMenuItem_Result">
@@ -4498,18 +4497,6 @@
           <Property Type="String" Name="path" Nullable="true" />
           <Property Type="String" Name="extension" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="GetNotifications_Result">
-          <Property Type="Int32" Name="userId" Nullable="false" />
-          <Property Type="String" Name="userName" Nullable="false" />
-          <Property Type="String" Name="surname" Nullable="false" />
-          <Property Type="String" Name="email" Nullable="false" />
-          <Property Type="Int32" Name="notificationId" Nullable="false" />
-          <Property Type="Guid" Name="guid" Nullable="false" />
-          <Property Type="String" Name="name" Nullable="false" />
-          <Property Type="String" Name="description" Nullable="true" />
-          <Property Type="String" Name="name1" Nullable="false" />
-          <Property Type="String" Name="description1" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="GetProfileBasicInfo_Result">
           <Property Type="String" Name="Surname" Nullable="false" />
           <Property Type="String" Name="AvatarPath" Nullable="false" />
@@ -4544,6 +4531,16 @@
           <Property Type="String" Name="Area" Nullable="false" />
           <Property Type="String" Name="Questionnaire" Nullable="false" />
           <Property Type="String" Name="Answer" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetNotifications_Result">
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="String" Name="userName" Nullable="false" />
+          <Property Type="String" Name="surname" Nullable="false" />
+          <Property Type="String" Name="email" Nullable="false" />
+          <Property Type="Int32" Name="notificationId" Nullable="false" />
+          <Property Type="Guid" Name="guid" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" />
+          <Property Type="String" Name="description" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -5435,22 +5432,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetNotifications" FunctionName="BeMyMateDBModel.Store.GetNotifications">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BeMyMateDBModel.GetNotifications_Result">
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
-                <ScalarProperty Name="surname" ColumnName="surname" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="notificationId" ColumnName="notificationId" />
-                <ScalarProperty Name="guid" ColumnName="guid" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="name1" ColumnName="name1" />
-                <ScalarProperty Name="description1" ColumnName="description1" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetProfileBasicInfo" FunctionName="BeMyMateDBModel.Store.GetProfileBasicInfo">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BeMyMateDBModel.GetProfileBasicInfo_Result">
@@ -5507,6 +5488,20 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SetUserPrivacy" FunctionName="BeMyMateDBModel.Store.SetUserPrivacy" />
+          <FunctionImportMapping FunctionImportName="GetNotifications" FunctionName="BeMyMateDBModel.Store.GetNotifications">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BeMyMateDBModel.GetNotifications_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="notificationId" ColumnName="notificationId" />
+                <ScalarProperty Name="guid" ColumnName="guid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
