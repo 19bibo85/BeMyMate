@@ -24,6 +24,13 @@ namespace BeMyMateWeb.Controllers
             return JsonConvert.SerializeObject(CommonQuery.GetProfileBasicInfo(_userId, languageCode));
         }
 
+        // Note Users JSON
+        [ActionName("ProfileDetailInfos")]
+        public string GetProfileDetailInfos([FromUri] string languageCode)
+        {
+            return JsonConvert.SerializeObject(CommonQuery.GetProfileDetailInfos(_userId, languageCode));
+        }
+
         #endregion
     }
 }

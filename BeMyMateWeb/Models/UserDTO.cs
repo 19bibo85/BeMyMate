@@ -26,5 +26,7 @@ namespace BeMyMateWeb.Models
         public int AvatarId { get; set; }
 
         public string AvatarName { get; set; }
+
+        public string AvatarPath { get; set; }
     }
 }

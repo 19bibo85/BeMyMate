@@ -27,6 +27,15 @@
 	<script src="Content/template/js/vendor/raphael-min.js"></script>
 	<script src="Content/template/js/vendor/morris.min.js"></script>
 
+    <!-- kendo -->
+    <link rel="stylesheet" href="Content/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="Content/styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="Content/styles/kendo.dataviz.min.css" />
+    <link rel="stylesheet" href="Content/styles/kendo.dataviz.default.min.css" />
+
+    <script src="Content/js/jquery.min.js"></script>
+    <script src="Content/js/kendo.all.min.js"></script>
+
 
 	<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -40,11 +49,10 @@
 			<div id="avatarMenu" class="current-user">
                 <script id="avatarTpl" type="x-tmpl-mustache">
                     {{#Avatar}}
-                    <a href="#" class="name">
-					    <img class="avatar" src="#" />
+                    <a class="name">
+					    <img class="avatar" src="Content\avatar\placeholder.gif" />
 					    <span>
 						    {{UserName}}
-						    <i class="fa fa-chevron-down"></i>
 					    </span>
 				    </a>
 				    <ul id="avatarList" class="menu">
@@ -60,23 +68,19 @@
 
             <!-- Dashboard Menu Template -->
             <div id="dashboardMenu" class="menu-section">            
-            <script id="dashboardTpl" type="x-tmpl-mustache">			    
-				<h3>Dashboard</h3>
-				<ul id="TestID"> 
-                    {{#Menus}}
+            <script id="dashboardTpl" type="x-tmpl-mustache">	
+                {{#Menus}}		    
+				<h3>{{Name}}</h3>
+				<ul id="TestID">                     
 					<li>
-						<a href="#" data-toggle="sidebar">
-							<i class="ion-person-stalker"></i><span>{{Name}}</span>
-							<i class="fa fa-chevron-down"></i>
-						</a>
                         {{#Items}}
-                        <ul id="ItemID" class="submenu">						
-							<li><a href="{{Link}}">{{Name}}</a></li>
-                        </ul>						
+						<a href="{{Link}}">
+							<i class="ion-person-stalker"></i><span>{{Name}}</span>
+						</a>
                         {{/Items}}
-					</li>
-                    {{/Menus}}
+					</li>                    
 				</ul>
+                {{/Menus}}
 			</script>
             </div>
 
@@ -233,7 +237,6 @@
     <script type="text/javascript">
         $('[data-toggle="sidebar"]').click(function () {
             var a = $(this).find("ItemID");
-            alert(a.attr('');
             $(a).css('display', 'block');
         });
     </script>

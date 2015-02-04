@@ -74,7 +74,8 @@ namespace BeMyMateWeb.App_Code
                                 StatusId = status.id,
                                 StatusName = status.name,
                                 AvatarId = avatar.id,
-                                AvatarName = avatar.name
+                                AvatarName = avatar.name,
+                                AvatarPath =  avatar.path
                              })
                              .Select(s => new UserDTO
                              {
@@ -87,7 +88,8 @@ namespace BeMyMateWeb.App_Code
                                 StatusId = s.StatusId,
                                 StatusName = s.StatusName,
                                 AvatarId = s.AvatarId,
-                                AvatarName = s.AvatarName
+                                AvatarName = s.AvatarName,
+                                AvatarPath = s.AvatarPath
                             }).ToList();
                 }
                 return users;
@@ -173,6 +175,31 @@ namespace BeMyMateWeb.App_Code
                                    .FirstOrDefault();
 
                 return profileBasicInfo;
+            }
+        }
+
+        //Note query to retrieve profile detail infos
+        public static List<ProfileDetailInfoDTO> GetProfileDetailInfos(int userId, string languageCode) 
+        {
+            List<ProfileDetailInfoDTO> profileDetailInfos = new List<ProfileDetailInfoDTO>();
+            using (var ent = new BeMyMateDBEntities())
+            {
+                profileDetailInfos = ent.GetProfileDetailInfo(userId, null, languageCode)
+                                    .AsEnumerable()
+                                    .GroupBy(g => g.Area)
+                                    .Select(s => new ProfileDetailInfoDTO
+                                    {
+                                        AreaName = s.Key,
+                                        QuestionnaireAnswers = s.Select(sItem => new QuestionnaireAnswerDTO
+                                        {
+                                            QuestionnaireName = sItem.Questionnaire,
+                                            AnswerName = sItem.Answer
+                                        })
+                                        .ToList()
+                                    })
+                                    .ToList();
+
+                return profileDetailInfos;
             }
         }
 

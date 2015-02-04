@@ -983,7 +983,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="page_profile.aspx" />
+    <Content Include="page_profile_detail.aspx" />
     <EntityDeploy Include="Models\BeMyMate.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BeMyMate.Designer.cs</LastGenOutput>
@@ -1054,11 +1054,13 @@
     <Content Include="Content\template\css\partials\_config.scss" />
     <Content Include="Content\template\css\partials\_layout.scss" />
     <Content Include="page_dashboard.Master" />
+    <Content Include="page_profile.Master" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="page_profile_review.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\GetMenus.js" />
@@ -1066,7 +1068,9 @@
     <Content Include="Scripts\jquery-2.1.3.min.js" />
     <Content Include="Scripts\mustache.js" />
     <Content Include="Scripts\npm.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\CommonQuery.cs" />
@@ -1238,6 +1242,7 @@
     <Compile Include="Models\ProfileArea.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProfileDetailInfoDTO.cs" />
     <Compile Include="Models\ProfileQuestionnaire.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
@@ -1247,6 +1252,7 @@
     <Compile Include="Models\Province.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\QuestionnaireAnswerDTO.cs" />
     <Compile Include="Models\Review.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
@@ -1331,12 +1337,26 @@
     <Compile Include="page_dashboard.Master.designer.cs">
       <DependentUpon>page_dashboard.Master</DependentUpon>
     </Compile>
-    <Compile Include="page_profile.aspx.cs">
-      <DependentUpon>page_profile.aspx</DependentUpon>
+    <Compile Include="page_profile.Master.cs">
+      <DependentUpon>page_profile.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page_profile.aspx.designer.cs">
-      <DependentUpon>page_profile.aspx</DependentUpon>
+    <Compile Include="page_profile.Master.designer.cs">
+      <DependentUpon>page_profile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="page_profile_detail.aspx.cs">
+      <DependentUpon>page_profile_detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="page_profile_detail.aspx.designer.cs">
+      <DependentUpon>page_profile_detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="page_profile_review.aspx.cs">
+      <DependentUpon>page_profile_review.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="page_profile_review.aspx.designer.cs">
+      <DependentUpon>page_profile_review.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -1357,6 +1377,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\avatar\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
