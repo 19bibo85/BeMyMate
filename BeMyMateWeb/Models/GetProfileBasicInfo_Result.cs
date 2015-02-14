@@ -13,7 +13,10 @@ namespace BeMyMateWeb.Models
     
     public partial class GetProfileBasicInfo_Result
     {
+        public string Name { get; set; }
+        public string MiddleName { get; set; }
         public string Surname { get; set; }
+        public string Email { get; set; }
         public string AvatarPath { get; set; }
         public string Gender { get; set; }
         public string UserStatus { get; set; }

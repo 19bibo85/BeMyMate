@@ -9,7 +9,7 @@ AS
 		 @UserID = @UserID
 
 	SELECT  sr.id as SectionId, sr.name as SectionName, sr.[description] as SecionDesc, sr.[level] as SectionLevel,
-			mr.id as MenuId, mr.name as MenuName, mr.[description] as MenuDesc,
+			mr.id as MenuId, mr.name as MenuName, mr.[description] as MenuDesc, mr.link as MenuLink,
 			mir.id as ItemId, mir.name as ItemName, mir.[description] as ItemDesc, mir.icon as Icon, mir.link as Link, mir.isActive as Active, mir.parentId as ParentId 
 	FROM (SELECT s.id, loc.name, loc.[description], s.[level]
 		  FROM @TMP as st 
@@ -19,7 +19,7 @@ AS
 		  WHERE lan.code = @LanguageCode)
 		  as sr
 	INNER JOIN [Application].[SectionToMenu] as sm on sr.id = sm.sectionId
-	INNER JOIN (SELECT m.id, loc.name, loc.[description], m.[order]
+	INNER JOIN (SELECT m.id, loc.name, loc.[description], m.link, m.[order]
 				FROM @TMP as mt 
 				INNER JOIN [Application].[Menu] as m on mt.ViewObjectId = m.objectId
 				INNER JOIN [Application].[Localization] as loc on m.refCode = loc.refCode

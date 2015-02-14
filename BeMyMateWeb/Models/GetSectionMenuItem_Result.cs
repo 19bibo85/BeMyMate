@@ -20,6 +20,7 @@ namespace BeMyMateWeb.Models
         public int MenuId { get; set; }
         public string MenuName { get; set; }
         public string MenuDesc { get; set; }
+        public string MenuLink { get; set; }
         public Nullable<int> ItemId { get; set; }
         public string ItemName { get; set; }
         public string ItemDesc { get; set; }

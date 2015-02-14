@@ -42,6 +42,7 @@
           <Property Name="refCode" Type="varchar(max)" StoreGeneratedPattern="Computed" />
           <Property Name="name" Type="varchar(max)" Nullable="false" />
           <Property Name="description" Type="varchar(max)" />
+          <Property Name="link" Type="varchar(max)" />
           <Property Name="objectId" Type="int" Nullable="false" />
           <Property Name="order" Type="int" Nullable="false" />
           <Property Name="contextId" Type="int" Nullable="false" />
@@ -441,6 +442,7 @@
           <Property Name="objectId" Type="int" Nullable="false" />
           <Property Name="contextId" Type="int" Nullable="false" />
           <Property Name="isDefault" Type="bit" Nullable="false" />
+          <Property Name="value" Type="int" Nullable="false" />
           <Property Name="dtCreated" Type="datetime" Nullable="false" />
           <Property Name="dtUpdated" Type="datetime" />
           <Property Name="dtDeleted" Type="datetime" />
@@ -2186,6 +2188,7 @@
           <NavigationProperty Name="Object" Relationship="Self.FK_Menu_Object" FromRole="Menu" ToRole="Object" />
           <NavigationProperty Name="MenuToMenuItems" Relationship="Self.FK_MenuToMenuItem_Menu" FromRole="Menu" ToRole="MenuToMenuItem" />
           <NavigationProperty Name="SectionToMenus" Relationship="Self.FK_SectionToMenu_Menu" FromRole="Menu" ToRole="SectionToMenu" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="MenuItem">
           <Key>
@@ -2662,6 +2665,7 @@
           <NavigationProperty Name="Object" Relationship="Self.FK_ProfileAnswer_Object" FromRole="ProfileAnswer" ToRole="Object" />
           <NavigationProperty Name="ProfileQuestionnaireToAnswers" Relationship="Self.FK_ProfileQuestionnaireToAnswer_Answer" FromRole="ProfileAnswer" ToRole="ProfileQuestionnaireToAnswer" />
           <NavigationProperty Name="UserProfileInfoes" Relationship="Self.FK_UserProfileInfo_Answer" FromRole="ProfileAnswer" ToRole="UserProfileInfo" />
+          <Property Name="value" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ProfileArea">
           <Key>
@@ -4353,10 +4357,6 @@
             <End Role="User" EntitySet="Users" />
             <End Role="UserToPhone" EntitySet="UserToPhones" />
           </AssociationSet>
-          <FunctionImport Name="GetSectionMenuItem" ReturnType="Collection(BeMyMateDBModel.GetSectionMenuItem_Result)">
-            <Parameter Name="UserID" Mode="In" Type="Int32" />
-            <Parameter Name="LanguageCode" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="GetUserSecurity" ReturnType="Collection(BeMyMateDBModel.GetUserSecurity_Result)">
             <Parameter Name="UserGuid" Mode="In" Type="Guid" />
             <Parameter Name="UserID" Mode="In" Type="Int32" />
@@ -4383,11 +4383,6 @@
           <FunctionImport Name="GetMessagesOutbox" ReturnType="Collection(BeMyMateDBModel.GetMessagesOutbox_Result)">
           <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetProfileBasicInfo" ReturnType="Collection(BeMyMateDBModel.GetProfileBasicInfo_Result)">
-            <Parameter Name="UserID" Mode="In" Type="Int32" />
-            <Parameter Name="UserGuid" Mode="In" Type="Guid" />
-            <Parameter Name="LanguageCode" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="GetProfileDetailInfo" ReturnType="Collection(BeMyMateDBModel.GetProfileDetailInfo_Result)">
             <Parameter Name="UserID" Mode="In" Type="Int32" />
             <Parameter Name="UserGuid" Mode="In" Type="Guid" />
@@ -4412,23 +4407,16 @@
             <Parameter Name="UserID" Mode="In" Type="Int32" />
             <Parameter Name="LanguageCode" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetSectionMenuItem" ReturnType="Collection(BeMyMateDBModel.GetSectionMenuItem_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="LanguageCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetProfileBasicInfo" ReturnType="Collection(BeMyMateDBModel.GetProfileBasicInfo_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="UserGuid" Mode="In" Type="Guid" />
+            <Parameter Name="LanguageCode" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="GetSectionMenuItem_Result">
-          <Property Type="Int32" Name="SectionId" Nullable="false" />
-          <Property Type="String" Name="SectionName" Nullable="false" />
-          <Property Type="String" Name="SecionDesc" Nullable="true" />
-          <Property Type="Int32" Name="SectionLevel" Nullable="false" />
-          <Property Type="Int32" Name="MenuId" Nullable="false" />
-          <Property Type="String" Name="MenuName" Nullable="false" />
-          <Property Type="String" Name="MenuDesc" Nullable="true" />
-          <Property Type="Int32" Name="ItemId" Nullable="true" />
-          <Property Type="String" Name="ItemName" Nullable="true" />
-          <Property Type="String" Name="ItemDesc" Nullable="true" />
-          <Property Type="String" Name="Icon" Nullable="true" />
-          <Property Type="String" Name="Link" Nullable="true" />
-          <Property Type="Boolean" Name="Active" Nullable="true" />
-          <Property Type="Int32" Name="ParentId" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="GetUserSecurity_Result">
           <Property Type="Int32" Name="ViewObjectId" Nullable="false" />
           <Property Type="Int32" Name="EditObjectId" Nullable="true" />
@@ -4497,21 +4485,6 @@
           <Property Type="String" Name="path" Nullable="true" />
           <Property Type="String" Name="extension" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="GetProfileBasicInfo_Result">
-          <Property Type="String" Name="Surname" Nullable="false" />
-          <Property Type="String" Name="AvatarPath" Nullable="false" />
-          <Property Type="String" Name="Gender" Nullable="false" />
-          <Property Type="String" Name="UserStatus" Nullable="false" />
-          <Property Type="String" Name="AddressLine" Nullable="true" />
-          <Property Type="String" Name="City" Nullable="true" />
-          <Property Type="String" Name="PostalCode" Nullable="true" />
-          <Property Type="String" Name="Province" Nullable="true" />
-          <Property Type="String" Name="Country" Nullable="true" />
-          <Property Type="String" Name="Job" Nullable="true" />
-          <Property Type="String" Name="Prefix" Nullable="true" />
-          <Property Type="String" Name="Number" Nullable="true" />
-          <Property Type="String" Name="PhoneType" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="GetProfileDetailInfo_Result">
           <Property Type="String" Name="Area" Nullable="false" />
           <Property Type="String" Name="Questionnaire" Nullable="false" />
@@ -4541,6 +4514,41 @@
           <Property Type="Guid" Name="guid" Nullable="false" />
           <Property Type="String" Name="name" Nullable="false" />
           <Property Type="String" Name="description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetSectionMenuItem_Result">
+          <Property Type="Int32" Name="SectionId" Nullable="false" />
+          <Property Type="String" Name="SectionName" Nullable="false" />
+          <Property Type="String" Name="SecionDesc" Nullable="true" />
+          <Property Type="Int32" Name="SectionLevel" Nullable="false" />
+          <Property Type="Int32" Name="MenuId" Nullable="false" />
+          <Property Type="String" Name="MenuName" Nullable="false" />
+          <Property Type="String" Name="MenuDesc" Nullable="true" />
+          <Property Type="String" Name="MenuLink" Nullable="true" />
+          <Property Type="Int32" Name="ItemId" Nullable="true" />
+          <Property Type="String" Name="ItemName" Nullable="true" />
+          <Property Type="String" Name="ItemDesc" Nullable="true" />
+          <Property Type="String" Name="Icon" Nullable="true" />
+          <Property Type="String" Name="Link" Nullable="true" />
+          <Property Type="Boolean" Name="Active" Nullable="true" />
+          <Property Type="Int32" Name="ParentId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetProfileBasicInfo_Result">
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="MiddleName" Nullable="true" />
+          <Property Type="String" Name="Surname" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" />
+          <Property Type="String" Name="AvatarPath" Nullable="false" />
+          <Property Type="String" Name="Gender" Nullable="false" />
+          <Property Type="String" Name="UserStatus" Nullable="false" />
+          <Property Type="String" Name="AddressLine" Nullable="true" />
+          <Property Type="String" Name="City" Nullable="true" />
+          <Property Type="String" Name="PostalCode" Nullable="true" />
+          <Property Type="String" Name="Province" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" />
+          <Property Type="String" Name="Job" Nullable="true" />
+          <Property Type="String" Name="Prefix" Nullable="true" />
+          <Property Type="String" Name="Number" Nullable="true" />
+          <Property Type="String" Name="PhoneType" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -4580,6 +4588,7 @@
           <EntitySetMapping Name="Menus">
             <EntityTypeMapping TypeName="BeMyMateDBModel.Menu">
               <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="link" ColumnName="link" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="refCode" ColumnName="refCode" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -5002,6 +5011,7 @@
           <EntitySetMapping Name="ProfileAnswers">
             <EntityTypeMapping TypeName="BeMyMateDBModel.ProfileAnswer">
               <MappingFragment StoreEntitySet="ProfileAnswer">
+                <ScalarProperty Name="value" ColumnName="value" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="refCode" ColumnName="refCode" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -5319,26 +5329,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetSectionMenuItem" FunctionName="BeMyMateDBModel.Store.GetSectionMenuItem">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BeMyMateDBModel.GetSectionMenuItem_Result">
-                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
-                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
-                <ScalarProperty Name="SecionDesc" ColumnName="SecionDesc" />
-                <ScalarProperty Name="SectionLevel" ColumnName="SectionLevel" />
-                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
-                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
-                <ScalarProperty Name="MenuDesc" ColumnName="MenuDesc" />
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="ItemDesc" ColumnName="ItemDesc" />
-                <ScalarProperty Name="Icon" ColumnName="Icon" />
-                <ScalarProperty Name="Link" ColumnName="Link" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetUserSecurity" FunctionName="BeMyMateDBModel.Store.GetUserSecurity">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BeMyMateDBModel.GetUserSecurity_Result">
@@ -5432,25 +5422,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetProfileBasicInfo" FunctionName="BeMyMateDBModel.Store.GetProfileBasicInfo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BeMyMateDBModel.GetProfileBasicInfo_Result">
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="AvatarPath" ColumnName="AvatarPath" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
-                <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
-                <ScalarProperty Name="Province" ColumnName="Province" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Job" ColumnName="Job" />
-                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="PhoneType" ColumnName="PhoneType" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetProfileDetailInfo" FunctionName="BeMyMateDBModel.Store.GetProfileDetailInfo">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BeMyMateDBModel.GetProfileDetailInfo_Result">
@@ -5499,6 +5470,49 @@
                 <ScalarProperty Name="guid" ColumnName="guid" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="description" ColumnName="description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSectionMenuItem" FunctionName="BeMyMateDBModel.Store.GetSectionMenuItem">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BeMyMateDBModel.GetSectionMenuItem_Result">
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="SecionDesc" ColumnName="SecionDesc" />
+                <ScalarProperty Name="SectionLevel" ColumnName="SectionLevel" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="MenuDesc" ColumnName="MenuDesc" />
+                <ScalarProperty Name="MenuLink" ColumnName="MenuLink" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemDesc" ColumnName="ItemDesc" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProfileBasicInfo" FunctionName="BeMyMateDBModel.Store.GetProfileBasicInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BeMyMateDBModel.GetProfileBasicInfo_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="AvatarPath" ColumnName="AvatarPath" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="PhoneType" ColumnName="PhoneType" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

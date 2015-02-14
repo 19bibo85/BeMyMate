@@ -7,7 +7,7 @@ using System.Web;
 
 namespace BeMyMateWeb.App_Code
 {
-    public class CommonQuery
+    public class DataManager
     {
         #region Menu
 
@@ -19,13 +19,14 @@ namespace BeMyMateWeb.App_Code
             {   
                 menus =  ent.GetSectionMenuItem(userId, languageCode)
                         .Where(w => w.SectionId == sectionId)
-                        .GroupBy(g => new { g.MenuId, g.MenuName, g.MenuDesc })
+                        .GroupBy(g => new { g.MenuId, g.MenuName, g.MenuDesc, g.MenuLink })
                         .AsEnumerable()
                         .Select(s => new MenuDTO
                         {
                             Id = s.Key.MenuId,
                             Name = s.Key.MenuName,
                             Description = s.Key.MenuDesc,
+                            Link = s.Key.MenuLink,
                             Items = s.Select(sItem => new MenuItemDTO
                             {
                                 Id = sItem.ItemId,
@@ -83,7 +84,7 @@ namespace BeMyMateWeb.App_Code
                                 Guid = s.Guid, 
                                 Name = s.Name,
                                 Surname = s.Surname,
-                                FullName = s.Name + " " + s.MiddleName + " " + s.Surname,
+                                MiddleName = s.MiddleName,
                                 Email = s.Email,
                                 StatusId = s.StatusId,
                                 StatusName = s.StatusName,
@@ -146,22 +147,29 @@ namespace BeMyMateWeb.App_Code
             {
                 profileBasicInfo = ent.GetProfileBasicInfo(userId, null, languageCode)
                                    .AsEnumerable()
-                                   .GroupBy(g => new { g.Surname, g.AvatarPath, g.Gender, g.UserStatus })
+                                   .GroupBy(g => new { g.AvatarPath, g.Name, g.Surname, g.Email, g.Gender, g.UserStatus })
                                    .Select(s => new ProfileBasicInfoDTO
                                    {
                                        AvatarName = s.Key.AvatarPath,
-                                       UserFullName = s.Key.Surname,
+                                       UserName = s.Key.Name,
+                                       UserMiddleName = "",
+                                       UserSurname = s.Key.Surname,                                       
                                        UserType = "Tennant",
-                                       EmailName = "alberto.tosibrandi@gmail.com",
+                                       EmailName = s.Key.Email,
                                        Phones = s.Select(sPhone => new PhoneDTO
                                                 {
-                                                    Name = sPhone.Prefix + "-" + sPhone.Number,
+                                                    Prefix = sPhone.Prefix,
+                                                    Number = sPhone.Number,
                                                     Type = sPhone.PhoneType
                                                 })
                                                 .ToList(),
                                        Addresses = s.Select(sAddress => new AddressDTO
                                                 {
-                                                    Name = sAddress.AddressLine + "-" + sAddress.City + "-" + sAddress.PostalCode + "-" + sAddress.Province + "-" + sAddress.Country,
+                                                    Line = sAddress.AddressLine,
+                                                    City = sAddress.City,
+                                                    PostaCode = sAddress.PostalCode,
+                                                    Province  = sAddress.Province,
+                                                    Country = sAddress.Country,
                                                     Type = "Home"
                                                 })
                                                 .ToList(),
@@ -203,6 +211,72 @@ namespace BeMyMateWeb.App_Code
             }
         }
 
+        //Note query to retrieve profile chart area
+        public static List<ProfileChartAreaDTO> GetProfileChartArea(int userId, string languageCode) 
+        {
+            List<ProfileChartAreaDTO> profileChartArea = new List<ProfileChartAreaDTO>();
+            using (var ent = new BeMyMateDBEntities())
+            {
+                //profileChartArea = ent.GetProfileDetailInfo(userId, null, languageCode)
+                //                   .AsEnumerable()
+                //                   .GroupBy(g => g.Area)
+                //                   .Select(s => new ProfileChartAreaDTO
+                //                   {
+                //                        AreaName = s.Key,
+                //                        AreaValue = 10
+                //                   })
+                //                   .ToList();
+                profileChartArea = new List<ProfileChartAreaDTO>{
+                                                                new ProfileChartAreaDTO
+                                                                {
+                                                                    AreaName = "Area1",
+                                                                    AreaValue = 10
+                                                                },
+                                                                new ProfileChartAreaDTO
+                                                                {
+                                                                    AreaName = "Area2",
+                                                                    AreaValue = 5
+                                                                },
+                                                                new ProfileChartAreaDTO
+                                                                {
+                                                                    AreaName = "Area3",
+                                                                    AreaValue = 10
+                                                                },
+                                                                new ProfileChartAreaDTO
+                                                                {
+                                                                    AreaName = "Area4",
+                                                                    AreaValue = 15
+                                                                },
+                                                                new ProfileChartAreaDTO
+                                                                {
+                                                                    AreaName = "Area5",
+                                                                    AreaValue = 15
+                                                                }};
+
+
+
+                return profileChartArea;
+            }
+        }
+
         #endregion
+
+        //#region Friend
+
+        //public static IEnumerable<> GetFriends(int userId, string languageCode)
+        //{
+        //    var friends = new IEnumerable<>();
+        //    using(var ent = new BeMyMateDBEntities())
+        //    {
+        //        friends = ent.GetFriends(userId, languageCode)
+        //                  .Select(s=> new 
+        //                  {
+                              
+        //                  })
+        //                  .ToList();
+        //    }
+        //}
+
+        //#endregion
     }
 }

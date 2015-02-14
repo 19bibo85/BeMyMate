@@ -7,8 +7,9 @@
     [objectId] INT NOT NULL, 
 	[contextId] INT NOT NULL,
 	[isDefault] BIT NOT NULL,
+	[value] INT NOT NULL, 
     [dtCreated] DATETIME NOT NULL DEFAULT GETDATE(), 
     [dtUpdated] DATETIME NULL, 
-    [dtDeleted] DATETIME NULL, 
+    [dtDeleted] DATETIME NULL,     
     CONSTRAINT [FK_ProfileAnswer_Object] FOREIGN KEY ([objectId]) REFERENCES [Security].[Object]([id])
 )

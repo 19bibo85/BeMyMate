@@ -602,4 +602,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="isReaded" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="3e944cf4-680b-459f-acbc-731daa4fcdc8" ChangeDateTime="02/06/2015 21:27:42">
+    <Property Name="ElementName" Value="[Application].[Menu].[Link]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Application].[Menu]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="link" />
+  </Operation>
 </Operations>

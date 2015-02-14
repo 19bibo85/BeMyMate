@@ -30,6 +30,7 @@ namespace BeMyMateWeb.Models
         public System.DateTime dtCreated { get; set; }
         public Nullable<System.DateTime> dtUpdated { get; set; }
         public Nullable<System.DateTime> dtDeleted { get; set; }
+        public string link { get; set; }
     
         public virtual ObjectContext ObjectContext { get; set; }
         public virtual Object Object { get; set; }

@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Results;
 
 namespace BeMyMateWeb.Controllers
 {
@@ -19,16 +20,24 @@ namespace BeMyMateWeb.Controllers
 
         // Note Users JSON
         [ActionName("ProfileBasicInfo")]
-        public string GetProfileBasicInfo([FromUri] string languageCode)
-        {
-            return JsonConvert.SerializeObject(CommonQuery.GetProfileBasicInfo(_userId, languageCode));
+        public ProfileBasicInfoDTO GetProfileBasicInfo([FromUri] string languageCode)
+        {   
+            return DataManager.GetProfileBasicInfo(_userId, languageCode);
         }
 
         // Note Users JSON
         [ActionName("ProfileDetailInfos")]
-        public string GetProfileDetailInfos([FromUri] string languageCode)
+        public JsonResult<List<ProfileDetailInfoDTO>> GetProfileDetailInfos([FromUri] string languageCode)
         {
-            return JsonConvert.SerializeObject(CommonQuery.GetProfileDetailInfos(_userId, languageCode));
+            return this.Json(DataManager.GetProfileDetailInfos(_userId, languageCode));
+        }
+
+        // Note Chart JSON
+        [ActionName("ProfileChartArea")]
+        public JsonResult<List<ProfileChartAreaDTO>> GetProfileChartArea([FromUri] string languageCode)
+        {
+            return this.Json(DataManager.GetProfileChartArea(_userId, languageCode));
+            //return JsonConvert.SerializeObject(DataManager.GetProfileChartArea(_userId, languageCode));
         }
 
         #endregion

@@ -43,9 +43,9 @@ namespace BeMyMateWeb.Controllers
                          {
                             //Id = s.Id,
                             //Guid = s.Guid, 
-                            //Name = s.Name,
-                            //Surname = s.Surname,
-                            FullName = s.Name + " " + s.MiddleName + " " + s.Surname,
+                            Name = s.Name,
+                            Surname = s.Surname,
+                            MiddleName = s.MiddleName,
                             Email = s.Email,
                             //StatusId = s.StatusId,
                             //StatusName = s.StatusName,

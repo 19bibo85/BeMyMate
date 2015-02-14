@@ -4,6 +4,7 @@
 	[refCode] AS Application.GetReferenceCode('menu_', id, 6, 0),
     [name] VARCHAR(MAX) NOT NULL, 
 	[description] VARCHAR(MAX) NULL,
+	[link] VARCHAR(MAX) NULL,
     [objectId] INT NOT NULL,
 	[order] INT NOT NULL, 
 	[contextId] INT NOT NULL,

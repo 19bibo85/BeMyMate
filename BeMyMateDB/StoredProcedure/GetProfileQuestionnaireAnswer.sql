@@ -8,7 +8,7 @@ AS
 	EXEC [Security].[GetUserSecurity] 
 		 @UserID = @UserID
 
-	SELECT pqr.Area, pqr.Questionnaire, par.Answer
+	SELECT pqr.Area, pqr.Questionnaire, par.Answer, par.Value
 	FROM (SELECT pq.id, par.Area, loc.name as Questionnaire
 		  FROM @TMP as pqt 
 		  INNER JOIN [User].[ProfileQuestionnaire] as pq on pqt.ViewObjectId = pq.objectId		  
@@ -22,7 +22,7 @@ AS
 		  WHERE lan.code = @LanguageCode)
 		  as pqr
 	INNER JOIN [User].[ProfileQuestionnaireToAnswer] as pqa on pqr.id = pqa.questionnaireId
-	INNER JOIN (SELECT pa.id, loc.name as Answer
+	INNER JOIN (SELECT pa.id, loc.name as Answer, pa.value as Value
 				FROM @TMP as at
 				INNER JOIN [User].[ProfileAnswer] as pa on at.ViewObjectId = pa.objectId
 				INNER JOIN [Application].[Localization] as loc on pa.refCode = loc.refCode

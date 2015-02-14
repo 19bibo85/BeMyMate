@@ -69,7 +69,7 @@ INSERT INTO [User].[AddressType] (id, name) VALUES
 
 -- Address
 INSERT INTO [User].[Address] (addressLine, city, provinceId, postalCode, typeId) VALUES
-('none', 'none', 0, 'none', 0);
+('None', 'None', 0, 'None', 0);
 
 -- Phone
 INSERT INTO [User].[Phone] (prefix, number, typeId) VALUES

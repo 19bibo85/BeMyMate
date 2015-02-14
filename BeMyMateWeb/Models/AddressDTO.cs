@@ -7,7 +7,15 @@ namespace BeMyMateWeb.Models
 {
     public class AddressDTO
     {
-        public string Name { get; set; }
+        public string Line { get; set; }
+
+        public string City { get; set; }
+
+        public string PostaCode { get; set; }
+
+        public string Province { get; set; }
+
+        public string Country { get; set; }
 
         public string Type { get; set; }
     }

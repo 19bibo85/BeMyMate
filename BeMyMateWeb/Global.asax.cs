@@ -23,8 +23,6 @@ namespace BeMyMateWeb
                 WebApiConfig.Register(config);
 
             });
-
-            GlobalConfiguration.Configuration.Formatters.Insert(0, new RootFormatter());
         }
     }
 }

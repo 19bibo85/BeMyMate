@@ -30,6 +30,7 @@ namespace BeMyMateWeb.Models
         public System.DateTime dtCreated { get; set; }
         public Nullable<System.DateTime> dtUpdated { get; set; }
         public Nullable<System.DateTime> dtDeleted { get; set; }
+        public int value { get; set; }
     
         public virtual Object Object { get; set; }
         public virtual ICollection<ProfileQuestionnaireToAnswer> ProfileQuestionnaireToAnswers { get; set; }

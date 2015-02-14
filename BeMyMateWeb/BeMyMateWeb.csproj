@@ -111,10 +111,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\avatar\placeholder.gif" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chart\Chart.js" />
+    <Content Include="Content\chart\Chart.min.js" />
+    <Content Include="Content\chart\gulpfile.js" />
+    <Content Include="Content\chart\samples\bar.html" />
+    <Content Include="Content\chart\samples\doughnut.html" />
+    <Content Include="Content\chart\samples\line-customTooltips.html" />
+    <Content Include="Content\chart\samples\line.html" />
+    <Content Include="Content\chart\samples\pie-customTooltips.html" />
+    <Content Include="Content\chart\samples\pie.html" />
+    <Content Include="Content\chart\samples\polar-area.html" />
+    <Content Include="Content\chart\samples\radar.html" />
+    <Content Include="Content\chart\src\Chart.Bar.js" />
+    <Content Include="Content\chart\src\Chart.Core.js" />
+    <Content Include="Content\chart\src\Chart.Doughnut.js" />
+    <Content Include="Content\chart\src\Chart.Line.js" />
+    <Content Include="Content\chart\src\Chart.PolarArea.js" />
+    <Content Include="Content\chart\src\Chart.Radar.js" />
     <Content Include="Content\js\cultures\kendo.culture.af-ZA.min.js" />
     <Content Include="Content\js\cultures\kendo.culture.af.min.js" />
     <Content Include="Content\js\cultures\kendo.culture.am-ET.min.js" />
@@ -1055,6 +1073,21 @@
     <Content Include="Content\template\css\partials\_layout.scss" />
     <Content Include="page_dashboard.Master" />
     <Content Include="page_profile.Master" />
+    <Content Include="Content\chart\docs\00-Getting-Started.md" />
+    <Content Include="Content\chart\docs\01-Line-Chart.md" />
+    <Content Include="Content\chart\docs\02-Bar-Chart.md" />
+    <Content Include="Content\chart\docs\03-Radar-Chart.md" />
+    <Content Include="Content\chart\docs\04-Polar-Area-Chart.md" />
+    <Content Include="Content\chart\docs\05-Pie-Doughnut-Chart.md" />
+    <Content Include="Content\chart\docs\06-Advanced.md" />
+    <Content Include="Content\chart\docs\07-Notes.md" />
+    <Content Include="Content\chart\.gitignore" />
+    <Content Include="Content\chart\.travis.yml" />
+    <Content Include="Content\chart\bower.json" />
+    <Content Include="Content\chart\CONTRIBUTING.md" />
+    <Content Include="Content\chart\LICENSE.md" />
+    <Content Include="Content\chart\package.json" />
+    <Content Include="Content\chart\README.md" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1073,8 +1106,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\CommonQuery.cs" />
-    <Compile Include="App_Code\RootFormatter.cs" />
+    <Compile Include="App_Code\DataManager.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\ODataConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -1242,6 +1274,7 @@
     <Compile Include="Models\ProfileArea.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProfileChartAreaDTO.cs" />
     <Compile Include="Models\ProfileDetailInfoDTO.cs" />
     <Compile Include="Models\ProfileQuestionnaire.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
@@ -1377,7 +1410,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\avatar\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

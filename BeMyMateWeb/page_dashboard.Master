@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />	
-	<title>Wolf - Bootstrap Admin Theme</title>
+	<title>Be My Mate</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<!-- stylesheets -->
@@ -26,12 +26,14 @@
 	<script src="Content/template/js/theme.js"></script>
 	<script src="Content/template/js/vendor/raphael-min.js"></script>
 	<script src="Content/template/js/vendor/morris.min.js"></script>
+    <script src="Content/chart/Chart.js"></script>
 
     <!-- kendo -->
     <link rel="stylesheet" href="Content/styles/kendo.common.min.css" />
     <link rel="stylesheet" href="Content/styles/kendo.default.min.css" />
     <link rel="stylesheet" href="Content/styles/kendo.dataviz.min.css" />
     <link rel="stylesheet" href="Content/styles/kendo.dataviz.default.min.css" />
+    <link rel="stylesheet" href="Content/styles/kendo.default.mobile.min.css" />
 
     <script src="Content/js/jquery.min.js"></script>
     <script src="Content/js/kendo.all.min.js"></script>
@@ -49,19 +51,19 @@
 			<div id="avatarMenu" class="current-user">
                 <script id="avatarTpl" type="x-tmpl-mustache">
                     {{#Avatar}}
-                    <a class="name">
+                    <a href="page_profile_detail.aspx" class="name">
 					    <img class="avatar" src="Content\avatar\placeholder.gif" />
 					    <span>
-						    {{UserName}}
+						    {{UserFullName}}
 					    </span>
 				    </a>
-				    <ul id="avatarList" class="menu">
+				   <%-- <ul id="avatarList" class="menu">
                         {{#MenuItems}}
 					    <li>
 						    <a href="{{Link}}">{{Name}}</a>
 					    </li>
                         {{/MenuItems}}
-				    </ul>
+				    </ul>--%>
                     {{/Avatar}}
                 </script>
 			</div>
@@ -104,7 +106,6 @@
 					<li><a href="signup.html"><i class="ion-log-out"></i></a></li>
 				</ul>
 			</div>
-
 		</div>
 
 		<div id="content">
@@ -215,7 +216,7 @@
 	            Mustache.parse(notificationTpl);   // optional, speeds up future uses
 	            var rendered = Mustache.render(notificationTpl, { Notification: $.parseJSON(response) });
 	            $('#notificationMenu').html(rendered);
-	            },
+	        },
 	        Error: function (error) {
 	            var err = $.parseJSON(error.responseText);
 	            alert(err.ExceptioMessage);
@@ -230,15 +231,6 @@
              DashboardMenu.GetMenus();
              NotificationMenu.GetMenus();            
          });
-    </script>
-
-    <!-- Handlers -->
-    <!-- Handle Avatar Event -->
-    <script type="text/javascript">
-        $('[data-toggle="sidebar"]').click(function () {
-            var a = $(this).find("ItemID");
-            $(a).css('display', 'block');
-        });
     </script>
 </body>
 </html>

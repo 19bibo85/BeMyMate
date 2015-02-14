@@ -2,133 +2,367 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Test App</title>
+    <!-- kendo -->
+    <link rel="stylesheet" href="Content/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="Content/styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="Content/styles/kendo.dataviz.min.css" />
+    <link rel="stylesheet" href="Content/styles/kendo.dataviz.default.min.css" />
+    <link rel="stylesheet" href="Content/styles/kendo.default.mobile.min.css" />
+
+    <script src="Content/js/jquery.min.js"></script>
+    <script src="Content/js/kendo.all.min.js"></script>
+
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="Content/highchart/js/highcharts.js"></script>
+    <script src="Content/highchart/js/highcharts-more.js"></script>
 </head>
 <body>
+        
+        <div id="container" style="min-width: 400px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+        <!--<div id="profileBasicExample"></div>-->
+        <script id="profileBasicExampleTemplate" type="text/x-kendo-template">
+            <!--<div class="name"> #= UserName #</div>-->
+            <!--<div class="avatar">
+                <img src="~\Content\avatar\placeholder.gif" />
+                <div class="name"> #= UserFullName #</div>
+                <div class="position">#= UserType #</div>
+                <div class="social">
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="details">
+                <div class="field">
+                    <label>Email</label>
+                    <div class="value">#= EmailName #</div>
+                </div>
+                <div class="field">
+                    <label>Gender</label>
+                    <div class="value">#= Gender #</div>
+                </div>
+            </div>-->
+        </script>
 
-    <div>
-        <h2>Menu</h2>
-        <ul id="menus" />
-    </div>
+        <!--<script id="template" type="text/x-kendo-template">
+            <div class="avatar">
+                <img src="Content\avatar\placeholder.gif" />
+                <div class="name"> #= UserFullName #</div>
+                <div class="position">#= UserType #</div>
+                <div class="social">
+                    <a><i class="fa fa-facebook"></i></a>
+                    <a><i class="fa fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="details">
+                <div class="field">
+                    <label>Email</label>
+                    <div class="value">#= EmailName #</div>
+                </div>
+                <div class="field">
+                    <label>Gender</label>
+                    <div class="value">#= Gender #</div>
+                </div>
+            </div>
+        </script>
 
-    <script src="/Scripts/jquery-2.1.3.js"></script>
-    <script type="text/javascript">
-        var sectionId = 2;
-        var languageCode = 'en-us';
-        var Menus = {
-            ServiceAPI: 'api/',
-            GetMenus: function () {
-                try {
-                    $.ajax({
-                        url: this.ServiceAPI + 'menus/menus?sectionId=' + sectionId + '&languageCode=' + languageCode,
+        <script>
+            $(document).ready(function () {
+                // create a template using the above definition
+                var template = kendo.template($("#template").html());
+                alert(template);
+                var movies = [
+                    { "UserFullName": 1, "UserType": 9.2, "EmailName": 1994, "Gender": "The Shawshank Redemption" }
+                ];
+
+                
+                var dataSource = new kendo.data.DataSource({
+                    data: movies,
+                    change: function () { // subscribe to the CHANGE event of the data source
+                        $("#movies").html(kendo.render(template, this.view())); // populate the table
+                    }
+                });
+
+                // read data from the "movies" array
+                dataSource.read();
+            });
+        </script>-->
+
+        <!--<script>
+            var template = kendo.template($("#profileBasicExampleTemplate").html());
+
+            var api = "api/";
+            var languageCode = "en-us";
+            var dataSource1 = new kendo.data.DataSource({
+                transport: {
+                    read: {
                         type: "GET",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function (response) {
-                            alert(response);
-                            var data = $.parseJSON(response);
-                            $.each(data, function (key, item) {
-                                $('<li>', { text: item.Name }).appendTo($('#menus'));
-                                $.each(item.Items, function (key, item) {
-                                    if (item.Id != null) {
-                                        $("<ul>")
-                                        .append($('<a>',
-                                                {
-                                                    text: item.Name,
-                                                    title: item.Name,
-                                                    href: item.Link
-                                                })).appendTo($('#menus'));
-                                    }
+                        url: api + 'users/ProfileBasicInfo?languageCode=' + languageCode,
+                        dataType: "json"
+                    }
+                },
+                //change: function()
+                //{
+                //    alert(this.view().UserFullName)
+                //    $("#profileBasicExample").html(kendo.render(template, [this.view()]));
+                //}
+                //,
+                schema: {
+                    parse: function (response) {
+                        alert(response);
+                        var data = [response];
+                        var products = [];
+                        
+                        for (var i = 0; i < data.length; i++) {
+                            var product = {
+                                AvatarName: data[i].AvatarName,
+                                UserName: data[i].UserName
+                            };
+                            products.push(product);
+                        }
+                        alert(products);
+                        return products; // twitter's response is { "results": [ /* results */ ] }
+                    }
+                }
+            });
+
+            dataSource1.fetch(function () {
+                var data = dataSource1.data();
+                var product = data[0];                
+                //alert(product.UserName);
+                $("#profileBasicExample").html(kendo.render(template, product.UserName));
+            });
+
+            dataSource1.read();
+        </script>-->
+
+        <!--<div id="example">
+        <div class="demo-section k-header">
+            <div class="box-col">
+                <h4>Enter some content</h4>
+                <textarea data-role="editor"
+                          data-tools="['bold',
+                                   'italic',
+                                   'underline',
+                                   'strikethrough',
+                                   'justifyLeft',
+                                   'justifyCenter',
+                                   'justifyRight',
+                                   'justifyFull']"
+                          data-bind="visible: isVisible,
+                                 value: html,
+                                 events: { change: onChange }"
+                          style="width: 480px; height: 200px;"></textarea>
+            </div>
+            <div class="box-col console-section">
+                <h4>Console</h4>
+                <div class="console"></div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-col" style="width: 480px">
+                <h4>Configuration</h4>
+                <div>
+                    <label><input type="checkbox" data-bind="checked: isVisible">Visible</label>
+                </div>
+            </div>
+            <div class="box-col">
+                <h4>Information</h4>
+                Kendo UI Editor supports the
+                <a href="http://docs.telerik.com/kendo-ui/getting-started/framework/mvvm/bindings/events">events</a>,
+                <a href="http://docs.telerik.com/kendo-ui/getting-started/framework/mvvm/bindings/value">value</a> and
+                <a href="http://docs.telerik.com/kendo-ui/getting-started/framework/mvvm/bindings/visible">visible</a> bindings.
+            </div>
+        </div>
+        <script>
+            var viewModel = kendo.observable({
+                html: null,
+                isVisible: true,
+                onChange: function () {
+                    alert("");
+                    kendoConsole.log("event :: change (" + kendo.htmlEncode(this.get("html")) + ")");
+                }
+            });
+            kendo.bind($("#example"), viewModel);
+        </script>
+        </div>-->
+        <!--<div>
+            <h2>Menu</h2>
+            <ul id="menus" />
+        </div>-->
+        <!--<script src="/Scripts/jquery-2.1.3.js"></script>
+        <script type="text/javascript">
+            var sectionId = 2;
+            var languageCode = 'en-us';
+            var Menus = {
+                ServiceAPI: 'api/',
+                GetMenus: function () {
+                    try {
+                        $.ajax({
+                            url: this.ServiceAPI + 'menus/menus?sectionId=' + sectionId + '&languageCode=' + languageCode,
+                            type: "GET",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (response) {
+                                alert(response);
+                                var data = $.parseJSON(response);
+                                $.each(data, function (key, item) {
+                                    $('<li>', { text: item.Name }).appendTo($('#menus'));
+                                    $.each(item.Items, function (key, item) {
+                                        if (item.Id != null) {
+                                            $("<ul>")
+                                            .append($('<a>',
+                                                    {
+                                                        text: item.Name,
+                                                        title: item.Name,
+                                                        href: item.Link
+                                                    })).appendTo($('#menus'));
+                                        }
+                                    })
                                 })
-                            })
-                        },
-                        error: function (error) { Menus.GetMenusError(error); },
-                    });
+                            },
+                            error: function (error) { Menus.GetMenusError(error); },
+                        });
+                    }
+                    catch (ex) {
+                        alert("An error occurred. Please contact the administrator.");
+                    }
+                },
+                GetMenusSuccess: function (response) {
+                    //var data = $.parseJSON(response);
+
+                    alert("Test");
+                    //$.each(data, function (key, item) {
+                    //    $('<li>', { text: item.Name }).appendTo($('#menus'));
+                    //    $.each(item.Items, function (key, item) {
+                    //        if (item.Id != null) {
+                    //            $("<ul>")
+                    //            .append($('<a>',
+                    //                    {
+                    //                        text: item.Name,
+                    //                        title: item.Name,
+                    //                        href: item.Link
+                    //                    })).appendTo($('#menus'));
+                    //        }
+                    //    })
+                    //})
+
+                },
+                GetMenusSuccess: function (error) {
+                    var err = $.parseJSON(error.responseText);
+                    alert(err.ExceptioMessage);
                 }
-                catch (ex) {
-                    alert("An error occurred. Please contact the administrator.");
+            };
+        </script>-->
+        <!-- Note this script is to retrieved data for avatar menu -->
+        <!--<script type="text/javascript">
+            alert('a');
+            // Sidebar
+            var sidebarSecId = 3;
+            alert('api/menus/menus?sectionId=' + sidebarSecId + '&languageCode=' + languageCode);
+            var Sidebar = {
+                // Get Menu
+                GetMenu: function () {
+                    try {
+                        $.ajax({
+                            url: 'api/menus/menus?sectionId=' + sidebarSecId + '&languageCode=' + languageCode,
+                            type: "GET",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            async: true,
+                            success: Sidebar.Success,
+                            error: Sidebar.Error
+                        });
+                    }
+                    catch (ex) {
+                        alert(ex.message);
+                        alert("An error occurred. Please contact the administrator.");
+                    }
+                },
+                // Success
+                Success: function (response) {
+                    alert(response + "2");
+                    // Build data
+                    var data = $.parseJSON(response);
+                    var stringOutput = ("{\"Menus\": " + JSON.stringify(data) + "}");
+                    var test = JSON.parse(stringOutput);
+
+                    // Display data
+                    var template = $('#menuTemplate').html();
+                    Mustache.parse(template);   // optional, speeds up future uses
+                    var rendered = Mustache.render(template, test);
+                    $('#sidebar-default').html(rendered);
+                },
+                // Error
+                Error: function (response) {
+                    var err = $.parseJSON(error.responseText);
+                    alert(err.ExceptioMessage);
                 }
-            },
-            GetMenusSuccess: function (response) {
-                //var data = $.parseJSON(response);
+            };
 
-                alert("Test");
-                //$.each(data, function (key, item) {
-                //    $('<li>', { text: item.Name }).appendTo($('#menus'));
-                //    $.each(item.Items, function (key, item) {
-                //        if (item.Id != null) {
-                //            $("<ul>")
-                //            .append($('<a>',
-                //                    {
-                //                        text: item.Name,
-                //                        title: item.Name,
-                //                        href: item.Link
-                //                    })).appendTo($('#menus'));
-                //        }
-                //    })
-                //})
-
-            },
-            GetMenusSuccess: function (error) {
-                var err = $.parseJSON(error.responseText);
-                alert(err.ExceptioMessage);
-            }
-        };
-    </script>
-
-
-    <!-- Note this script is to retrieved data for avatar menu -->
+        </script>-->
+        <!--<script type="text/javascript">
+            $(document).ready(function () {
+                //Menus.GetMenus();
+                Sidebar.GetMenu();
+            });
+        </script>-->
     <script type="text/javascript">
-        alert('a');
-        // Sidebar
-        var sidebarSecId = 3;
-        alert('api/menus/menus?sectionId=' + sidebarSecId + '&languageCode=' + languageCode);
-        var Sidebar = {
-            // Get Menu
-            GetMenu: function () {
-                try {
-                    $.ajax({
-                        url: 'api/menus/menus?sectionId=' + sidebarSecId + '&languageCode=' + languageCode,
-                        type: "GET",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        async: true,
-                        success: Sidebar.Success,
-                        error: Sidebar.Error
-                    });
-                }
-                catch (ex) {
-                    alert(ex.message);
-                    alert("An error occurred. Please contact the administrator.");
-                }
-            },
-            // Success
-            Success: function (response) {
-                alert(response + "2");
-                // Build data
-                var data = $.parseJSON(response);
-                var stringOutput = ("{\"Menus\": " + JSON.stringify(data) + "}");
-                var test = JSON.parse(stringOutput);
+        $(function () {
 
-                // Display data
-                var template = $('#menuTemplate').html();
-                Mustache.parse(template);   // optional, speeds up future uses	            
-                var rendered = Mustache.render(template, test);
-                $('#sidebar-default').html(rendered);
-            },
-            // Error
-            Error: function (response) {
-                var err = $.parseJSON(error.responseText);
-                alert(err.ExceptioMessage);
-            }
-        };
+            $('#container').highcharts({
 
-    </script>
+                chart: {
+                    polar: true,
+                    type: 'line'
+                },
 
+                title: {
+                    text: 'Budget vs spending',
+                    x: -80
+                },
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            //Menus.GetMenus();
-            Sidebar.GetMenu();
+                pane: {
+                    size: '80%'
+                },
+
+                xAxis: {
+                    categories: ['Sales', 'Marketing', 'Development', 'Customer Support',
+                            'Information Technology', 'Administration'],
+                    tickmarkPlacement: 'on',
+                    lineWidth: 0
+                },
+
+                yAxis: {
+                    gridLineInterpolation: 'polygon',
+                    lineWidth: 0,
+                    min: 0
+                },
+
+                tooltip: {
+                    shared: true,
+                    pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+                },
+
+                legend: {
+                    align: 'right',
+                    verticalAlign: 'top',
+                    y: 70,
+                    layout: 'vertical'
+                },
+
+                series: [{
+                    name: 'Allocated Budget',
+                    data: [43000, 19000, 60000, 35000, 17000, 10000],
+                    pointPlacement: 'on'
+                }, {
+                    name: 'Actual Spending',
+                    data: [50000, 39000, 42000, 31000, 26000, 14000],
+                    pointPlacement: 'on'
+                }]
+
+            });
         });
     </script>
 

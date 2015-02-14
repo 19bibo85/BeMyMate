@@ -7,7 +7,17 @@ namespace BeMyMateWeb.Models
 {
     public class PhoneDTO
     {
-        public string Name { get; set; }
+        public string Prefix { get; set; }
+
+        public string Number { get; set; }
+
+        public string Phone 
+        {
+            get 
+            {
+                return Prefix + " " + Number;
+            }
+        }
 
         public string Type { get; set; }
     }

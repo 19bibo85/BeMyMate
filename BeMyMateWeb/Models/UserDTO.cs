@@ -13,9 +13,17 @@ namespace BeMyMateWeb.Models
 
         public string Name { get; set; }
 
+        public string MiddleName { get; set; }
+
         public string Surname { get; set; }
 
-        public string FullName { get; set; }
+        public string FullName 
+        {
+            get 
+            {
+                return Name + " " + MiddleName + " " + Surname;
+            } 
+        }
 
         public string Email { get; set; }
 

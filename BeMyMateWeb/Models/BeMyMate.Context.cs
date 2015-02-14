@@ -88,19 +88,6 @@ namespace BeMyMateWeb.Models
         public virtual DbSet<UserToNotification> UserToNotifications { get; set; }
         public virtual DbSet<UserToPhone> UserToPhones { get; set; }
     
-        public virtual ObjectResult<GetSectionMenuItem_Result> GetSectionMenuItem(Nullable<int> userID, string languageCode)
-        {
-            var userIDParameter = userID.HasValue ?
-                new ObjectParameter("UserID", userID) :
-                new ObjectParameter("UserID", typeof(int));
-    
-            var languageCodeParameter = languageCode != null ?
-                new ObjectParameter("LanguageCode", languageCode) :
-                new ObjectParameter("LanguageCode", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSectionMenuItem_Result>("GetSectionMenuItem", userIDParameter, languageCodeParameter);
-        }
-    
         public virtual ObjectResult<GetUserSecurity_Result> GetUserSecurity(Nullable<System.Guid> userGuid, Nullable<int> userID)
         {
             var userGuidParameter = userGuid.HasValue ?
@@ -184,23 +171,6 @@ namespace BeMyMateWeb.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMessagesOutbox_Result>("GetMessagesOutbox", userIDParameter);
         }
     
-        public virtual ObjectResult<GetProfileBasicInfo_Result> GetProfileBasicInfo(Nullable<int> userID, Nullable<System.Guid> userGuid, string languageCode)
-        {
-            var userIDParameter = userID.HasValue ?
-                new ObjectParameter("UserID", userID) :
-                new ObjectParameter("UserID", typeof(int));
-    
-            var userGuidParameter = userGuid.HasValue ?
-                new ObjectParameter("UserGuid", userGuid) :
-                new ObjectParameter("UserGuid", typeof(System.Guid));
-    
-            var languageCodeParameter = languageCode != null ?
-                new ObjectParameter("LanguageCode", languageCode) :
-                new ObjectParameter("LanguageCode", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProfileBasicInfo_Result>("GetProfileBasicInfo", userIDParameter, userGuidParameter, languageCodeParameter);
-        }
-    
         public virtual ObjectResult<GetProfileDetailInfo_Result> GetProfileDetailInfo(Nullable<int> userID, Nullable<System.Guid> userGuid, string languageCode)
         {
             var userIDParameter = userID.HasValue ?
@@ -277,6 +247,36 @@ namespace BeMyMateWeb.Models
                 new ObjectParameter("LanguageCode", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetNotifications_Result>("GetNotifications", userIDParameter, languageCodeParameter);
+        }
+    
+        public virtual ObjectResult<GetSectionMenuItem_Result> GetSectionMenuItem(Nullable<int> userID, string languageCode)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var languageCodeParameter = languageCode != null ?
+                new ObjectParameter("LanguageCode", languageCode) :
+                new ObjectParameter("LanguageCode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSectionMenuItem_Result>("GetSectionMenuItem", userIDParameter, languageCodeParameter);
+        }
+    
+        public virtual ObjectResult<GetProfileBasicInfo_Result> GetProfileBasicInfo(Nullable<int> userID, Nullable<System.Guid> userGuid, string languageCode)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var userGuidParameter = userGuid.HasValue ?
+                new ObjectParameter("UserGuid", userGuid) :
+                new ObjectParameter("UserGuid", typeof(System.Guid));
+    
+            var languageCodeParameter = languageCode != null ?
+                new ObjectParameter("LanguageCode", languageCode) :
+                new ObjectParameter("LanguageCode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProfileBasicInfo_Result>("GetProfileBasicInfo", userIDParameter, userGuidParameter, languageCodeParameter);
         }
     }
 }

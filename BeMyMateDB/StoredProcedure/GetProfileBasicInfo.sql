@@ -4,7 +4,10 @@
 	@LanguageCode VARCHAR(MAX) = 'en-us'
 AS
 	SELECT DISTINCT
+	u.name as Name,
+	u.middleName as MiddleName,
 	u.surname as Surname,
+	u.email as Email,
 	ava.[path] as AvatarPath,
 	gr.name as Gender,
 	usr.name as UserStatus,
