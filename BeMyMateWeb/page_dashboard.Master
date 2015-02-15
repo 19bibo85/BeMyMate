@@ -16,6 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="Content/template/css/vendor/font-awesome.min.css" />
 	<link rel="stylesheet" type="text/css" href="Content/template/css/vendor/datepicker.css" />
 	<link rel="stylesheet" type="text/css" href="Content/template/css/vendor/morris.css" />
+    <link rel="stylesheet" type="text/css" href="Content/plugins/raty/jquery.raty.css" />
 
 	<!-- javascript -->
     <script src="Scripts/mustache.js"></script>
@@ -27,16 +28,9 @@
 	<script src="Content/template/js/vendor/raphael-min.js"></script>
 	<script src="Content/template/js/vendor/morris.min.js"></script>
     <script src="Content/chart/Chart.js"></script>
-
-    <!-- kendo -->
-    <link rel="stylesheet" href="Content/styles/kendo.common.min.css" />
-    <link rel="stylesheet" href="Content/styles/kendo.default.min.css" />
-    <link rel="stylesheet" href="Content/styles/kendo.dataviz.min.css" />
-    <link rel="stylesheet" href="Content/styles/kendo.dataviz.default.min.css" />
-    <link rel="stylesheet" href="Content/styles/kendo.default.mobile.min.css" />
-
-    <script src="Content/js/jquery.min.js"></script>
-    <script src="Content/js/kendo.all.min.js"></script>
+    <script src="Content/highchart/js/highcharts.js"></script>
+    <script src="Content/highchart/js/highcharts-more.js"></script>
+    <script src="Content/plugins/raty/jquery.raty.js"></script>
 
 
 	<!--[if lt IE 9]>

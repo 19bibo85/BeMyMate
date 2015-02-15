@@ -153,7 +153,7 @@ namespace BeMyMateWeb.App_Code
                                        AvatarName = s.Key.AvatarPath,
                                        UserName = s.Key.Name,
                                        UserMiddleName = "",
-                                       UserSurname = s.Key.Surname,                                       
+                                       UserSurname = s.Key.Surname,
                                        UserType = "Tennant",
                                        EmailName = s.Key.Email,
                                        Phones = s.Select(sPhone => new PhoneDTO
@@ -168,7 +168,7 @@ namespace BeMyMateWeb.App_Code
                                                     Line = sAddress.AddressLine,
                                                     City = sAddress.City,
                                                     PostaCode = sAddress.PostalCode,
-                                                    Province  = sAddress.Province,
+                                                    Province = sAddress.Province,
                                                     Country = sAddress.Country,
                                                     Type = "Home"
                                                 })
@@ -178,7 +178,59 @@ namespace BeMyMateWeb.App_Code
                                                     Name = sJob.Job
                                                 })
                                                 .ToList(),
-                                       Gender = s.Key.Gender
+                                       Gender = s.Key.Gender,
+                                       Friends = new List<FriendDTO>
+                                            {
+                                                new FriendDTO
+                                                {
+                                                    UserName = "Silvia Durzu",
+                                                    UserUID = new Guid()
+                                                },
+                                                new FriendDTO
+                                                {
+                                                    UserName = "Giovanni Basilico",
+                                                    UserUID = new Guid()
+                                                },
+                                                new FriendDTO
+                                                {
+                                                    UserName = "Laura Cocco",
+                                                    UserUID = new Guid()
+                                                }
+                                            },
+                                       Areas = new List<AreaDTO> 
+                                            {
+                                                new AreaDTO
+                                                {
+                                                    AreaName = "Detail Info",
+                                                    AreaValue = 20,
+                                                },
+                                                new AreaDTO
+                                                {
+                                                    AreaName = "Detail Info1",
+                                                    AreaValue = 20,
+                                                },
+                                                new AreaDTO
+                                                {
+                                                    AreaName = "Detail Info2",
+                                                    AreaValue = 20,
+                                                },
+                                                new AreaDTO
+                                                {
+                                                    AreaName = "Detail Info3",
+                                                    AreaValue = 20,
+                                                },
+                                                new AreaDTO
+                                                {
+                                                    AreaName = "Detail Inf4",
+                                                    AreaValue = 20,
+                                                },
+                                                new AreaDTO
+                                                {
+                                                    AreaName = "Detail Info5",
+                                                    AreaValue = 20,
+                                                }
+                                                
+                                            }
                                    })
                                    .FirstOrDefault();
 
