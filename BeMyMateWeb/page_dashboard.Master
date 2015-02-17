@@ -17,10 +17,13 @@
 	<link rel="stylesheet" type="text/css" href="Content/template/css/vendor/datepicker.css" />
 	<link rel="stylesheet" type="text/css" href="Content/template/css/vendor/morris.css" />
     <link rel="stylesheet" type="text/css" href="Content/plugins/raty/jquery.raty.css" />
+    <!-- jqwidgets -->
+    <link rel="stylesheet" href="Content/framework/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="Content/framework/jqwidgets/styles/jqx.arctic.css" type="text/css" />
 
 	<!-- javascript -->
     <script src="Scripts/mustache.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	<script src="Content/framework/jquery/jquery-1.11.2.min.js"></script>
 	<script src="Content/template/js/bootstrap/bootstrap.min.js"></script>
 	<script src="Content/template/js/vendor/jquery.cookie.js"></script>
 	<script src="Content/template/js/vendor/moment.min.js"></script>
@@ -31,6 +34,11 @@
     <script src="Content/highchart/js/highcharts.js"></script>
     <script src="Content/highchart/js/highcharts-more.js"></script>
     <script src="Content/plugins/raty/jquery.raty.js"></script>
+    <!-- knockout -->
+    <script type="text/javascript" src="Content/framework/knockout/knockout-3.2.0.js"></script>
+    <!-- jqwidgets -->
+    <script type="text/javascript" src="Content/framework/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="Content/framework/jqwidgets/jqxrating.js"></script>
 
 
 	<!--[if lt IE 9]>

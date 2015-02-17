@@ -7,6 +7,8 @@ namespace BeMyMateWeb.Models
 {
     public class ProfileDetailInfoDTO
     {
+        public int AreaId { get; set; }
+
         public string AreaName { get; set; }
 
         public List<QuestionnaireAnswerDTO> QuestionnaireAnswers { get; set; }

@@ -247,9 +247,10 @@ namespace BeMyMateWeb.App_Code
                 profileDetailInfos = ent.GetProfileDetailInfo(userId, null, languageCode)
                                     .AsEnumerable()
                                     .GroupBy(g => g.Area)
-                                    .Select(s => new ProfileDetailInfoDTO
+                                    .Select((s, i) => new ProfileDetailInfoDTO
                                     {
-                                        AreaName = s.Key,
+                                        AreaId = i,
+                                        AreaName = s.Key,                                        
                                         QuestionnaireAnswers = s.Select(sItem => new QuestionnaireAnswerDTO
                                         {
                                             QuestionnaireName = sItem.Questionnaire,
