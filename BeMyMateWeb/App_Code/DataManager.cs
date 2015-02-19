@@ -202,32 +202,32 @@ namespace BeMyMateWeb.App_Code
                                                 new AreaDTO
                                                 {
                                                     AreaName = "Detail Info",
-                                                    AreaValue = 20,
+                                                    AreaValue = 5,
                                                 },
                                                 new AreaDTO
                                                 {
                                                     AreaName = "Detail Info1",
-                                                    AreaValue = 20,
+                                                    AreaValue = 5,
                                                 },
                                                 new AreaDTO
                                                 {
                                                     AreaName = "Detail Info2",
-                                                    AreaValue = 20,
+                                                    AreaValue = 5,
                                                 },
                                                 new AreaDTO
                                                 {
                                                     AreaName = "Detail Info3",
-                                                    AreaValue = 20,
+                                                    AreaValue = 5,
                                                 },
                                                 new AreaDTO
                                                 {
                                                     AreaName = "Detail Inf4",
-                                                    AreaValue = 20,
+                                                    AreaValue = 5,
                                                 },
                                                 new AreaDTO
                                                 {
                                                     AreaName = "Detail Info5",
-                                                    AreaValue = 20,
+                                                    AreaValue = 5,
                                                 }
                                                 
                                             }
@@ -283,7 +283,7 @@ namespace BeMyMateWeb.App_Code
                                                                 new ProfileChartAreaDTO
                                                                 {
                                                                     AreaName = "Area1",
-                                                                    AreaValue = 10
+                                                                    AreaValue = 5
                                                                 },
                                                                 new ProfileChartAreaDTO
                                                                 {

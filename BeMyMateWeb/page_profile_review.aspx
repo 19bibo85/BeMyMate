@@ -2,15 +2,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentSection" runat="server">
 
     <div id="review" class="tab notes active">
-	    <form runat="server">
+	    <form id="reviewForm" runat="server" data-bind="submit: sendReview">
        
 		    <div class="editor clearfix">
                  <asp:TextBox 
-                             ID="textArea"
-                             Rows="4"
-                             runat="server"
-                             TextMode="MultiLine" 
-                             CssClass="form-control"></asp:TextBox>
+                    ID="textArea"
+                    Rows="4"
+                    runat="server"
+                    TextMode="MultiLine" 
+                    CssClass="form-control"></asp:TextBox>
 
 			    <div class="options clearfix">
                     <button
@@ -18,12 +18,6 @@
                         type="submit">
 					    <span>Submit note</span>
 				    </button>
-				    <%--<button
-                        data-role="button"
-                        data-bind="events: { click: onClick }"
-                        type="submit">
-					    <span>Submit note</span>
-				    </button>--%>
 			    </div>
 		    </div>
 	    </form>
@@ -39,34 +33,28 @@
 				    <option>Attachments</option>
 			    </select>
 		    </form>
-	    </div>
+	    </div>        
 
-	    <div id="profileReview" class="comments">        
-
-            <!-- Profile Review template -->     
-            <script id="profileReviewTpl" type="x-tmpl-mustache">
-                {{#Review}}
-			    <div class="row comment">
-				    <div class="col-sm-2">
-					    <img src="Content\avatar\placeholder.gif" class="avatar img-responsive" />
-				    </div>
-				    <div class="col-sm-10">
-					    <div class="message clearfix">
-						    <header>
-							    <span class="name">{{Name}}</span>
-							    <span class="date pull-right">{{Data}}</span>
-						    </header>
-						    <div class="note">
-							    <p>
-								    {{Text}}
-							    </p>
-						    </div>
+	    <div id="profileReview" class="comments" data-bind="template: { name: 'profileReviewKOTpl', foreach: Review }"> </div>
+            
+        <script type="text/html" id="profileReviewKOTpl">
+            <div class="row comment" >
+			    <div class="col-sm-2">
+				    <img src="Content\avatar\placeholder.gif" class="avatar img-responsive" />
+			    </div>
+			    <div class="col-sm-10">
+				    <div class="message clearfix">
+					    <header>
+						    <span class="name" data-bind="text: Name"></span>
+						    <span class="date pull-right" data-bind="text: Data"></span>
+					    </header>
+					    <div class="note">
+						    <p  data-bind="text: Text"></p>
 					    </div>
 				    </div>
 			    </div>
-                {{/Review}}
-            </script>
-	    </div>
+            </div>
+        </script>
 
 	    <div class="load-more">
 		    <a href="#" class="btn btn-default">Load more comments</a>
@@ -80,41 +68,43 @@
         var profileSectionId = "<%= ConfigurationManager.AppSettings["ProfileSectionId"] %>";
     </script>
 
-     <!-- Populate after retrieve data -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var profileReviewTpl = $('#profileReviewTpl').html();
-            Mustache.parse(profileReviewTpl);   // optional, speeds up future uses
-            var data = {
-                Review: [
+    <!-- Populate after retrieve data -->
+        <script type="text/javascript">
+
+            var reviewModel = {
+                Review: ko.observableArray([
                     {
-                        Name: "Info",
-                        Data: "Dataaaaaaaaaaa",
-                        Text: "Textttttttt"
+                        Name: 'Info',
+                        Data: 'Dataaaaaaaaaaa',
+                        Text: 'Textttttttt'
                     },
                     {
-                        Name: "Info",
-                        Data: "Dataaaaaaaaaaa",
-                        Text: "Textttttttt"
+                        Name: 'Info',
+                        Data: 'Dataaaaaaaaaaa',
+                        Text: 'Textttttttt'
+                    },
+                    {
+                        Name: 'Info',
+                        Data: 'Dataaaaaaaaaaa',
+                        Text: 'Textttttttt'
                     }
-                ]
+                ]),
+                sendReview: function (formElement) {
+                    var input = "<%= textArea.ClientID%>";
+                    if (input != null) {
+                        var value = document.getElementById(input).value;
+                        if (value != null) {
+                            // Get text user name and data
+                            this.Review.push({
+                                Name: value,
+                                Data: "<%= DateTime.Now %>",
+                                Text: value
+                            });
+                        }
+                    }
+                }
             };
-
-            var rendered = Mustache.render(profileReviewTpl, data);
-            $('#profileReview').html(rendered);
-        });
-    </script>
-
-    <script>
-        $("#SubReview").click(function () {
-            alert("Handler for .click() called.");
-        })
-        <%--var viewModel = kendo.observable({
-            onClick: function () {
-                $("#<%=textArea.ClientID%>");
-            }
-        });
-        kendo.bind($("#review"), viewModel);--%>
-    </script>
+            ko.applyBindings(reviewModel);            
+        </script>
 
 </asp:Content>
