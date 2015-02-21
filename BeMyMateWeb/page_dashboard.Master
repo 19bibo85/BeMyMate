@@ -39,7 +39,7 @@
     <!-- jqwidgets -->
     <script type="text/javascript" src="Content/framework/jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="Content/framework/jqwidgets/jqxrating.js"></script>
-
+    <script type="text/javascript" src="Content/framework/jqwidgets/jqxbuttons.js"></script>
 
 	<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
