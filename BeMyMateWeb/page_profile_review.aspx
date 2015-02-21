@@ -62,7 +62,7 @@
                             <button data-bind="attr: { id: 'edit_id_' + review.MessageId }, click: $parent.editReview">Edit</button>
                         </div>
                         <div data-bind="visible: IsDeleteVisible"style="display:inline-block;">
-                            <button data-bind="attr: { id: 'delete_id_' + review.MessageId }, click: $parent.deleteReview">Delete</button>
+                            <button data-bind="attr: { id: 'delete_id_' + review.MessageId }, click: $parent.deleteReview.bind($data, review)">Delete</button>
                         </div>
                         <div data-bind="visible: IsReportVisible"style="display:inline-block;">
                             <button data-bind="attr: { id: 'report_id_' + review.MessageId }, click: $parent.reportReview">Report</button>
@@ -82,6 +82,21 @@
 	    <%--<div class="load-more">
 		    <a href="#" class="btn btn-default">Load more comments</a>
 	    </div>--%>
+    </div>
+
+    <div id="window" hidden="hidden">
+        <div id="windowHeader" data-bind="submit: sendEditReview">          
+		    <div class="editor clearfix">                
+                <textarea id="reviewEditWnd" class="form-control" rows="4"></textarea>
+			    <div class="options clearfix">
+                    <button
+                        id="reviewEditBtn"
+                        type="submit">
+					    <span>Submit note</span>
+				    </button>
+			    </div>
+		    </div>
+        </div>
     </div>
 
     <!-- Get Configuration data-->
@@ -227,14 +242,30 @@
                     }
                 },
                 editReview: function () {
-                    alert("edit");
+                    // In case edit has been pressed show the window
+                    $('#window').jqxWindow({
+                        showCollapseButton: true, maxHeight: 400, maxWidth: 700, minHeight: 175, minWidth: 200, height: 175, width: 500,
+                        initContent: function () {
+                            $('#window').jqxWindow('focus');
+                        }
+                    });
+                    $('#window').jqxWindow('open');
                 },
-                deleteReview: function () {
-                    alert("delete");
+                deleteReview: function (reviewToDel) {
+                    if (reviewToDel != null) {
+                        var con = confirm('Are you sure to delete this review?');
+                        if (con == true) {
+                            reviewModel.Reviews().splice(reviewToDel);
+                            alert("Review has been removed correctly!!!");
+                        }
+                    }
                 },
                 reportReview: function () {
-                    alert("report");
-                }
+                    alert("Review has been reported correctly!!! An email has been sent to our team!!!");
+                },
+                sendEditReview: function () {
+                    alert("send");
+                },
             };
             ko.applyBindings(reviewModel);
 
@@ -256,8 +287,6 @@
             //    ])
             //};
             //ko.applyBindings(reviewSubmitModel, 'reviewSubmit');
-
-            
         </script>
 
 </asp:Content>
