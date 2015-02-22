@@ -4,14 +4,9 @@
     <div id="review" class="tab notes active">
         <%--<div id="reviewSubmit" data-bind="template: { name: 'profileAreaReviewSubmitTpl', foreach: Areas }"></div>--%>
 
-	    <form id="reviewForm" runat="server" data-bind="submit: sendReview">       
-		    <div class="editor clearfix">                
-                 <asp:TextBox 
-                    ID="textArea"
-                    Rows="4"
-                    runat="server"
-                    TextMode="MultiLine" 
-                    CssClass="form-control"></asp:TextBox>
+	    <form id="reviewForm" data-bind="submit: sendReview">       
+		    <div class="editor clearfix">       
+                <textarea id="textArea" class="form-control" rows="4"></textarea>
 
 			    <div class="options clearfix">
                     <button
@@ -59,10 +54,10 @@
 						    <p data-bind="text: MessageText"></p>
 					    </div>
                         <div data-bind="visible: IsEditVisible" style="display:inline-block;">
-                            <button data-bind="attr: { id: 'edit_id_' + review.MessageId }, click: $parent.editReview">Edit</button>
+                            <button data-bind="attr: { id: 'edit_id_' + review.MessageId }, click: $parent.editReview.bind($data, review.MessageId, review.MessageText)">Edit</button>
                         </div>
                         <div data-bind="visible: IsDeleteVisible"style="display:inline-block;">
-                            <button data-bind="attr: { id: 'delete_id_' + review.MessageId }, click: $parent.deleteReview.bind($data, review)">Delete</button>
+                            <button data-bind="attr: { id: 'delete_id_' + review.MessageId }, click: $parent.deleteReview.bind($data, review.MessageId)">Delete</button>
                         </div>
                         <div data-bind="visible: IsReportVisible"style="display:inline-block;">
                             <button data-bind="attr: { id: 'report_id_' + review.MessageId }, click: $parent.reportReview">Report</button>
@@ -85,17 +80,19 @@
     </div>
 
     <div id="window" hidden="hidden">
-        <div id="windowHeader" data-bind="submit: sendEditReview">          
-		    <div class="editor clearfix">                
-                <textarea id="reviewEditWnd" class="form-control" rows="4"></textarea>
-			    <div class="options clearfix">
-                    <button
-                        id="reviewEditBtn"
-                        type="submit">
-					    <span>Submit note</span>
-				    </button>
-			    </div>
-		    </div>
+        <div id="windowHeader">          
+            <form id="reviewEditForm" data-bind="submit: sendEditReview">
+		        <div class="editor clearfix">                
+                    <textarea id="reviewEditWnd" class="form-control" rows="4"></textarea>
+			        <div class="options clearfix">
+                        <button
+                            id="reviewEditBtn"
+                            type="submit">
+					        <span>Submit note</span>
+				        </button>
+			        </div>
+		        </div>
+            </form>
         </div>
     </div>
 
@@ -212,59 +209,127 @@
                     }
                 ]),
                 sendReview: function (formElement) {
-                    var input = "<%= textArea.ClientID%>";
-                    if (input != null) {
-                        var value = document.getElementById(input).value;                        
-                        if (value != "") {
-                            // Get text user name and data
-                            this.Reviews.push({
-                                Areas: [
-                                {
-                                    AreaId: '1',
-                                    AreaName: 'Detail 1',
-                                    AreaValue: 5
-                                },
-                                {
-                                    AreaId: '2',
-                                    AreaName: 'Detail 2',
-                                    AreaValue: 5,
-                                },
-                                {
-                                    AreaId: '3',
-                                    AreaName: 'Detail 3',
-                                    AreaValue: 5
-                                }],
-                                Date: "<%= DateTime.Now %>",
-                                MessageId: 4,
-                                MessageText: value
-                            });
+                    var form = $(formElement);
+                    if (form != null) {
+                        var input = form.find('#textArea');
+                        if (input != null) {
+                            var value = input.val();
+                            if (value != "") {
+                                // Get text user name and data
+                                this.Reviews.push({
+                                    Areas: [
+                                    {
+                                        AreaId: '1',
+                                        AreaName: 'Detail 1',
+                                        AreaValue: 5
+                                    },
+                                    {
+                                        AreaId: '2',
+                                        AreaName: 'Detail 2',
+                                        AreaValue: 5,
+                                    },
+                                    {
+                                        AreaId: '3',
+                                        AreaName: 'Detail 3',
+                                        AreaValue: 5
+                                    }],
+                                    Date: "<%= DateTime.Now %>",
+                                    MessageId: 4,
+                                    MessageText: value,
+                                    IsEditVisible: true,
+                                    IsDeleteVisible: true,
+                                    IsReportVisible: true
+                                });
+                                alert("Review has been insereted corretly!!!");
+                                input.val("");
+                                form.hide();
+                            }
                         }
                     }
                 },
-                editReview: function () {
+                editReview: function (messageId, messageText) {
                     // In case edit has been pressed show the window
                     $('#window').jqxWindow({
-                        showCollapseButton: true, maxHeight: 400, maxWidth: 700, minHeight: 175, minWidth: 200, height: 175, width: 500,
-                        initContent: function () {
-                            $('#window').jqxWindow('focus');
-                        }
+                        title: 'Message',
+                        showCollapseButton: true,
+                        maxHeight: 400,
+                        maxWidth: 700,
+                        minHeight: 175,
+                        minWidth: 200,
+                        height: 175,
+                        width: 500
                     });
-                    $('#window').jqxWindow('open');
+
+                    var form = $('#window').find('#reviewEditForm');
+                    if (form != null) {
+                        form.val(messageId);
+                        var textArea = form.find('#reviewEditWnd');
+                        if (textArea != null) {
+                            textArea.val(messageText);
+                            $('#window').jqxWindow('focus');
+                            $('#window').jqxWindow('open');
+                        }
+                    }
                 },
-                deleteReview: function (reviewToDel) {
-                    if (reviewToDel != null) {
+                deleteReview: function (messageId) {                   
+                    if (messageId != null) {
                         var con = confirm('Are you sure to delete this review?');
                         if (con == true) {
-                            reviewModel.Reviews().splice(reviewToDel);
+                            // Remove message
+                            reviewModel.Reviews.remove(function (item) {
+                                return item.MessageId == messageId
+                            });
                             alert("Review has been removed correctly!!!");
                         }
                     }
                 },
                 reportReview: function () {
+                    //TODO: Send an email to the administrator team.
                     alert("Review has been reported correctly!!! An email has been sent to our team!!!");
                 },
-                sendEditReview: function () {
-                    alert("send");
+                sendEditReview: function (formElement) {
+                    var form = $(formElement);
+                    if (form != null) {
+                        var input = form.find('#reviewEditWnd');
+                        if (input != null) {
+                            var messageText = input.val();
+                            if (messageText != "") {
+                                var messageId = form.val();
+
+                                // Remove old message
+                                this.Reviews.remove(function (item) {
+                                    return item.MessageId == messageId
+                                });
+
+                                // Update with new message
+                                var updatObj = {
+                                    Areas: [
+                                    {
+                                        AreaId: '1',
+                                        AreaName: 'Detail 1',
+                                        AreaValue: 5
+                                    },
+                                    {
+                                        AreaId: '2',
+                                        AreaName: 'Detail 2',
+                                        AreaValue: 5,
+                                    },
+                                    {
+                                        AreaId: '3',
+                                        AreaName: 'Detail 3',
+                                        AreaValue: 5
+                                    }],
+                                    Date: "<%= DateTime.Now %>",
+                                    MessageId: messageId,
+                                    MessageText: messageText,
+                                    IsEditVisible: true,
+                                    IsDeleteVisible: true,
+                                    IsReportVisible: true
+                                };
+                                this.Reviews.push(updatObj);
+                            }
+                        }
+                    }
                 },
             };
             ko.applyBindings(reviewModel);
