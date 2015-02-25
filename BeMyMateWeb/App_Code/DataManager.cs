@@ -331,5 +331,111 @@ namespace BeMyMateWeb.App_Code
         //}
 
         //#endregion
+
+        #region Review
+
+        public static IEnumerable<ReviewDTO> GetReviews(int userId, string languageCode) 
+        {
+            List<ReviewDTO> reviews = new List<ReviewDTO>();
+            using (var ent = new BeMyMateDBEntities()) 
+            {
+                reviews.Add(
+                    new ReviewDTO
+                    {
+                        ReviewId = 1,
+                        ReviewText = "This is just an example 1",
+                        Date = DateTime.UtcNow,
+                        IsEditVisible = true,
+                        IsDeleteVisible = true,
+                        IsReportVisible = true,
+                        Areas = new List<AreaDTO>()
+                        {
+                            new AreaDTO 
+                            {
+                                AreaId = 1,
+                                AreaName = "Detail Info 1",
+                                AreaValue = 4
+                            },
+                            new AreaDTO 
+                            {
+                                AreaId = 2,
+                                AreaName = "Detail Info 2",
+                                AreaValue = 2
+                            },
+                            new AreaDTO 
+                            {
+                                AreaId = 3,
+                                AreaName = "Detail Info 3",
+                                AreaValue = 2
+                            }
+                        }
+                    });
+                reviews.Add(
+                    new ReviewDTO
+                    {
+                        ReviewId = 2,
+                        ReviewText = "This is just an example 2",
+                        Date = DateTime.UtcNow,
+                        IsEditVisible = true,
+                        IsDeleteVisible = true,
+                        IsReportVisible = true,
+                        Areas = new List<AreaDTO>()
+                        {
+                            new AreaDTO 
+                            {
+                                AreaId = 1,
+                                AreaName = "Detail Info 1",
+                                AreaValue = 5
+                            },
+                            new AreaDTO 
+                            {
+                                AreaId = 2,
+                                AreaName = "Detail Info 2",
+                                AreaValue = 5
+                            },
+                            new AreaDTO 
+                            {
+                                AreaId = 3,
+                                AreaName = "Detail Info 3",
+                                AreaValue = 5
+                            }
+                        }
+                     });
+                reviews.Add(
+                    new ReviewDTO
+                    {
+                        ReviewId = 3,
+                        ReviewText = "This is just an example 3",
+                        Date = DateTime.UtcNow,
+                        IsEditVisible = true,
+                        IsDeleteVisible = true,
+                        IsReportVisible = true,
+                        Areas = new List<AreaDTO>()
+                        {
+                            new AreaDTO 
+                            {
+                                AreaId = 1,
+                                AreaName = "Detail Info 1",
+                                AreaValue = 5
+                            },
+                            new AreaDTO 
+                            {
+                                AreaId = 2,
+                                AreaName = "Detail Info 2",
+                                AreaValue = 5
+                            },
+                            new AreaDTO 
+                            {
+                                AreaId = 3,
+                                AreaName = "Detail Info 3",
+                                AreaValue = 5
+                            }
+                        }
+                    });
+            }
+            return reviews;
+        }
+
+        #endregion
     }
 }

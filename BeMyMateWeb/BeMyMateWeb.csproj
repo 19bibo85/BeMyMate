@@ -659,6 +659,7 @@
     <Compile Include="App_Start\ODataConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MenusController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -839,6 +840,7 @@
     <Compile Include="Models\Review.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReviewDTO.cs" />
     <Compile Include="Models\Role.cs">
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
