@@ -437,5 +437,37 @@ namespace BeMyMateWeb.App_Code
         }
 
         #endregion
+
+        #region Area
+        public static IEnumerable<AreaDTO> GetAreas(string languageCode)
+        {
+            List<AreaDTO> areas = new List<AreaDTO>();
+            using (var ent = new BeMyMateDBEntities())
+            {
+                areas = new List<AreaDTO>()
+                        {
+                            new AreaDTO 
+                            {
+                                AreaId = 1,
+                                AreaName = "Detail Info 1",
+                                AreaValue = 0
+                            },
+                            new AreaDTO 
+                            {
+                                AreaId = 2,
+                                AreaName = "Detail Info 2",
+                                AreaValue = 0
+                            },
+                            new AreaDTO 
+                            {
+                                AreaId = 3,
+                                AreaName = "Detail Info 3",
+                                AreaValue = 0
+                            }
+                        };
+            }
+            return areas;
+        }
+        #endregion
     }
 }
