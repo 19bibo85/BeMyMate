@@ -2,87 +2,95 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentSection" runat="server">
 
     <div id="review" class="tab notes active">
-
-        <!-- Model for starts -->
-        <div id="starsObvs" data-bind="foreach: Areas">
+                
+        <div id="starsObvs" data-bind="foreach: Stars">
             <div data-bind="text: AreaName" style="display:inline-block;"></div>            
-            <div data-bind="attr: { id: 'stars_id_' + AreaId }, setStarsWidget: AreaValue" style="display:inline-block;"></div>
+            <div data-bind="attr: { id: 'stars_id_' + AreaId }, setStarsMain: AreaValue" style="display:inline-block;"></div>
         </div>
+
+        <!-- Submit Form -->
+	    <form id="reviewForm" data-bind="submit: sendReview">       
+		    <div class="editor clearfix">       
+                <textarea 
+                    id="textArea" 
+                    class="form-control" 
+                    rows="4" 
+                    style="resize:none"></textarea>
+			    <div class="options clearfix">
+                    <button
+                        id="SubReview"
+                        type="submit">
+					    <span>Submit note</span>
+				    </button>
+			    </div>
+		    </div>
+	    </form>
         
-        <!-- Model for review -->
-        <div id="reviewObvs">
-            <!-- Submit Form -->
-	        <form id="reviewForm" data-bind="submit: sendReview">       
-		        <div class="editor clearfix">       
-                    <textarea id="textArea" class="form-control" rows="4"></textarea>
-			        <div class="options clearfix">
-                        <button
-                            id="SubReview"
-                            type="submit">
-					        <span>Submit note</span>
-				        </button>
-			        </div>
-		        </div>
-	        </form>
-        
-            <!-- Profile Review -->
-	        <div id="profileReview" class="comments" data-bind="template: { name: 'profileReviewTpl', foreach: Reviews, as: 'review' }"> </div>
+        <!-- Profile Review -->
+	    <div id="profileReview" class="comments" data-bind="template: { name: 'profileReviewTpl', foreach: Reviews, as: 'review' }"> </div>
          
-            <!-- Template for review -->
-            <script type="text/html" id="profileReviewTpl">
-                <div class="row comment" >
-			        <div class="col-sm-2">
-				        <img src="Content\avatar\placeholder.gif" class="avatar img-responsive" />
-			        </div>
-			        <div class="col-sm-10">
-				        <div class="message clearfix">
-					        <header>
-                                <div data-bind="foreach: Areas">
-                                    <div data-bind="text: AreaName" style="display:inline-block;"></div>            
-                                    <div data-bind="attr: { id: 'rating_id_' + review.ReviewId + '_' + AreaId }, setRatingWidget: AreaValue" style="display:inline-block;"></div>
-                                </div>
-					        </header>
-					        <div class="note">
-						        <p data-bind="text: ReviewText"></p>
-					        </div>
-                            <div data-bind="visible: IsEditVisible" style="display:inline-block;">
-                                <button data-bind="attr: { id: 'edit_id_' + review.ReviewId }, click: $parent.editReview.bind($data, review.ReviewId, review.ReviewText)">Edit</button>
+        <!-- Template for review -->
+        <script type="text/html" id="profileReviewTpl">
+            <div class="row comment" >
+			    <div class="col-sm-2">
+				    <img src="Content\avatar\placeholder.gif" class="avatar img-responsive" />
+			    </div>
+			    <div class="col-sm-10">
+				    <div class="message clearfix">
+					    <header>
+                            <div data-bind="foreach: Areas">
+                                <div data-bind="text: AreaName" style="display:inline-block;"></div>            
+                                <div data-bind="attr: { id: 'rating_id_' + review.ReviewId + '_' + AreaId }, setRatingWidget: AreaValue" style="display:inline-block;"></div>
                             </div>
-                            <div data-bind="visible: IsDeleteVisible"style="display:inline-block;">
-                                <button data-bind="attr: { id: 'delete_id_' + review.ReviewId }, click: $parent.deleteReview.bind($data, review.ReviewId)">Delete</button>
-                            </div>
-                            <div data-bind="visible: IsReportVisible"style="display:inline-block;">
-                                <button data-bind="attr: { id: 'report_id_' + review.ReviewId }, click: $parent.reportReview">Report</button>
-                            </div>
-                            <span class="date pull-right" data-bind="text: Date"></span>
-				        </div>
-			        </div>
-                </div>
-            </script>           
+					    </header>
+					    <div class="note">
+						    <p data-bind="text: ReviewText"></p>
+					    </div>
+                        <div data-bind="visible: IsEditVisible" style="display:inline-block;">
+                            <button data-bind="attr: { id: 'edit_id_' + review.ReviewId }, click: $parent.editReview.bind($data, review.ReviewId, review.ReviewText)">Edit</button>
+                        </div>
+                        <div data-bind="visible: IsDeleteVisible"style="display:inline-block;">
+                            <button data-bind="attr: { id: 'delete_id_' + review.ReviewId }, click: $parent.deleteReview.bind($data, review.ReviewId)">Delete</button>
+                        </div>
+                        <div data-bind="visible: IsReportVisible"style="display:inline-block;">
+                            <button data-bind="attr: { id: 'report_id_' + review.ReviewId }, click: $parent.reportReview">Report</button>
+                        </div>
+                        <span class="date pull-right" data-bind="text: Date"></span>
+				    </div>
+			    </div>
+            </div>
+        </script>           
 
-	            <%--<div class="load-more">
-		            <a href="#" class="btn btn-default">Load more comments</a>
-	            </div>--%>
+	        <%--<div class="load-more">
+		        <a href="#" class="btn btn-default">Load more comments</a>
+	        </div>--%>
 
-            <!-- Window for edit review -->
-            <div id="window" hidden="hidden">
-                <div id="windowHeader">          
-                    <form id="reviewEditForm" data-bind="submit: updateReview">
-		                <div class="editor clearfix">                
-                            <textarea id="reviewEditWnd" class="form-control" rows="4"></textarea>
-			                <div class="options clearfix">
-                                <button
-                                    id="reviewEditBtn"
-                                    type="submit">
-					                <span>Submit note</span>
-				                </button>
-			                </div>
-		                </div>
-                    </form>
-                </div>
+        <!-- Window for edit review -->
+        <div id="window" hidden="hidden">
+            <div id="windowHeader"> 
+                <div id="starsWnd" data-bind="foreach: Stars">
+                    <div data-bind="text: AreaName" style="display:inline-block;"></div>            
+                    <div data-bind="attr: { id: 'starsWnd_id_' + AreaId }, setStarsWnd: AreaValue" style="display:inline-block;"></div>
+                </div>         
+                <form id="reviewEditForm" data-bind="submit: updateReview">
+		            <div class="editor clearfix">                
+                        <textarea 
+                            id="reviewEditWnd" 
+                            class="form-control" 
+                            rows="4"
+                            style="resize:none"></textarea>
+			            <div class="options clearfix">
+                            <button
+                                id="reviewEditBtn"
+                                type="submit">
+					            <span>Submit note</span>
+				            </button>
+			            </div>
+		            </div>
+                </form>
             </div>
         </div>
-    </div>   
+    </div>
 
     <!-- Get Configuration data-->
     <script type="text/javascript">
@@ -93,21 +101,22 @@
     <!-- Populate after retrieve data -->
     <script type="text/javascript">
 
-        function StarsModelObj() {
+        // Defining a class for the review
+        function ReviewModelObj(){
             var self = this;
 
-            self.Areas = ko.observableArray([]);
+            self.Stars = ko.observableArray([]);
 
             // Retrieve area data from db
             try {
                 $.ajax({
-                    url: api + 'reviews/areas?languageCode=' + languageCode,
+                    url: api + 'areas/areas?languageCode=' + languageCode,
                     type: "GET",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     async: true,
                     success: function (response) {
-                        self.Areas(response);
+                        self.Stars(response);
                     },
                     error: function (error) {
                         var err = $.parseJSON(error.responseText);
@@ -119,7 +128,7 @@
                 alert("An error occurred. Please contact the administrator.");
             }
 
-            ko.bindingHandlers.setStarsWidget = {
+            ko.bindingHandlers.setStarsMain = {
                 init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
                     // This will be called when the binding is first applied to an element
                     // Set up any initial state, event handlers, etc. here
@@ -131,12 +140,19 @@
                     $("#" + element.id).jqxRating({ width: 350, height: 35, disabled: false, value: valueAccessor(), theme: 'bootstrap' });
                 }
             };
-        }
-        ko.applyBindings(new StarsModelObj(), document.getElementById("starsObvs"));
 
-        // Defining a class for the review
-        function ReviewModelObj(){
-            var self = this;
+            ko.bindingHandlers.setStarsWnd = {
+                init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+                    // This will be called when the binding is first applied to an element
+                    // Set up any initial state, event handlers, etc. here
+                },
+                update: function (element, valueAccessor) {
+                    // This will be called once when the binding is first applied to an element,
+                    // and again whenever any observables/computeds that are accessed change
+                    // Update the DOM element based on the supplied values here.
+                    $("#" + element.id).jqxRating({ width: 350, height: 35, disabled: false, value: valueAccessor(), theme: 'bootstrap' });
+                }
+            };
                                 
             self.Reviews = ko.observableArray([]);
 
@@ -151,6 +167,10 @@
                             var value = input.val();
                             if (value !== "") {
                                 // Add the obj into the db
+
+                                for (i = 0; i < stars.length; i++) {
+                                    alert(stars[i]);
+                                }
 
                                 // Get text user name and data
                                 self.Reviews.push({
@@ -194,11 +214,13 @@
                 $('#window').jqxWindow({
                     title: 'Review',
                     showCollapseButton: true,
-                    maxHeight: 400,
+                    resizable: false,
+                    showCollapseButton: false   ,
+                    maxHeight: 500,
                     maxWidth: 700,
-                    minHeight: 175,
+                    minHeight: 350,
                     minWidth: 200,
-                    height: 175,
+                    height: 350,
                     width: 500
                 });
 
@@ -348,6 +370,6 @@
                 }
             };
         };
-        ko.applyBindings(new ReviewModelObj(), document.getElementById("reviewObvs")); 
+        ko.applyBindings(new ReviewModelObj()); 
     </script>
 </asp:Content>

@@ -5,13 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
-using System.Data.Entity;
 
 namespace BeMyMateWeb.Controllers
 {
-    public class ReviewsController : ApiController
+    public class AreasController : ApiController
     {
         #region Variables
 
@@ -20,13 +18,13 @@ namespace BeMyMateWeb.Controllers
 
         #endregion
 
-        #region Reviews
+        #region Areas
 
-        // Note Reviews JSON
-        [ActionName("Reviews")]
-        public IEnumerable<ReviewDTO> GetReviews([FromUri] string languageCode)
+        // Note Areas JSON
+        [ActionName("Areas")]
+        public IEnumerable<AreaDTO> GetAreas([FromUri] string languageCode)
         {
-            return DataManager.GetReviews(_userId, languageCode);
+            return DataManager.GetAreas(languageCode);
         }
 
         #endregion
