@@ -136,7 +136,7 @@
                 update: function (element, valueAccessor) {
                     // This will be called once when the binding is first applied to an element,
                     // and again whenever any observables/computeds that are accessed change
-                    // Update the DOM element based on the supplied values here.
+                    // Update the DOM element based on the supplied values here.                    
                     $("#" + element.id).jqxRating({ width: 350, height: 35, disabled: false, value: valueAccessor(), theme: 'bootstrap' });
                 }
             };
@@ -160,43 +160,23 @@
             self.sendReview = function (element) {
                 var stars = $('#starsObvs');
                 if (stars != null) {
-                    var form = $(element);
+                    var form = $(element);  
                     if (form != null) {
                         var input = form.find('#textArea');
                         if (input != null) {
                             var value = input.val();
                             if (value !== "") {
                                 // Add the obj into the db
-
-                                for (i = 0; i < stars.length; i++) {
-                                    alert(stars[i]);
-                                }
-
-                                // Get text user name and data
-                                self.Reviews.push({
-                                    Areas: [
+                                self.Reviews.push(
                                     {
-                                        AreaId: '1',
-                                        AreaName: 'Detail 1',
-                                        AreaValue: 5
-                                    },
-                                    {
-                                        AreaId: '2',
-                                        AreaName: 'Detail 2',
-                                        AreaValue: 5,
-                                    },
-                                    {
-                                        AreaId: '3',
-                                        AreaName: 'Detail 3',
-                                        AreaValue: 5
-                                    }],
-                                    Date: "<%= DateTime.UtcNow %>",
-                                    ReviewId: 4,
-                                    ReviewText: value,
-                                    IsEditVisible: true,
-                                    IsDeleteVisible: true,
-                                    IsReportVisible: true
-                                });
+                                        Areas: self.Stars(),
+                                        Date: "<%= DateTime.UtcNow %>",
+                                        ReviewId: 4,
+                                        ReviewText: value,
+                                        IsEditVisible: true,
+                                        IsDeleteVisible: true,
+                                        IsReportVisible: true
+                                    }); 
 
                                 alert("Review has been insereted corretly!!!");
                                 stars.hide();
@@ -215,7 +195,7 @@
                     title: 'Review',
                     showCollapseButton: true,
                     resizable: false,
-                    showCollapseButton: false   ,
+                    showCollapseButton: false,
                     maxHeight: 500,
                     maxWidth: 700,
                     minHeight: 350,
@@ -265,9 +245,10 @@
                         var reviewText = input.val();
                         if (reviewText != "") {
                             var reviewId = form.val();
-
+                            
                             // Update with new message
                             var updatObj = {
+                                Areas: self.Stars(),
                                 Date: "<%= DateTime.UtcNow %>",
                                 ReviewId: reviewId,
                                 ReviewText: reviewText,
@@ -275,17 +256,14 @@
                                 IsDeleteVisible: true,
                                 IsReportVisible: true
                             };
-
+                            
                             // Update object into the db
                             try {
                                 $.ajax({
-                                    url: api + 'reviews/reviews?languageCode=' + languageCode,
-                                    type: "GET",
+                                    url: api + 'reviews/reviews',
+                                    type: "PUT",
                                     contentType: "application/json; charset=utf-8",
-                                    //data: {
-                                    //    json: JSON.stringify({ updatObj }),
-                                    //    delay: 3
-                                    //},
+                                    data: JSON.stringify(updatObj),
                                     dataType: "json",
                                     async: true,
                                     success: function (response) {
@@ -300,40 +278,13 @@
                             catch (ex) {
                                 alert("An error occurred. Please contact the administrator.");
                             }
-
-
-                            <%--// Remove old message
+                                                        
+                            // Remove old message
                             self.Reviews.remove(function (item) {
-                                return item.reviewId == reviewId
+                                return item.ReviewId == reviewId
                             });
 
-                            // Update with new message
-                            var updatObj = {
-                                Areas: [
-                                {
-                                    AreaId: '1',
-                                    AreaName: 'Detail 1',
-                                    AreaValue: 5
-                                },
-                                {
-                                    AreaId: '2',
-                                    AreaName: 'Detail 2',
-                                    AreaValue: 5,
-                                },
-                                {
-                                    AreaId: '3',
-                                    AreaName: 'Detail 3',
-                                    AreaValue: 5
-                                }],
-                                Date: "<%= DateTime.Now %>",
-                                ReviewId: reviewId,
-                                ReviewText: reviewText,
-                                IsEditVisible: true,
-                                IsDeleteVisible: true,
-                                IsReportVisible: true
-                            };--%>
-
-                            //self.Reviews.push(updatObj);
+                            self.Reviews.push(updatObj);
                             $('#window').jqxWindow('close');
                         }
                     }

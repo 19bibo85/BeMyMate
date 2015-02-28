@@ -27,6 +27,18 @@ namespace BeMyMateWeb.Controllers
             return DataManager.GetAreas(languageCode);
         }
 
+        // Note Areas JSON
+        [ActionName("Area")]
+        public IHttpActionResult GetArea([FromUri] int areaId, [FromUri] string languageCode)
+        {
+            var area = DataManager.GetArea(areaId, languageCode);
+            if (area == null)
+            {
+                return NotFound();
+            }
+            return Ok(area);
+        }
+
         #endregion
     }
 }

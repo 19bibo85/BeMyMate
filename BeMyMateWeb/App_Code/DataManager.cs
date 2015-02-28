@@ -436,9 +436,15 @@ namespace BeMyMateWeb.App_Code
             return reviews;
         }
 
+        public static IEnumerable<ReviewDTO> UpdateReviews(ReviewDTO review) 
+        {
+            return GetReviews(1, "en-us");
+        }
+
         #endregion
 
         #region Area
+
         public static IEnumerable<AreaDTO> GetAreas(string languageCode)
         {
             List<AreaDTO> areas = new List<AreaDTO>();
@@ -468,6 +474,12 @@ namespace BeMyMateWeb.App_Code
             }
             return areas;
         }
+
+        public static AreaDTO GetArea(int areaId, string languageCode)
+        {
+            return GetAreas(languageCode).FirstOrDefault(w=> w.AreaId == areaId);
+        }
+
         #endregion
     }
 }
