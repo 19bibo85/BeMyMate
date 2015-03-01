@@ -33,7 +33,21 @@ namespace BeMyMateWeb.Controllers
         [ActionName("Reviews")]
         public IEnumerable<ReviewDTO> PutReviews(ReviewDTO review)
         {
-            return DataManager.UpdateReviews(review);
+            return DataManager.PutReviews(review);
+        }
+
+        // Note Post Reviews
+        [ActionName("Reviews")]
+        public IEnumerable<ReviewDTO> PostReviews(ReviewDTO review)
+        {
+            return DataManager.PostReviews(review);
+        }
+
+        // Note Delete Reviews
+        [ActionName("Reviews")]
+        public IEnumerable<ReviewDTO> DeleteReviews(ReviewDTO review)
+        {
+            return DataManager.DeleteReviews(review);
         }
 
         #endregion

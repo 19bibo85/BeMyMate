@@ -50,7 +50,7 @@
                             <button data-bind="attr: { id: 'edit_id_' + review.ReviewId }, click: $parent.editReview.bind($data, review.ReviewId, review.ReviewText)">Edit</button>
                         </div>
                         <div data-bind="visible: IsDeleteVisible"style="display:inline-block;">
-                            <button data-bind="attr: { id: 'delete_id_' + review.ReviewId }, click: $parent.deleteReview.bind($data, review.ReviewId)">Delete</button>
+                            <button data-bind="attr: { id: 'delete_id_' + review.ReviewId }, click: $parent.deleteReview.bind($data, review)">Delete</button>
                         </div>
                         <div data-bind="visible: IsReportVisible"style="display:inline-block;">
                             <button data-bind="attr: { id: 'report_id_' + review.ReviewId }, click: $parent.reportReview">Report</button>
@@ -166,22 +166,43 @@
                         if (input != null) {
                             var value = input.val();
                             if (value !== "") {
-                                // Add the obj into the db
-                                self.Reviews.push(
-                                    {
-                                        Areas: self.Stars(),
-                                        Date: "<%= DateTime.UtcNow %>",
-                                        ReviewId: 4,
-                                        ReviewText: value,
-                                        IsEditVisible: true,
-                                        IsDeleteVisible: true,
-                                        IsReportVisible: true
-                                    }); 
 
-                                alert("Review has been insereted corretly!!!");
-                                stars.hide();
-                                input.val("");
-                                form.hide();
+                                // Object to add
+                                var objToAdd = {
+                                    Areas: self.Stars(),
+                                    ReviewId: 4,
+                                    ReviewText: value,
+                                    IsEditVisible: true,
+                                    IsDeleteVisible: true,
+                                    IsReportVisible: true
+                                };
+
+                                // Update object into the db
+                                try {
+                                    $.ajax({
+                                        url: api + 'reviews/reviews',
+                                        type: "POST",
+                                        contentType: "application/json; charset=utf-8",
+                                        data: JSON.stringify(objToAdd),
+                                        dataType: "json",
+                                        async: true,
+                                        success: function (response) {
+                                            self.Reviews(response);
+                                            
+                                            alert("Review has been insereted corretly!!!");
+                                            stars.hide();
+                                            input.val("");
+                                            form.hide();
+                                        },
+                                        error: function (error) {
+                                            var err = $.parseJSON(error.responseText);
+                                            alert(err.ExceptioMessage);
+                                        },
+                                    });
+                                }
+                                catch (ex) {
+                                    alert("An error occurred. Please contact the administrator.");
+                                }
                             }
                         }
                     }
@@ -217,15 +238,33 @@
             }
 
             // Delete the review
-            self.deleteReview = function (reviewId) {
-                if (reviewId != null) {
+            self.deleteReview = function (review) {
+                if (review != null) {
                     var con = confirm('Are you sure to delete this review?');
                     if (con == true) {
-                        // Remove message
-                        self.Reviews.remove(function (item) {
-                            return item.ReviewId == reviewId
-                        });
-                        alert("Review has been removed correctly!!!");
+
+                        // Update object into the db
+                        try {
+                            $.ajax({
+                                url: api + 'reviews/reviews',
+                                type: "DELETE",
+                                contentType: "application/json; charset=utf-8",
+                                data: JSON.stringify(review),
+                                dataType: "json",
+                                async: true,
+                                success: function (response) {
+                                    self.Reviews(response);
+                                    alert("Review has been removed correctly!!!");
+                                },
+                                error: function (error) {
+                                    var err = $.parseJSON(error.responseText);
+                                    alert(err.ExceptioMessage);
+                                },
+                            });
+                        }
+                        catch (ex) {
+                            alert("An error occurred. Please contact the administrator.");
+                        }
                     }
                 }
             }
@@ -246,10 +285,9 @@
                         if (reviewText != "") {
                             var reviewId = form.val();
                             
-                            // Update with new message
-                            var updatObj = {
+                            // Object to upd
+                            var objToUp = {
                                 Areas: self.Stars(),
-                                Date: "<%= DateTime.UtcNow %>",
                                 ReviewId: reviewId,
                                 ReviewText: reviewText,
                                 IsEditVisible: true,
@@ -263,7 +301,7 @@
                                     url: api + 'reviews/reviews',
                                     type: "PUT",
                                     contentType: "application/json; charset=utf-8",
-                                    data: JSON.stringify(updatObj),
+                                    data: JSON.stringify(objToUp),
                                     dataType: "json",
                                     async: true,
                                     success: function (response) {
@@ -278,13 +316,7 @@
                             catch (ex) {
                                 alert("An error occurred. Please contact the administrator.");
                             }
-                                                        
-                            // Remove old message
-                            self.Reviews.remove(function (item) {
-                                return item.ReviewId == reviewId
-                            });
 
-                            self.Reviews.push(updatObj);
                             $('#window').jqxWindow('close');
                         }
                     }

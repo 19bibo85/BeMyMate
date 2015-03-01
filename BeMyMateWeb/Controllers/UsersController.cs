@@ -20,24 +20,28 @@ namespace BeMyMateWeb.Controllers
 
         // Note Users JSON
         [ActionName("ProfileBasicInfo")]
-        public ProfileBasicInfoDTO GetProfileBasicInfo([FromUri] string languageCode)
-        {   
-            return DataManager.GetProfileBasicInfo(_userId, languageCode);
+        public IHttpActionResult GetProfileBasicInfo([FromUri] string languageCode)
+        {
+            var profileBasicInfo = DataManager.GetProfileBasicInfo(_userId, languageCode);
+            if (profileBasicInfo == null)
+            {
+                return NotFound();
+            }
+            return Ok(profileBasicInfo);
         }
 
         // Note Users JSON
         [ActionName("ProfileDetailInfos")]
-        public JsonResult<List<ProfileDetailInfoDTO>> GetProfileDetailInfos([FromUri] string languageCode)
+        public IEnumerable<ProfileDetailInfoDTO> GetProfileDetailInfos([FromUri] string languageCode)
         {
-            return this.Json(DataManager.GetProfileDetailInfos(_userId, languageCode));
+            return DataManager.GetProfileDetailInfos(_userId, languageCode);
         }
 
         // Note Chart JSON
         [ActionName("ProfileChartArea")]
-        public JsonResult<List<ProfileChartAreaDTO>> GetProfileChartArea([FromUri] string languageCode)
+        public IEnumerable<ProfileChartAreaDTO> GetProfileChartArea([FromUri] string languageCode)
         {
-            return this.Json(DataManager.GetProfileChartArea(_userId, languageCode));
-            //return JsonConvert.SerializeObject(DataManager.GetProfileChartArea(_userId, languageCode));
+            return DataManager.GetProfileChartArea(_userId, languageCode);
         }
 
         #endregion

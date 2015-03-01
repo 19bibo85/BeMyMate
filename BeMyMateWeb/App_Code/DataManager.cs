@@ -12,12 +12,12 @@ namespace BeMyMateWeb.App_Code
         #region Menu
 
         // Note query to retrieve menus
-        public static List<MenuDTO> GetMenus(int userId, int sectionId, string languageCode)
+        public static IEnumerable<MenuDTO> GetMenus(int userId, int sectionId, string languageCode)
         {
-            List<MenuDTO> menus = new List<MenuDTO>();
+            var menus = new List<MenuDTO>();
             using(var ent = new BeMyMateDBEntities())            
-            {   
-                menus =  ent.GetSectionMenuItem(userId, languageCode)
+            {
+                menus = ent.GetSectionMenuItem(userId, languageCode)
                         .Where(w => w.SectionId == sectionId)
                         .GroupBy(g => new { g.MenuId, g.MenuName, g.MenuDesc, g.MenuLink })
                         .AsEnumerable()
@@ -36,17 +36,16 @@ namespace BeMyMateWeb.App_Code
                                 Icon = sItem.Icon,
                                 Link = sItem.Link,
                                 IsActive = sItem.Active
-                            }).ToList()
+                            })
                         }).ToList();
-            }
-            return menus;
+                return menus;
+            }           
         }
     
         // Note query to retrieve menu
         public static MenuDTO GetMenu(int userId, int sectionId, int menuId, string languageCode)
         {
-            MenuDTO menu = GetMenus(userId, sectionId, languageCode).FirstOrDefault(w => w.Id == menuId);
-            return menu;
+            return GetMenus(userId, sectionId, languageCode).FirstOrDefault(w => w.Id == menuId);
         }
 
         #endregion
@@ -54,11 +53,11 @@ namespace BeMyMateWeb.App_Code
         #region User
 
         // Note query to retrieve users
-        public static List<UserDTO> GetUsers
+        public static IEnumerable<UserDTO> GetUsers
         {
             get
             {
-                List<UserDTO> users = new List<UserDTO>();
+                var users = new List<UserDTO>();
                 using (var ent = new BeMyMateDBEntities())
                 {
                     users = (from user in ent.Users
@@ -76,12 +75,13 @@ namespace BeMyMateWeb.App_Code
                                 StatusName = status.name,
                                 AvatarId = avatar.id,
                                 AvatarName = avatar.name,
-                                AvatarPath =  avatar.path
+                                AvatarPath = avatar.path
                              })
+                             .AsEnumerable()
                              .Select(s => new UserDTO
                              {
                                 Id = s.Id,
-                                Guid = s.Guid, 
+                                Guid = s.Guid,
                                 Name = s.Name,
                                 Surname = s.Surname,
                                 MiddleName = s.MiddleName,
@@ -91,7 +91,7 @@ namespace BeMyMateWeb.App_Code
                                 AvatarId = s.AvatarId,
                                 AvatarName = s.AvatarName,
                                 AvatarPath = s.AvatarPath
-                            }).ToList();
+                             }).ToList();                    
                 }
                 return users;
             }
@@ -100,8 +100,7 @@ namespace BeMyMateWeb.App_Code
         // Note query to retrieve user
         public static UserDTO GetUser(int userId)
         {
-            var user = GetUsers.FirstOrDefault(w => w.Id == userId);
-            return user;
+           return GetUsers.FirstOrDefault(w => w.Id == userId);
         }
 
         #endregion
@@ -109,9 +108,9 @@ namespace BeMyMateWeb.App_Code
         #region Notification
 
         //Note query to retrieve notifications
-        public static List<NotificationDTO> GetNotifications(int userId, string languageCode) 
+        public static IEnumerable<NotificationDTO> GetNotifications(int userId, string languageCode) 
         {
-            List<NotificationDTO> notifications = new List<NotificationDTO>();
+            var notifications = new List<NotificationDTO>();
             using (var ent = new BeMyMateDBEntities())
             {
                 notifications = ent.GetNotifications(userId, languageCode)
@@ -124,15 +123,13 @@ namespace BeMyMateWeb.App_Code
                                 .GroupBy(g => new { Type = g.Type, Description = g.Description })
                                 .AsEnumerable()
                                 .Select(s => new NotificationDTO
-                                {   
+                                {
                                     Type = s.Key.Type,
                                     Description = s.Key.Description,
                                     Count = s.Count()
-                                })
-                                .ToList();
-
-                return notifications;
+                                }).ToList();
             }
+            return notifications;
         }
 
         #endregion
@@ -142,28 +139,28 @@ namespace BeMyMateWeb.App_Code
         //Note query to retrieve profile basic infos
         public static ProfileBasicInfoDTO GetProfileBasicInfo(int userId, string languageCode) 
         {
-            ProfileBasicInfoDTO profileBasicInfo = new ProfileBasicInfoDTO();
+            var profileBasicInfo = new ProfileBasicInfoDTO();
             using (var ent = new BeMyMateDBEntities()) 
             {
                 profileBasicInfo = ent.GetProfileBasicInfo(userId, null, languageCode)
-                                   .AsEnumerable()
-                                   .GroupBy(g => new { g.AvatarPath, g.Name, g.Surname, g.Email, g.Gender, g.UserStatus })
-                                   .Select(s => new ProfileBasicInfoDTO
-                                   {
-                                       AvatarName = s.Key.AvatarPath,
-                                       UserName = s.Key.Name,
-                                       UserMiddleName = "",
-                                       UserSurname = s.Key.Surname,
-                                       UserType = "Tennant",
-                                       EmailName = s.Key.Email,
-                                       Phones = s.Select(sPhone => new PhoneDTO
+                                    .AsEnumerable()
+                                    .GroupBy(g => new { g.AvatarPath, g.Name, g.MiddleName, g.Surname, g.Email, g.Gender, g.UserStatus })
+                                    .Select(s => new ProfileBasicInfoDTO
+                                    {
+                                        AvatarName = s.Key.AvatarPath,
+                                        UserName = s.Key.Name,
+                                        UserMiddleName = s.Key.MiddleName,
+                                        UserSurname = s.Key.Surname,
+                                        UserType = "Tennant",
+                                        EmailName = s.Key.Email,
+                                        Phones = s.Select(sPhone => new PhoneDTO
                                                 {
                                                     Prefix = sPhone.Prefix,
                                                     Number = sPhone.Number,
                                                     Type = sPhone.PhoneType
                                                 })
                                                 .ToList(),
-                                       Addresses = s.Select(sAddress => new AddressDTO
+                                        Addresses = s.Select(sAddress => new AddressDTO
                                                 {
                                                     Line = sAddress.AddressLine,
                                                     City = sAddress.City,
@@ -173,13 +170,13 @@ namespace BeMyMateWeb.App_Code
                                                     Type = "Home"
                                                 })
                                                 .ToList(),
-                                       Jobs = s.Select(sJob => new JobDTO
+                                        Jobs = s.Select(sJob => new JobDTO
                                                 {
                                                     Name = sJob.Job
                                                 })
                                                 .ToList(),
-                                       Gender = s.Key.Gender,
-                                       Friends = new List<FriendDTO>
+                                        Gender = s.Key.Gender,
+                                        Friends = new List<FriendDTO>
                                             {
                                                 new FriendDTO
                                                 {
@@ -197,7 +194,7 @@ namespace BeMyMateWeb.App_Code
                                                     UserUID = new Guid()
                                                 }
                                             },
-                                       Areas = new List<AreaDTO> 
+                                        Areas = new List<AreaDTO> 
                                             {
                                                 new AreaDTO
                                                 {
@@ -231,17 +228,16 @@ namespace BeMyMateWeb.App_Code
                                                 }
                                                 
                                             }
-                                   })
-                                   .FirstOrDefault();
-
-                return profileBasicInfo;
+                                    })
+                                    .FirstOrDefault();
             }
+            return profileBasicInfo;
         }
 
         //Note query to retrieve profile detail infos
-        public static List<ProfileDetailInfoDTO> GetProfileDetailInfos(int userId, string languageCode) 
+        public static IEnumerable<ProfileDetailInfoDTO> GetProfileDetailInfos(int userId, string languageCode) 
         {
-            List<ProfileDetailInfoDTO> profileDetailInfos = new List<ProfileDetailInfoDTO>();
+            var profileDetailInfos = new List<ProfileDetailInfoDTO>();
             using (var ent = new BeMyMateDBEntities())
             {
                 profileDetailInfos = ent.GetProfileDetailInfo(userId, null, languageCode)
@@ -250,24 +246,21 @@ namespace BeMyMateWeb.App_Code
                                     .Select((s, i) => new ProfileDetailInfoDTO
                                     {
                                         AreaId = i,
-                                        AreaName = s.Key,                                        
+                                        AreaName = s.Key,
                                         QuestionnaireAnswers = s.Select(sItem => new QuestionnaireAnswerDTO
                                         {
                                             QuestionnaireName = sItem.Questionnaire,
                                             AnswerName = sItem.Answer
                                         })
-                                        .ToList()
-                                    })
-                                    .ToList();
-
-                return profileDetailInfos;
+                                    }).ToList();
             }
+            return profileDetailInfos;
         }
 
         //Note query to retrieve profile chart area
-        public static List<ProfileChartAreaDTO> GetProfileChartArea(int userId, string languageCode) 
+        public static IEnumerable<ProfileChartAreaDTO> GetProfileChartArea(int userId, string languageCode) 
         {
-            List<ProfileChartAreaDTO> profileChartArea = new List<ProfileChartAreaDTO>();
+            var profileChartArea = new List<ProfileChartAreaDTO>();
             using (var ent = new BeMyMateDBEntities())
             {
                 //profileChartArea = ent.GetProfileDetailInfo(userId, null, languageCode)
@@ -305,11 +298,8 @@ namespace BeMyMateWeb.App_Code
                                                                     AreaName = "Area5",
                                                                     AreaValue = 15
                                                                 }};
-
-
-
-                return profileChartArea;
             }
+            return profileChartArea;
         }
 
         #endregion
@@ -334,9 +324,10 @@ namespace BeMyMateWeb.App_Code
 
         #region Review
 
+        // Note query to retrieve the reviews
         public static IEnumerable<ReviewDTO> GetReviews(int userId, string languageCode) 
         {
-            List<ReviewDTO> reviews = new List<ReviewDTO>();
+            var reviews = new List<ReviewDTO>();
             using (var ent = new BeMyMateDBEntities()) 
             {
                 reviews.Add(
@@ -436,9 +427,40 @@ namespace BeMyMateWeb.App_Code
             return reviews;
         }
 
-        public static IEnumerable<ReviewDTO> UpdateReviews(ReviewDTO review) 
+        // Note query to update the reviews
+        public static IEnumerable<ReviewDTO> PutReviews(ReviewDTO review) 
         {
-            return GetReviews(1, "en-us");
+            List<ReviewDTO> reviews = GetReviews(1, "en-us").ToList();
+            var reviewToUp = reviews.FirstOrDefault(w => w.ReviewId == review.ReviewId);
+            if (reviewToUp != null) 
+            {
+                review.Date = DateTime.UtcNow;
+                reviews.Remove(reviewToUp);
+                reviews.Add(review);
+            }
+
+            return reviews;
+        }
+
+        // Note query to add a review
+        public static IEnumerable<ReviewDTO> PostReviews(ReviewDTO review)
+        {
+            List<ReviewDTO> reviews = GetReviews(1, "en-us").ToList();
+            review.Date = DateTime.UtcNow;
+            reviews.Add(review);
+            return reviews;
+        }
+
+        // Note query to remove a review
+        public static IEnumerable<ReviewDTO> DeleteReviews(ReviewDTO review)
+        {
+            List<ReviewDTO> reviews = GetReviews(1, "en-us").ToList();
+            var reviewToDel = reviews.FirstOrDefault(w => w.ReviewId == review.ReviewId);
+            if (reviewToDel != null)
+            {   
+                reviews.Remove(reviewToDel);
+            }
+            return reviews;
         }
 
         #endregion
@@ -447,7 +469,7 @@ namespace BeMyMateWeb.App_Code
 
         public static IEnumerable<AreaDTO> GetAreas(string languageCode)
         {
-            List<AreaDTO> areas = new List<AreaDTO>();
+            var areas = new List<AreaDTO>();
             using (var ent = new BeMyMateDBEntities())
             {
                 areas = new List<AreaDTO>()

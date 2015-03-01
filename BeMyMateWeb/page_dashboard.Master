@@ -183,7 +183,7 @@
 
 	            var dashboardTpl = $('#dashboardTpl').html();
 	            Mustache.parse(dashboardTpl);   // optional, speeds up future uses
-	            var rendered = Mustache.render(dashboardTpl, { Menus: $.parseJSON(response)});
+	            var rendered = Mustache.render(dashboardTpl, { Menus: response });
 	            $('#dashboardMenu').html(rendered);
 	        },
 	        Error: function (error) {
@@ -216,7 +216,7 @@
 	        Success: function (response) {
 	            var notificationTpl = $('#notificationTpl').html();
 	            Mustache.parse(notificationTpl);   // optional, speeds up future uses
-	            var rendered = Mustache.render(notificationTpl, { Notification: $.parseJSON(response) });
+	            var rendered = Mustache.render(notificationTpl, { Notification: response });
 	            $('#notificationMenu').html(rendered);
 	        },
 	        Error: function (error) {

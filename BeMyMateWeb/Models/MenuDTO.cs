@@ -16,7 +16,7 @@ namespace BeMyMateWeb.Models
 
         public string Link { get; set; }
 
-        public List<MenuItemDTO> Items { get; set; }
+        public IEnumerable<MenuItemDTO> Items { get; set; }
 
     }
 }

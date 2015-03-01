@@ -661,7 +661,6 @@
     <Compile Include="Controllers\AreasController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\ReviewsController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -678,6 +677,7 @@
       <DependentUpon>BeMyMate.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Bases\AreaBase.cs" />
+    <Compile Include="Models\Bases\UserBase.cs" />
     <Compile Include="Models\BeMyMate.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -965,6 +965,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\Interfaces\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

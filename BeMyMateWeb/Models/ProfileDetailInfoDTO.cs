@@ -11,6 +11,6 @@ namespace BeMyMateWeb.Models
 
         public string AreaName { get; set; }
 
-        public List<QuestionnaireAnswerDTO> QuestionnaireAnswers { get; set; }
+        public IEnumerable<QuestionnaireAnswerDTO> QuestionnaireAnswers { get; set; }
     }
 }
